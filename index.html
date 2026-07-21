@@ -28,7 +28,7 @@
           <span class="brand-monogram" aria-hidden="true">R2S</span>
           <span>R2S-Eval</span>
         </a>
-        <button class="navbar-burger" type="button" aria-label="Open navigation" aria-expanded="false" data-target="project-menu">
+        <button class="navbar-burger" type="button" aria-label="Open navigation" aria-controls="project-menu" aria-expanded="false" data-target="project-menu">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
@@ -37,6 +37,10 @@
       <div id="project-menu" class="navbar-menu">
         <div class="navbar-end">
           <a class="navbar-item" href="#abstract">Abstract</a>
+          <a class="navbar-item" href="#real-to-sim">Real-to-Sim</a>
+          <a class="navbar-item" href="#simulation">Simulation</a>
+          <a class="navbar-item" href="#results">Results</a>
+          <a class="navbar-item" href="#citation">Citation</a>
         </div>
       </div>
     </div>
@@ -104,7 +108,10 @@
 
     <section class="section abstract-section" id="abstract" aria-labelledby="abstract-title">
       <div class="container is-max-desktop">
-        <h2 class="section-kicker" id="abstract-title">Abstract</h2>
+        <div class="abstract-heading">
+          <p class="section-kicker">Paper overview</p>
+          <h2 class="abstract-title" id="abstract-title">Abstract</h2>
+        </div>
         <div class="content abstract-copy">
           <p>
             Evaluating robot manipulation policies is becoming increasingly important as generalist models, particularly vision-language-action (VLA) models, are deployed on physical robots. However, conventional real-world evaluation remains labor-intensive, unstable, and insufficiently informative. It requires repeated hardware trials, manual scene resets, and continuous operator monitoring, may produce different policy rankings across repeated evaluations, and primarily relies on success rate metrics that provide limited information about execution quality. In contrast, humans assess robot performance by observing and comparing complete behaviors rather than relying solely on binary success outcomes.
@@ -113,8 +120,407 @@
             To this end, we propose R2S-Eval, an automated evaluation pipeline that combines real-to-sim calibration with vision-language-model-based preference evaluation. The real-to-sim component efficiently generates rollout videos aligned with the target real-world evaluation setting, thereby reducing the need for repeated physical robot trials. The VLM evaluator assesses the execution quality of rollout videos and produces pairwise preferences, which are subsequently aggregated into policy rankings.
           </p>
           <p>
-            We further introduce a validation protocol to assess whether the proposed evaluation pipeline yields trustworthy policy conclusions while mitigating the key challenges of conventional real-world evaluation. Experiments in both simulation and real-world settings demonstrate that R2S-Eval produces reliable and stable policy conclusions, achieves strong agreement with human preferences, substantially reduces evaluation-time manual effort, and reveals behavior-quality differences that are not captured by binary success labels.
+            We further introduce a validation protocol to assess whether the proposed evaluation pipeline yields trustworthy policy conclusions while mitigating the key challenges of conventional real-world evaluation. Experiments in both simulation and real-world settings demonstrate that R2S-Eval produces reliable and stable policy conclusions, achieves strong agreement with human preferences, substantially reduces evaluation-time manual effort, and reveals behavior-quality differences that are not captured by binary success labels. In general, R2S-Eval advances robot evaluation from manual success counting toward automated, statistically stable, and quality-aware evaluation of robot behavior.
           </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section real-to-sim-section" id="real-to-sim" aria-labelledby="real-to-sim-title">
+      <div class="container is-max-desktop">
+        <div class="section-heading is-centered is-wide">
+          <p class="section-kicker">01 · Real-to-Sim alignment</p>
+          <h2 class="title section-title" id="real-to-sim-title">Seven tasks, aligned side by side</h2>
+          <p class="section-intro">
+            R2S-Eval aligns the robot, task objects, camera views, initial states, task definitions, and scene context that determine policy behavior. Across the seven-task suite, 3,525 real trajectories yield 3,445 aligned simulated trajectories with a 97.8% average action-replay success rate.
+          </p>
+        </div>
+
+        <div class="alignment-grid" aria-label="Real and simulated task video pairs">
+          <article class="alignment-case">
+            <header class="case-header">
+              <p class="case-index">Task 01</p>
+              <h3>Cover Ball with Cup</h3>
+            </header>
+            <div class="video-pair">
+              <div class="video-pane">
+                <p class="video-pane-label"><span aria-hidden="true"></span>Real</p>
+                <div class="video-frame">
+                  <video controls muted loop playsinline preload="metadata" aria-label="Real rollout placeholder for Cover Ball with Cup">
+                    <source src="./static/videos/hero-black.mp4" type="video/mp4">
+                  </video>
+                  <span class="video-placeholder" aria-hidden="true">Real video forthcoming</span>
+                </div>
+              </div>
+              <div class="video-pane">
+                <p class="video-pane-label"><span aria-hidden="true"></span>Simulation</p>
+                <div class="video-frame">
+                  <video controls muted loop playsinline preload="metadata" aria-label="Simulated rollout placeholder for Cover Ball with Cup">
+                    <source src="./static/videos/hero-black.mp4" type="video/mp4">
+                  </video>
+                  <span class="video-placeholder" aria-hidden="true">Sim video forthcoming</span>
+                </div>
+              </div>
+            </div>
+            <dl class="case-metadata">
+              <div><dt>Real</dt><dd>510 trajectories</dd></div>
+              <div><dt>Sim</dt><dd>494 trajectories</dd></div>
+              <div><dt>Replay</dt><dd>96.9%</dd></div>
+            </dl>
+          </article>
+
+          <article class="alignment-case">
+            <header class="case-header">
+              <p class="case-index">Task 02</p>
+              <h3>Pick Ball Place in Box</h3>
+            </header>
+            <div class="video-pair">
+              <div class="video-pane">
+                <p class="video-pane-label"><span aria-hidden="true"></span>Real</p>
+                <div class="video-frame">
+                  <video controls muted loop playsinline preload="metadata" aria-label="Real rollout placeholder for Pick Ball Place in Box">
+                    <source src="./static/videos/hero-black.mp4" type="video/mp4">
+                  </video>
+                  <span class="video-placeholder" aria-hidden="true">Real video forthcoming</span>
+                </div>
+              </div>
+              <div class="video-pane">
+                <p class="video-pane-label"><span aria-hidden="true"></span>Simulation</p>
+                <div class="video-frame">
+                  <video controls muted loop playsinline preload="metadata" aria-label="Simulated rollout placeholder for Pick Ball Place in Box">
+                    <source src="./static/videos/hero-black.mp4" type="video/mp4">
+                  </video>
+                  <span class="video-placeholder" aria-hidden="true">Sim video forthcoming</span>
+                </div>
+              </div>
+            </div>
+            <dl class="case-metadata">
+              <div><dt>Real</dt><dd>497 trajectories</dd></div>
+              <div><dt>Sim</dt><dd>491 trajectories</dd></div>
+              <div><dt>Replay</dt><dd>98.8%</dd></div>
+            </dl>
+          </article>
+
+          <article class="alignment-case">
+            <header class="case-header">
+              <p class="case-index">Task 03</p>
+              <h3>Pick Ball Place in Cup</h3>
+            </header>
+            <div class="video-pair">
+              <div class="video-pane">
+                <p class="video-pane-label"><span aria-hidden="true"></span>Real</p>
+                <div class="video-frame">
+                  <video controls muted loop playsinline preload="metadata" aria-label="Real rollout placeholder for Pick Ball Place in Cup">
+                    <source src="./static/videos/hero-black.mp4" type="video/mp4">
+                  </video>
+                  <span class="video-placeholder" aria-hidden="true">Real video forthcoming</span>
+                </div>
+              </div>
+              <div class="video-pane">
+                <p class="video-pane-label"><span aria-hidden="true"></span>Simulation</p>
+                <div class="video-frame">
+                  <video controls muted loop playsinline preload="metadata" aria-label="Simulated rollout placeholder for Pick Ball Place in Cup">
+                    <source src="./static/videos/hero-black.mp4" type="video/mp4">
+                  </video>
+                  <span class="video-placeholder" aria-hidden="true">Sim video forthcoming</span>
+                </div>
+              </div>
+            </div>
+            <dl class="case-metadata">
+              <div><dt>Real</dt><dd>509 trajectories</dd></div>
+              <div><dt>Sim</dt><dd>491 trajectories</dd></div>
+              <div><dt>Replay</dt><dd>96.5%</dd></div>
+            </dl>
+          </article>
+
+          <article class="alignment-case">
+            <header class="case-header">
+              <p class="case-index">Task 04</p>
+              <h3>Pick Cup Place on Plate</h3>
+            </header>
+            <div class="video-pair">
+              <div class="video-pane">
+                <p class="video-pane-label"><span aria-hidden="true"></span>Real</p>
+                <div class="video-frame">
+                  <video controls muted loop playsinline preload="metadata" aria-label="Real rollout placeholder for Pick Cup Place on Plate">
+                    <source src="./static/videos/hero-black.mp4" type="video/mp4">
+                  </video>
+                  <span class="video-placeholder" aria-hidden="true">Real video forthcoming</span>
+                </div>
+              </div>
+              <div class="video-pane">
+                <p class="video-pane-label"><span aria-hidden="true"></span>Simulation</p>
+                <div class="video-frame">
+                  <video controls muted loop playsinline preload="metadata" aria-label="Simulated rollout placeholder for Pick Cup Place on Plate">
+                    <source src="./static/videos/hero-black.mp4" type="video/mp4">
+                  </video>
+                  <span class="video-placeholder" aria-hidden="true">Sim video forthcoming</span>
+                </div>
+              </div>
+            </div>
+            <dl class="case-metadata">
+              <div><dt>Real</dt><dd>502 trajectories</dd></div>
+              <div><dt>Sim</dt><dd>502 trajectories</dd></div>
+              <div><dt>Replay</dt><dd>100.0%</dd></div>
+            </dl>
+          </article>
+
+          <article class="alignment-case">
+            <header class="case-header">
+              <p class="case-index">Task 05</p>
+              <h3>Stack Blocks</h3>
+            </header>
+            <div class="video-pair">
+              <div class="video-pane">
+                <p class="video-pane-label"><span aria-hidden="true"></span>Real</p>
+                <div class="video-frame">
+                  <video controls muted loop playsinline preload="metadata" aria-label="Real rollout placeholder for Stack Blocks">
+                    <source src="./static/videos/hero-black.mp4" type="video/mp4">
+                  </video>
+                  <span class="video-placeholder" aria-hidden="true">Real video forthcoming</span>
+                </div>
+              </div>
+              <div class="video-pane">
+                <p class="video-pane-label"><span aria-hidden="true"></span>Simulation</p>
+                <div class="video-frame">
+                  <video controls muted loop playsinline preload="metadata" aria-label="Simulated rollout placeholder for Stack Blocks">
+                    <source src="./static/videos/hero-black.mp4" type="video/mp4">
+                  </video>
+                  <span class="video-placeholder" aria-hidden="true">Sim video forthcoming</span>
+                </div>
+              </div>
+            </div>
+            <dl class="case-metadata">
+              <div><dt>Real</dt><dd>505 trajectories</dd></div>
+              <div><dt>Sim</dt><dd>471 trajectories</dd></div>
+              <div><dt>Replay</dt><dd>93.3%</dd></div>
+            </dl>
+          </article>
+
+          <article class="alignment-case">
+            <header class="case-header">
+              <p class="case-index">Task 06</p>
+              <h3>Take Block Out Box</h3>
+            </header>
+            <div class="video-pair">
+              <div class="video-pane">
+                <p class="video-pane-label"><span aria-hidden="true"></span>Real</p>
+                <div class="video-frame">
+                  <video controls muted loop playsinline preload="metadata" aria-label="Real rollout placeholder for Take Block Out Box">
+                    <source src="./static/videos/hero-black.mp4" type="video/mp4">
+                  </video>
+                  <span class="video-placeholder" aria-hidden="true">Real video forthcoming</span>
+                </div>
+              </div>
+              <div class="video-pane">
+                <p class="video-pane-label"><span aria-hidden="true"></span>Simulation</p>
+                <div class="video-frame">
+                  <video controls muted loop playsinline preload="metadata" aria-label="Simulated rollout placeholder for Take Block Out Box">
+                    <source src="./static/videos/hero-black.mp4" type="video/mp4">
+                  </video>
+                  <span class="video-placeholder" aria-hidden="true">Sim video forthcoming</span>
+                </div>
+              </div>
+            </div>
+            <dl class="case-metadata">
+              <div><dt>Real</dt><dd>503 trajectories</dd></div>
+              <div><dt>Sim</dt><dd>499 trajectories</dd></div>
+              <div><dt>Replay</dt><dd>99.2%</dd></div>
+            </dl>
+          </article>
+
+          <article class="alignment-case">
+            <header class="case-header">
+              <p class="case-index">Task 07</p>
+              <h3>Upright Fallen Cup</h3>
+            </header>
+            <div class="video-pair">
+              <div class="video-pane">
+                <p class="video-pane-label"><span aria-hidden="true"></span>Real</p>
+                <div class="video-frame">
+                  <video controls muted loop playsinline preload="metadata" aria-label="Real rollout placeholder for Upright Fallen Cup">
+                    <source src="./static/videos/hero-black.mp4" type="video/mp4">
+                  </video>
+                  <span class="video-placeholder" aria-hidden="true">Real video forthcoming</span>
+                </div>
+              </div>
+              <div class="video-pane">
+                <p class="video-pane-label"><span aria-hidden="true"></span>Simulation</p>
+                <div class="video-frame">
+                  <video controls muted loop playsinline preload="metadata" aria-label="Simulated rollout placeholder for Upright Fallen Cup">
+                    <source src="./static/videos/hero-black.mp4" type="video/mp4">
+                  </video>
+                  <span class="video-placeholder" aria-hidden="true">Sim video forthcoming</span>
+                </div>
+              </div>
+            </div>
+            <dl class="case-metadata">
+              <div><dt>Real</dt><dd>499 trajectories</dd></div>
+              <div><dt>Sim</dt><dd>497 trajectories</dd></div>
+              <div><dt>Replay</dt><dd>99.6%</dd></div>
+            </dl>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section simulation-section" id="simulation" aria-labelledby="simulation-title">
+      <div class="container is-max-desktop">
+        <div class="section-heading is-centered is-wide">
+          <p class="section-kicker">02 · Simulation benchmark</p>
+          <h2 class="title section-title" id="simulation-title">Browse simulation suites</h2>
+          <p class="section-intro">
+            The simulation study evaluates 40 tasks from four standard LIBERO suites, with 50 rollouts per task and 2,000 rollouts per policy. Select a suite label to display its representative rollout; the current black clips reserve the final video positions.
+          </p>
+        </div>
+
+        <div class="simulation-switcher" data-task-switcher>
+          <div class="task-tablist" role="tablist" aria-label="LIBERO suite videos">
+            <button class="task-tab" id="sim-tab-01" type="button" role="tab" aria-selected="true" aria-controls="sim-panel-01">LIBERO-Spatial</button>
+            <button class="task-tab" id="sim-tab-02" type="button" role="tab" aria-selected="false" aria-controls="sim-panel-02" tabindex="-1">LIBERO-Object</button>
+            <button class="task-tab" id="sim-tab-03" type="button" role="tab" aria-selected="false" aria-controls="sim-panel-03" tabindex="-1">LIBERO-Goal</button>
+            <button class="task-tab" id="sim-tab-04" type="button" role="tab" aria-selected="false" aria-controls="sim-panel-04" tabindex="-1">LIBERO-10</button>
+          </div>
+
+          <div class="simulation-panels">
+            <article class="simulation-panel" id="sim-panel-01" role="tabpanel" aria-labelledby="sim-tab-01">
+              <header class="simulation-panel-header">
+                <div>
+                  <p class="case-index">10 tasks · Representative rollout</p>
+                  <h3>LIBERO-Spatial</h3>
+                </div>
+                <p>Tasks emphasizing spatial relations and scene configurations.</p>
+              </header>
+              <div class="simulation-video video-frame">
+                <video controls muted loop playsinline preload="metadata" aria-label="Simulation rollout placeholder for LIBERO-Spatial">
+                  <source src="./static/videos/hero-black.mp4" type="video/mp4">
+                </video>
+                <span class="video-placeholder" aria-hidden="true">Simulation video forthcoming</span>
+              </div>
+            </article>
+
+            <article class="simulation-panel" id="sim-panel-02" role="tabpanel" aria-labelledby="sim-tab-02" hidden>
+              <header class="simulation-panel-header">
+                <div>
+                  <p class="case-index">10 tasks · Representative rollout</p>
+                  <h3>LIBERO-Object</h3>
+                </div>
+                <p>Tasks varying the target object while retaining shared manipulation structure.</p>
+              </header>
+              <div class="simulation-video video-frame">
+                <video controls muted loop playsinline preload="metadata" aria-label="Simulation rollout placeholder for LIBERO-Object">
+                  <source src="./static/videos/hero-black.mp4" type="video/mp4">
+                </video>
+                <span class="video-placeholder" aria-hidden="true">Simulation video forthcoming</span>
+              </div>
+            </article>
+
+            <article class="simulation-panel" id="sim-panel-03" role="tabpanel" aria-labelledby="sim-tab-03" hidden>
+              <header class="simulation-panel-header">
+                <div>
+                  <p class="case-index">10 tasks · Representative rollout</p>
+                  <h3>LIBERO-Goal</h3>
+                </div>
+                <p>Tasks varying language-conditioned goals in related environments.</p>
+              </header>
+              <div class="simulation-video video-frame">
+                <video controls muted loop playsinline preload="metadata" aria-label="Simulation rollout placeholder for LIBERO-Goal">
+                  <source src="./static/videos/hero-black.mp4" type="video/mp4">
+                </video>
+                <span class="video-placeholder" aria-hidden="true">Simulation video forthcoming</span>
+              </div>
+            </article>
+
+            <article class="simulation-panel" id="sim-panel-04" role="tabpanel" aria-labelledby="sim-tab-04" hidden>
+              <header class="simulation-panel-header">
+                <div>
+                  <p class="case-index">10 tasks · Long-horizon suite</p>
+                  <h3>LIBERO-10</h3>
+                </div>
+                <p>Long-horizon manipulation tasks requiring multi-step execution.</p>
+              </header>
+              <div class="simulation-video video-frame">
+                <video controls muted loop playsinline preload="metadata" aria-label="Simulation rollout placeholder for LIBERO-10">
+                  <source src="./static/videos/hero-black.mp4" type="video/mp4">
+                </video>
+                <span class="video-placeholder" aria-hidden="true">Simulation video forthcoming</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section results-section" id="results" aria-labelledby="results-title">
+      <div class="container is-max-desktop">
+        <div class="section-heading is-centered is-wide">
+          <p class="section-kicker">03 · Evaluation results</p>
+          <h2 class="title section-title" id="results-title">Hardware outcomes and VLM preferences</h2>
+          <p class="section-intro">
+            The Real-to-Sim experiment evaluates six VLA policies on the seven calibrated tasks. The two views below separate hardware success from behavior-level preference while preserving a common policy order.
+          </p>
+        </div>
+
+        <div class="result-evidence">
+          <p><strong>Reliable conclusions.</strong> Across eight VLM judges, the Real-to-Sim setting reaches an average Spearman rank correlation of 0.957, Pearson correlation of 0.978, and 91.9% agreement with human preferences.</p>
+        </div>
+
+        <div class="result-comparison-grid">
+          <figure class="result-panel">
+            <header class="result-panel-header">
+              <p class="case-index">Hardware reference</p>
+              <h3>Task success</h3>
+            </header>
+            <a class="result-chart-link" href="./static/images/r2s-success-rate.png" aria-label="Open the Real-to-Sim ground-truth success-rate chart at full size">
+              <img src="./static/images/r2s-success-rate.png" alt="Real-to-Sim hardware success rates for six policies: X-VLA 65.7, pi 0.5 63.6, pi 0 53.6, NORA-Long 4.3, SmolVLA 2.1, and OpenVLA 7.1 percent." loading="lazy">
+            </a>
+            <figcaption>Average hardware success rate across all seven real-world tasks.</figcaption>
+          </figure>
+
+          <figure class="result-panel">
+            <header class="result-panel-header">
+              <p class="case-index">Behavior preference</p>
+              <h3>VLM preference score</h3>
+            </header>
+            <a class="result-chart-link" href="./static/images/r2s-preference-score.png" aria-label="Open the Real-to-Sim VLM preference-score chart at full size">
+              <img src="./static/images/r2s-preference-score.png" alt="Real-to-Sim VLM preference scores for six policies: X-VLA 30.1, pi 0.5 31.2, pi 0 24.5, NORA-Long 5.4, SmolVLA 0.1, and OpenVLA 8.8 percent." loading="lazy">
+            </a>
+            <figcaption>Bradley-Terry preference strength averaged over all eight VLM judges.</figcaption>
+          </figure>
+        </div>
+
+        <div class="policy-legend" aria-label="Policy color legend">
+          <span class="legend-item"><span class="legend-swatch x-vla" aria-hidden="true"></span>X-VLA</span>
+          <span class="legend-item"><span class="legend-swatch pi-zero-five" aria-hidden="true"></span>π<sub>0.5</sub></span>
+          <span class="legend-item"><span class="legend-swatch pi-zero" aria-hidden="true"></span>π<sub>0</sub></span>
+          <span class="legend-item"><span class="legend-swatch nora" aria-hidden="true"></span>NORA-Long</span>
+          <span class="legend-item"><span class="legend-swatch smolvla" aria-hidden="true"></span>SmolVLA</span>
+          <span class="legend-item"><span class="legend-swatch openvla" aria-hidden="true"></span>OpenVLA</span>
+        </div>
+
+        <p class="results-method-note">Human alignment is measured from 200 sampled video pairs per setting, annotated by three people and aggregated by majority vote.</p>
+      </div>
+    </section>
+
+    <section class="section citation-section" id="citation" aria-labelledby="citation-title">
+      <div class="container is-max-desktop">
+        <div class="columns is-variable is-7 is-vcentered">
+          <div class="column is-two-fifths">
+            <p class="section-kicker">04 · Citation</p>
+            <h2 class="title section-title" id="citation-title">Cite R2S-Eval</h2>
+            <p class="citation-note" id="citation-note">This is a temporary citation for the anonymized manuscript. Authors and venue will be added after public release.</p>
+          </div>
+          <div class="column">
+            <div class="citation-box">
+              <button class="copy-button" type="button" data-copy-target="bibtex-entry" aria-describedby="citation-note copy-status">Copy BibTeX</button>
+              <pre class="citation-code"><code id="bibtex-entry">@misc{r2seval,
+  title  = {{R2S-Eval}: Robot Evaluation with Real-to-Sim Calibration via Vision-Language Models},
+  author = {{Anonymous}},
+  note   = {Anonymous manuscript}
+}</code></pre>
+              <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
