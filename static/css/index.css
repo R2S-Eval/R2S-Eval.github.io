@@ -783,30 +783,34 @@ button:focus-visible {
 .r2s-video-panel {
   background: #0b0e12;
   min-width: 0;
+  position: relative;
 }
 
 .r2s-domain-label {
   align-items: center;
-  background: var(--warm-white);
-  border-bottom: 1px solid var(--line-dark);
-  color: var(--ink-soft);
-  display: flex;
-  font-size: 0.9rem;
+  background: rgba(250, 249, 246, 0.94);
+  border: 1px solid rgba(199, 206, 215, 0.96);
+  border-radius: 0.125rem;
+  color: var(--ink);
+  display: inline-flex;
+  font-family: var(--sans);
+  font-size: 0.82rem;
   font-weight: 600;
-  justify-content: center;
-  letter-spacing: 0.14em;
-  min-height: 2.75rem;
-  text-transform: uppercase;
+  gap: 0.32rem;
+  left: 0.65rem;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  padding: 0.42rem 0.62rem 0.4rem;
+  pointer-events: none;
+  position: absolute;
+  top: 0.65rem;
+  z-index: 2;
 }
 
-.r2s-domain-label::before {
-  background: var(--gold);
-  border-radius: 50%;
-  content: "";
-  height: 0.28rem;
-  margin-right: 0.5rem;
-  opacity: 0.72;
-  width: 0.28rem;
+.r2s-domain-label span {
+  color: var(--muted);
+  font-style: normal;
+  font-weight: 500;
 }
 
 .r2s-video-panel .task-video-frame {
@@ -1757,9 +1761,11 @@ button:focus-visible {
   }
 
   .r2s-domain-label {
-    font-size: 0.78rem;
-    letter-spacing: 0.13em;
-    min-height: 2.4rem;
+    font-size: 0.68rem;
+    gap: 0.25rem;
+    left: 0.35rem;
+    padding: 0.32rem 0.44rem 0.3rem;
+    top: 0.35rem;
   }
 
   .r2s-task-caption {
