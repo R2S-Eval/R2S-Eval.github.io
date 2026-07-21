@@ -964,8 +964,10 @@ button:focus-visible {
 .preference-video-card {
   background: #fff;
   border: 1px solid var(--line-dark);
+  border-radius: 0.55rem;
   margin: 0;
   min-width: 0;
+  overflow: hidden;
 }
 
 .preference-video-header {
