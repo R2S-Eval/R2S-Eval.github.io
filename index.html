@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/index.css?v=20260721-14">
+  <link rel="stylesheet" href="./static/css/index.css?v=20260721-15">
   <script defer src="./static/js/index.js?v=20260721-9"></script>
 </head>
 <body>
@@ -274,14 +274,8 @@
         <div class="section-heading is-centered is-wide">
           <h2 class="module-title" id="vlm-preference-title">VLM Preference</h2>
           <p class="section-intro">
-            A VLM compares paired policy rollouts across smoothness, success, task progress, and temporal continuity, then returns a pairwise preference.
+            A VLM compares paired policy rollouts and returns a binary preference based on execution quality.
           </p>
-          <ul class="preference-criteria" aria-label="VLM evaluation criteria">
-            <li><span class="preference-criterion-icon" aria-hidden="true">∿</span><span>Smoothness</span></li>
-            <li><span class="preference-criterion-icon" aria-hidden="true">✓</span><span>Success</span></li>
-            <li><span class="preference-criterion-icon" aria-hidden="true">↗</span><span>Progress</span></li>
-            <li><span class="preference-criterion-icon" aria-hidden="true">∞</span><span>Continuity</span></li>
-          </ul>
         </div>
 
         <div class="vlm-preference-comparison" role="group" aria-label="Pairwise VLM preference example">
@@ -311,12 +305,21 @@
             </figure>
           </div>
 
-          <div class="preference-verdict">
-            <p class="preference-verdict-label">VLM Judgment</p>
-            <p class="preference-verdict-result">
-              <span aria-hidden="true">π<sub>A</sub> ≻ π<sub>B</sub></span>
-              <span class="sr-only">Policy A is preferred over Policy B.</span>
-            </p>
+          <div class="preference-analysis">
+            <ul class="preference-criteria" aria-label="VLM evaluation criteria">
+              <li><span class="preference-criterion-icon" aria-hidden="true">∿</span><span>Smoothness</span></li>
+              <li><span class="preference-criterion-icon" aria-hidden="true">✓</span><span>Success</span></li>
+              <li><span class="preference-criterion-icon" aria-hidden="true">↗</span><span>Progress</span></li>
+              <li><span class="preference-criterion-icon" aria-hidden="true">∞</span><span>Continuity</span></li>
+            </ul>
+
+            <div class="preference-verdict">
+              <p class="preference-verdict-label">VLM Judgment</p>
+              <p class="preference-verdict-result">
+                <span aria-hidden="true">π<sub>A</sub> ≻ π<sub>B</sub></span>
+                <span class="sr-only">Policy A is preferred over Policy B.</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
