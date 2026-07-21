@@ -538,6 +538,24 @@ button:focus-visible {
   max-width: 58rem;
 }
 
+.module-index {
+  color: var(--gold);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  margin-bottom: 0.55rem;
+}
+
+.module-title {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(3.25rem, 7.2vw, 5.8rem);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 0.98;
+  margin: 0 auto 1.5rem;
+}
+
 .real-to-sim-section {
   background: var(--paper);
 }
