@@ -787,16 +787,26 @@ button:focus-visible {
 
 .r2s-domain-label {
   align-items: center;
-  background: var(--navy);
-  border-bottom: 2px solid var(--gold);
-  color: #fff;
+  background: var(--warm-white);
+  border-bottom: 1px solid var(--line-dark);
+  color: var(--ink-soft);
   display: flex;
-  font-size: 0.68rem;
-  font-weight: 700;
+  font-size: 0.66rem;
+  font-weight: 600;
   justify-content: center;
-  letter-spacing: 0.16em;
-  min-height: 2.55rem;
+  letter-spacing: 0.15em;
+  min-height: 2.5rem;
   text-transform: uppercase;
+}
+
+.r2s-domain-label::before {
+  background: var(--gold);
+  border-radius: 50%;
+  content: "";
+  height: 0.28rem;
+  margin-right: 0.5rem;
+  opacity: 0.72;
+  width: 0.28rem;
 }
 
 .r2s-video-panel .task-video-frame {
