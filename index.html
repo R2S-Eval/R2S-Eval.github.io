@@ -2,11 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="R2S-Eval research project website preview.">
-  <meta name="keywords" content="R2S-Eval, research, evaluation, benchmark">
+  <meta name="description" content="R2S-Eval is an automated robot-policy evaluation pipeline combining real-to-sim calibration with vision-language-model preference judgments.">
+  <meta name="keywords" content="R2S-Eval, robot evaluation, real-to-sim, vision-language models, VLA, robot manipulation">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f9fc">
-  <title>R2S-Eval | Project Website Preview</title>
+  <meta name="theme-color" content="#f7f6f2">
+  <meta property="og:title" content="R2S-Eval: Robot Evaluation with Real-to-Sim Calibration via Vision-Language Models">
+  <meta property="og:description" content="Automated, statistically stable, and quality-aware evaluation of robot behavior.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://r2s-eval.github.io/">
+  <meta property="og:image" content="https://r2s-eval.github.io/static/images/pipeline.png">
+  <title>R2S-Eval | Robot Evaluation with Real-to-Sim Calibration</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +25,7 @@
     <div class="container is-max-desktop">
       <div class="navbar-brand">
         <a class="navbar-item brand-mark" href="#top" aria-label="R2S-Eval home">
-          <span class="brand-dot" aria-hidden="true"></span>
+          <span class="brand-monogram" aria-hidden="true">R2S</span>
           <span>R2S-Eval</span>
         </a>
         <button class="navbar-burger" type="button" aria-label="Open navigation" aria-expanded="false" data-target="project-menu">
@@ -31,162 +36,345 @@
       </div>
       <div id="project-menu" class="navbar-menu">
         <div class="navbar-end">
-          <a class="navbar-item" href="#overview">Overview</a>
-          <a class="navbar-item" href="#structure">Page structure</a>
-          <a class="navbar-item" href="#resources">Resources</a>
+          <a class="navbar-item" href="#abstract">Abstract</a>
+          <a class="navbar-item" href="#method">Method</a>
+          <a class="navbar-item" href="#experiments">Experiments</a>
+          <a class="navbar-item" href="#results">Results</a>
+          <a class="navbar-item" href="#citation">Citation</a>
         </div>
       </div>
     </div>
   </nav>
 
   <main id="top">
-    <section class="hero publication-hero">
+    <header class="hero publication-hero">
       <div class="hero-body">
         <div class="container is-max-desktop has-text-centered">
-          <div class="preview-label">Project page preview</div>
-          <h1 class="title publication-title">R2S-Eval</h1>
-          <p class="subtitle publication-subtitle">A clean research-project home for the paper, benchmark, and results.</p>
+          <p class="manuscript-label">Anonymized manuscript</p>
+          <h1 class="title publication-title">
+            <span>R2S-Eval:</span>
+            Robot Evaluation with Real-to-Sim Calibration via Vision-Language Models
+          </h1>
+          <p class="publication-lead">
+            Moving robot evaluation beyond manual success counting toward automated,
+            statistically stable, and quality-aware assessment of complete behaviors.
+          </p>
 
-          <div class="publication-authors" aria-label="Placeholder author information">
-            <span class="author-block">Project team information coming soon</span>
+          <div class="publication-authors">
+            <span>Anonymous authors</span>
+            <span class="author-divider" aria-hidden="true">·</span>
+            <span>Information withheld for review</span>
           </div>
-          <div class="publication-venue">Research website · Preview build</div>
 
-          <div class="publication-links" id="resources">
-            <a class="button is-rounded is-dark" href="https://github.com/VVVVME50/R2S-Eval">
-              <span>GitHub repository</span>
+          <div class="publication-links" aria-label="Project resources">
+            <a class="button is-rounded resource-button resource-button-primary" href="https://github.com/VVVVME50/R2S-Eval">
+              <span>Code repository</span>
               <span aria-hidden="true">↗</span>
             </a>
-            <span class="button is-rounded is-light preview-button" aria-disabled="true">Paper · coming soon</span>
-            <span class="button is-rounded is-light preview-button" aria-disabled="true">Data · coming soon</span>
+            <a class="button is-rounded resource-button" href="#method">Explore the method</a>
+            <span class="button is-rounded resource-button is-disabled" aria-disabled="true">Paper PDF pending</span>
           </div>
 
-          <p class="preview-disclaimer">Layout preview only — final title, authors, affiliations, links, and research content are still placeholders.</p>
+          <div class="study-summary" aria-label="Study scope">
+            <div class="summary-item">
+              <strong>6</strong>
+              <span>VLA policies</span>
+            </div>
+            <div class="summary-item">
+              <strong>8</strong>
+              <span>VLM judges</span>
+            </div>
+            <div class="summary-item">
+              <strong>40 + 7</strong>
+              <span>Sim &amp; real tasks</span>
+            </div>
+            <div class="summary-item">
+              <strong>91.9%</strong>
+              <span>R2S human agreement</span>
+            </div>
+          </div>
         </div>
+      </div>
+    </header>
+
+    <section class="section teaser-section" aria-labelledby="pipeline-caption">
+      <div class="container is-max-desktop">
+        <figure class="paper-figure hero-figure">
+          <a href="./static/images/pipeline.png" aria-label="Open the R2S-Eval pipeline figure at full size">
+            <img src="./static/images/pipeline.png" alt="R2S-Eval pipeline: policy rollouts are generated in calibrated simulation, compared by a vision-language model, aggregated into rankings, and validated." fetchpriority="high">
+          </a>
+          <figcaption id="pipeline-caption">
+            <span class="figure-label">Figure 1.</span>
+            R2S-Eval combines calibrated real-to-sim rollout generation with VLM-based pairwise preference evaluation and statistical ranking.
+          </figcaption>
+        </figure>
       </div>
     </section>
 
-    <section class="hero teaser">
+    <section class="section abstract-section" id="abstract">
       <div class="container is-max-desktop">
-        <div class="hero-body">
-          <div class="preview-stage" role="img" aria-label="R2S-Eval project page visual placeholder showing inputs, evaluation, and reports">
-            <div class="stage-toolbar">
-              <div class="stage-dots" aria-hidden="true"><span></span><span></span><span></span></div>
-              <div class="stage-title">R2S-Eval / evaluation overview</div>
-              <div class="stage-status">Preview</div>
-            </div>
-            <div class="stage-grid">
-              <article class="stage-card stage-card-input">
-                <span class="card-index">01</span>
-                <h2>Benchmark inputs</h2>
-                <p>Define the tasks, cases, and evaluation settings.</p>
-                <div class="signal-lines" aria-hidden="true"><span></span><span></span><span></span></div>
-              </article>
-              <div class="stage-arrow" aria-hidden="true">→</div>
-              <article class="stage-card stage-card-core">
-                <span class="card-index">02</span>
-                <h2>Evaluation protocol</h2>
-                <p>Present the method and metrics in a reproducible format.</p>
-                <div class="metric-ring" aria-hidden="true"><span>R2S</span></div>
-              </article>
-              <div class="stage-arrow" aria-hidden="true">→</div>
-              <article class="stage-card stage-card-output">
-                <span class="card-index">03</span>
-                <h2>Results &amp; reports</h2>
-                <p>Compare outcomes with clear visuals and downloadable artifacts.</p>
-                <div class="bar-chart" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-              </article>
-            </div>
-          </div>
-          <h2 class="subtitle teaser-caption">
-            The preview keeps the clear, paper-first rhythm of the Nerfies template while leaving space for R2S-Eval’s own visual identity.
-          </h2>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-tint" id="overview">
-      <div class="container is-max-desktop">
-        <div class="columns is-variable is-6">
-          <div class="column is-two-thirds">
-            <p class="section-kicker">Overview</p>
-            <h2 class="title is-3">A publication page ready for your research story</h2>
-            <div class="content research-copy">
+        <div class="columns is-variable is-7">
+          <div class="column is-three-quarters">
+            <p class="section-kicker">Abstract</p>
+            <h2 class="title section-title">A behavior-first view of robot evaluation</h2>
+            <div class="content abstract-copy">
               <p>
-                This first version demonstrates the layout rather than inventing project claims. Once the paper materials are ready, this area can become the abstract and concise explanation of what R2S-Eval evaluates, why it matters, and how it differs from prior benchmarks.
+                Evaluating robot manipulation policies is becoming increasingly important as generalist models, particularly vision-language-action (VLA) models, are deployed on physical robots. However, conventional real-world evaluation remains labor-intensive, unstable, and insufficiently informative. It requires repeated hardware trials, manual scene resets, and continuous operator monitoring, may produce different policy rankings across repeated evaluations, and primarily relies on success rate metrics that provide limited information about execution quality. In contrast, humans assess robot performance by observing and comparing complete behaviors rather than relying solely on binary success outcomes.
               </p>
               <p>
-                The page is static, responsive, and intentionally lightweight. It can later host teaser media, result comparisons, a technical video, BibTeX, acknowledgements, and direct links to code or datasets.
+                To this end, we propose R2S-Eval, an automated evaluation pipeline that combines real-to-sim calibration with vision-language-model-based preference evaluation. The real-to-sim component efficiently generates rollout videos aligned with the target real-world evaluation setting, thereby reducing the need for repeated physical robot trials. The VLM evaluator assesses the execution quality of rollout videos and produces pairwise preferences, which are subsequently aggregated into policy rankings.
+              </p>
+              <p>
+                We further introduce a validation protocol to assess whether the proposed evaluation pipeline yields trustworthy policy conclusions while mitigating the key challenges of conventional real-world evaluation. Experiments in both simulation and real-world settings demonstrate that R2S-Eval produces reliable and stable policy conclusions, achieves strong agreement with human preferences, substantially reduces evaluation-time manual effort, and reveals behavior-quality differences that are not captured by binary success labels.
               </p>
             </div>
           </div>
           <div class="column">
-            <aside class="note-card">
-              <span class="note-label">Before final launch</span>
-              <ul>
-                <li>Confirm the full project title</li>
-                <li>Add authors and affiliations</li>
-                <li>Replace preview diagrams with results</li>
-                <li>Add paper, code, and dataset links</li>
-              </ul>
+            <aside class="research-note">
+              <p class="research-note-label">Central idea</p>
+              <p class="research-note-quote">Compare complete behaviors, not only binary outcomes.</p>
+              <dl class="research-note-list">
+                <div><dt>Input</dt><dd>Rollout videos</dd></div>
+                <div><dt>Judge</dt><dd>Vision-language model</dd></div>
+                <div><dt>Output</dt><dd>Policy ranking</dd></div>
+              </dl>
             </aside>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="structure">
+    <section class="section contributions-section" aria-labelledby="contributions-title">
       <div class="container is-max-desktop">
-        <div class="has-text-centered section-heading">
-          <p class="section-kicker">Suggested page structure</p>
-          <h2 class="title is-3">From first impression to reproducible details</h2>
-          <p class="subtitle is-6">Each block can be replaced independently as the project matures.</p>
+        <div class="section-heading">
+          <p class="section-kicker">Contributions</p>
+          <h2 class="title section-title" id="contributions-title">From success counts to preference-based evaluation</h2>
         </div>
-
-        <div class="columns is-variable is-5 feature-grid">
+        <div class="columns is-variable is-6 contribution-grid">
           <div class="column">
-            <article class="feature-card">
-              <span class="feature-number">01</span>
-              <h3 class="title is-5">Paper story</h3>
-              <p>Lead with the central contribution, teaser, abstract, and short technical overview.</p>
-              <div class="feature-tag">Title · Abstract · Method</div>
+            <article class="contribution-item">
+              <span class="item-number">01</span>
+              <h3>Behavior-level comparison</h3>
+              <p>Formulates policy evaluation as preference estimation over rollout behavior, capturing execution quality beyond binary task success.</p>
             </article>
           </div>
           <div class="column">
-            <article class="feature-card">
-              <span class="feature-number">02</span>
-              <h3 class="title is-5">Evaluation results</h3>
-              <p>Show comparisons, metrics, qualitative examples, and interactive result viewers.</p>
-              <div class="feature-tag">Tables · Media · Analysis</div>
+            <article class="contribution-item">
+              <span class="item-number">02</span>
+              <h3>Automated R2S pipeline</h3>
+              <p>Combines calibrated real-to-sim rollout generation with balanced pairwise VLM judgments and statistical aggregation.</p>
             </article>
           </div>
           <div class="column">
-            <article class="feature-card">
-              <span class="feature-number">03</span>
-              <h3 class="title is-5">Research resources</h3>
-              <p>Give readers one place for the paper, code, dataset, models, and citation.</p>
-              <div class="feature-tag">Paper · Code · Data</div>
+            <article class="contribution-item">
+              <span class="item-number">03</span>
+              <h3>Five-axis validation</h3>
+              <p>Evaluates reliability, stability, human alignment, manual effort, and behavioral informativeness in one protocol.</p>
             </article>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section citation-section">
+    <section class="section method-section" id="method">
       <div class="container is-max-desktop">
-        <div class="columns is-vcentered is-variable is-6">
-          <div class="column is-two-fifths">
-            <p class="section-kicker">Citation area</p>
-            <h2 class="title is-3">BibTeX placeholder</h2>
-            <p class="citation-note">This intentionally neutral entry should be replaced only after the paper metadata is finalized.</p>
+        <div class="section-heading is-centered">
+          <p class="section-kicker">Method</p>
+          <h2 class="title section-title">Calibrate, compare, and validate</h2>
+          <p class="section-intro">The evaluation loop aligns the behavior-determining factors of the target setup, turns rollouts into structured pairwise judgments, and tests whether the resulting conclusions are trustworthy.</p>
+        </div>
+
+        <figure class="paper-figure method-figure">
+          <a href="./static/images/method-overview.png" aria-label="Open the detailed method overview at full size">
+            <img src="./static/images/method-overview.png" alt="Detailed R2S-Eval workflow covering real-world evaluation, calibrated real-to-sim deployment, VLM preference judging, Bradley-Terry ranking, and validation." loading="lazy">
+          </a>
+          <figcaption><span class="figure-label">Figure 2.</span> Detailed workflow from physical task specification to calibrated simulation, pairwise preference estimation, ranking, and validation.</figcaption>
+        </figure>
+
+        <div class="method-steps">
+          <article class="method-step">
+            <div class="step-marker">1</div>
+            <div>
+              <p class="step-eyebrow">Real-to-sim calibration</p>
+              <h3>Align the evaluation setting</h3>
+              <p>Match robot geometry and control, task objects and initial poses, cameras, task definitions, and scene context. Policies then run closed-loop in randomized simulation trials.</p>
+            </div>
+          </article>
+          <article class="method-step">
+            <div class="step-marker">2</div>
+            <div>
+              <p class="step-eyebrow">VLM preference judge</p>
+              <h3>Compare complete rollout behaviors</h3>
+              <p>Balanced video pairs are described in terms of progress, continuity, control quality, and completion before the VLM selects the preferred behavior.</p>
+            </div>
+          </article>
+          <article class="method-step">
+            <div class="step-marker">3</div>
+            <div>
+              <p class="step-eyebrow">Statistical aggregation</p>
+              <h3>Recover policy quality and rank</h3>
+              <p>Pairwise outcomes are aggregated with a Bradley–Terry model, producing latent policy scores and rankings that can be tested for reliability and stability.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="validation-band" aria-label="Five validation axes">
+          <span class="validation-label">Validation axes</span>
+          <span>Reliability</span>
+          <span>Stability</span>
+          <span>Human alignment</span>
+          <span>Manual effort</span>
+          <span>Behavioral insight</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section experiments-section" id="experiments">
+      <div class="container is-max-desktop">
+        <div class="columns is-variable is-7 is-vcentered experiment-header">
+          <div class="column is-three-fifths">
+            <p class="section-kicker">Experiments</p>
+            <h2 class="title section-title">Six policies across simulation and real-world settings</h2>
           </div>
           <div class="column">
-            <pre class="citation-code"><code>@misc{r2seval,
-  title  = {R2S-Eval},
-  author = {Project Authors},
-  year   = {TBD},
-  note   = {Project page preview}
+            <p class="section-intro compact">The study evaluates π<sub>0</sub>, π<sub>0.5</sub>, OpenVLA, NORA-Long, SmolVLA, and X-VLA with eight VLM judges from three model families.</p>
+          </div>
+        </div>
+
+        <figure class="paper-figure task-figure">
+          <a href="./static/images/task-suite.png" aria-label="Open the seven-task real-world evaluation suite at full size">
+            <img src="./static/images/task-suite.png" alt="Seven real-world manipulation tasks including covering, placing, stacking, taking an object from a box, and uprighting a cup." loading="lazy">
+          </a>
+          <figcaption><span class="figure-label">Figure 4.</span> Seven real-world tasks used to calibrate and evaluate the real-to-sim pipeline.</figcaption>
+        </figure>
+
+        <div class="columns is-variable is-5 setting-grid">
+          <div class="column">
+            <article class="setting-panel">
+              <p class="setting-index">A · Simulation benchmark</p>
+              <h3>LIBERO</h3>
+              <p>40 tasks from four suites, with 2,000 rollouts collected per candidate policy and 50 rollouts per task.</p>
+              <div class="setting-facts">
+                <span><strong>40</strong> tasks</span>
+                <span><strong>12,000</strong> total rollouts</span>
+              </div>
+            </article>
+          </div>
+          <div class="column">
+            <article class="setting-panel">
+              <p class="setting-index">B · Calibrated deployment</p>
+              <h3>Real-to-sim</h3>
+              <p>Seven tasks on a SharpaNorth humanoid, using 3,525 real trajectories to acquire 3,445 simulated trajectories.</p>
+              <div class="setting-facts">
+                <span><strong>97.8%</strong> replay success</span>
+                <span><strong>20</strong> trials / task / policy</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <figure class="paper-figure alignment-figure">
+          <a href="./static/images/real-sim-alignment.png" aria-label="Open the real and simulated trajectory alignment figure at full size">
+            <img src="./static/images/real-sim-alignment.png" alt="Frame-by-frame comparison between a real robot trajectory and its calibrated simulated counterpart for a cup placement task." loading="lazy">
+          </a>
+          <figcaption><span class="figure-label">Figure 7.</span> Real and simulated trajectories preserve task-relevant state, viewpoints, and behavioral progression.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section results-section" id="results">
+      <div class="container is-max-desktop">
+        <div class="section-heading is-centered">
+          <p class="section-kicker">Results</p>
+          <h2 class="title section-title">Reliable rankings with strong human alignment</h2>
+          <p class="section-intro">Across eight VLM judges, preference-based scores closely track ground-truth policy performance while revealing differences that success rate alone cannot express.</p>
+        </div>
+
+        <div class="result-metrics" aria-label="Average evaluation results">
+          <article class="result-metric">
+            <span class="metric-context">LIBERO</span>
+            <strong>0.823</strong>
+            <span>Spearman ρ</span>
+          </article>
+          <article class="result-metric">
+            <span class="metric-context">LIBERO</span>
+            <strong>82.9%</strong>
+            <span>Human agreement</span>
+          </article>
+          <article class="result-metric highlighted">
+            <span class="metric-context">Real-to-sim</span>
+            <strong>0.957</strong>
+            <span>Spearman ρ</span>
+          </article>
+          <article class="result-metric highlighted">
+            <span class="metric-context">Real-to-sim</span>
+            <strong>91.9%</strong>
+            <span>Human agreement</span>
+          </article>
+        </div>
+
+        <figure class="paper-figure result-figure">
+          <a href="./static/images/preference-results.png" aria-label="Open the success-rate and VLM preference comparison at full size">
+            <img src="./static/images/preference-results.png" alt="Charts comparing ground-truth success rates and VLM preference scores for six robot policies on LIBERO and real-to-sim evaluation." loading="lazy">
+          </a>
+          <figcaption><span class="figure-label">Figure 5.</span> VLM preference scores recover policy-level trends in both LIBERO and calibrated real-to-sim evaluation.</figcaption>
+        </figure>
+
+        <div class="columns is-variable is-6 insight-row">
+          <div class="column is-two-fifths">
+            <div class="insight-copy">
+              <p class="section-kicker">Evaluation efficiency</p>
+              <h3 class="title is-4">Routine manual effort is removed from evaluation time</h3>
+              <p>Once calibration and policy adaptation are complete, rollout collection and VLM judging proceed without repeated physical scene resets or continuous operator monitoring.</p>
+              <p class="evidence-line"><strong>Up to 26.9 operator hours</strong> in the reported conventional-evaluation comparison, versus no routine evaluation-time operation for R2S-Eval.</p>
+            </div>
+          </div>
+          <div class="column">
+            <figure class="paper-figure compact-figure">
+              <a href="./static/images/manual-effort.png" aria-label="Open the manual evaluation effort chart at full size">
+                <img src="./static/images/manual-effort.png" alt="Manual effort comparison showing conventional real-world evaluation growing with the number of trials and tasks while R2S-Eval requires no routine manual operation during evaluation." loading="lazy">
+              </a>
+              <figcaption><span class="figure-label">Figure 6.</span> Manual effort grows with physical evaluation scale; the automated pipeline decouples routine evaluation from operator time.</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="quality-study">
+          <div class="quality-heading">
+            <p class="section-kicker">Beyond binary labels</p>
+            <h3 class="title is-4">The same outcome can hide different behavior quality</h3>
+            <p>A preference judge can favor a smooth one-shot success over a success with recovery, or meaningful progress over oscillation when both rollouts fail.</p>
+          </div>
+          <figure class="paper-figure">
+            <a href="./static/images/behavior-quality.png" aria-label="Open the behavior-quality case studies at full size">
+              <img src="./static/images/behavior-quality.png" alt="Two case studies where rollout pairs share the same success or failure label but differ in smoothness, recovery, and task progress." loading="lazy">
+            </a>
+            <figcaption><span class="figure-label">Figure 8.</span> Pairwise preferences expose execution-quality differences concealed by identical binary outcomes.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section citation-section" id="citation">
+      <div class="container is-max-desktop">
+        <div class="columns is-variable is-7 is-vcentered">
+          <div class="column is-two-fifths">
+            <p class="section-kicker">Citation</p>
+            <h2 class="title section-title">Cite R2S-Eval</h2>
+            <p class="citation-note">The manuscript is currently anonymized. This provisional entry will be updated with authors and publication metadata after release.</p>
+          </div>
+          <div class="column">
+            <div class="citation-box">
+              <button class="copy-button" type="button" data-copy-target="bibtex-entry" aria-label="Copy BibTeX citation">Copy BibTeX</button>
+              <pre class="citation-code"><code id="bibtex-entry">@misc{r2seval,
+  title  = {{R2S-Eval}: Robot Evaluation
+            with Real-to-Sim Calibration via
+            Vision-Language Models},
+  author = {{Anonymous}},
+  note   = {Manuscript}
 }</code></pre>
+              <p class="copy-status" role="status" aria-live="polite"></p>
+            </div>
           </div>
         </div>
       </div>
@@ -197,8 +385,8 @@
     <div class="container is-max-desktop">
       <div class="columns is-vcentered">
         <div class="column">
-          <div class="footer-brand"><span class="brand-dot" aria-hidden="true"></span> R2S-Eval</div>
-          <p class="footer-note">Preview site · <span id="current-year">2026</span></p>
+          <div class="footer-brand"><span class="brand-monogram" aria-hidden="true">R2S</span> R2S-Eval</div>
+          <p class="footer-note">Research project page · <span id="current-year">2026</span></p>
         </div>
         <div class="column is-two-thirds has-text-right-desktop">
           <p>
@@ -212,4 +400,3 @@
   </footer>
 </body>
 </html>
-
