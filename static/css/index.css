@@ -429,22 +429,6 @@ button:focus-visible {
   width: 100%;
 }
 
-.paper-figure figcaption {
-  color: var(--muted);
-  font-family: var(--serif);
-  font-size: 0.82rem;
-  line-height: 1.5;
-  margin: 0.85rem auto 0;
-  max-width: 60rem;
-  text-align: center;
-}
-
-.figure-label {
-  color: var(--ink-soft);
-  font-style: normal;
-  font-weight: 600;
-}
-
 .hero-figure > a {
   box-shadow: 0 22px 55px rgba(23, 32, 51, 0.1);
   padding: clamp(0.7rem, 2vw, 1.35rem);
@@ -454,6 +438,10 @@ button:focus-visible {
   background: var(--warm-white);
   border-bottom: 1px solid var(--line);
   border-top: 1px solid var(--line);
+}
+
+.abstract-section .section-kicker {
+  margin-bottom: 1.5rem;
 }
 
 .abstract-copy {
@@ -466,51 +454,6 @@ button:focus-visible {
 
 .abstract-copy p:not(:last-child) {
   margin-bottom: 1.15rem;
-}
-
-.research-note {
-  border-left: 3px solid var(--gold);
-  margin-top: 2rem;
-  padding: 0.25rem 0 0.2rem 1.4rem;
-}
-
-.research-note-label {
-  color: var(--muted);
-  font-size: 0.69rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.research-note-quote {
-  color: var(--navy);
-  font-family: var(--serif);
-  font-size: 1.45rem;
-  font-weight: 600;
-  line-height: 1.35;
-  margin: 0.7rem 0 1.5rem;
-}
-
-.research-note-list > div {
-  border-top: 1px solid var(--line);
-  display: grid;
-  gap: 0.7rem;
-  grid-template-columns: 3.2rem 1fr;
-  padding: 0.62rem 0;
-}
-
-.research-note-list dt {
-  color: var(--muted);
-  font-size: 0.67rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.research-note-list dd {
-  color: var(--ink-soft);
-  font-size: 0.78rem;
-  font-weight: 600;
 }
 
 .contributions-section {
@@ -1047,10 +990,6 @@ button:focus-visible {
     line-height: 1.75;
   }
 
-  .research-note {
-    margin-top: 2rem;
-  }
-
   .contribution-item {
     margin-bottom: 1.5rem;
   }
@@ -1064,11 +1003,6 @@ button:focus-visible {
   .task-figure img {
     max-width: none;
     min-width: 690px;
-  }
-
-  .paper-figure figcaption {
-    font-size: 0.76rem;
-    text-align: left;
   }
 
   .method-step {

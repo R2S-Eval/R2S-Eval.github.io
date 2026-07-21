@@ -94,49 +94,29 @@
       </div>
     </header>
 
-    <section class="section teaser-section" aria-labelledby="pipeline-caption">
+    <section class="section teaser-section" aria-label="R2S-Eval pipeline overview">
       <div class="container is-max-desktop">
         <figure class="paper-figure hero-figure">
           <a href="./static/images/pipeline.png" aria-label="Open the R2S-Eval pipeline figure at full size">
             <img src="./static/images/pipeline.png" alt="R2S-Eval pipeline: policy rollouts are generated in calibrated simulation, compared by a vision-language model, aggregated into rankings, and validated." fetchpriority="high">
           </a>
-          <figcaption id="pipeline-caption">
-            <span class="figure-label">Figure 1.</span>
-            R2S-Eval combines calibrated real-to-sim rollout generation with VLM-based pairwise preference evaluation and statistical ranking.
-          </figcaption>
         </figure>
       </div>
     </section>
 
-    <section class="section abstract-section" id="abstract">
+    <section class="section abstract-section" id="abstract" aria-labelledby="abstract-title">
       <div class="container is-max-desktop">
-        <div class="columns is-variable is-7">
-          <div class="column is-three-quarters">
-            <p class="section-kicker">Abstract</p>
-            <h2 class="title section-title">A behavior-first view of robot evaluation</h2>
-            <div class="content abstract-copy">
-              <p>
-                Evaluating robot manipulation policies is becoming increasingly important as generalist models, particularly vision-language-action (VLA) models, are deployed on physical robots. However, conventional real-world evaluation remains labor-intensive, unstable, and insufficiently informative. It requires repeated hardware trials, manual scene resets, and continuous operator monitoring, may produce different policy rankings across repeated evaluations, and primarily relies on success rate metrics that provide limited information about execution quality. In contrast, humans assess robot performance by observing and comparing complete behaviors rather than relying solely on binary success outcomes.
-              </p>
-              <p>
-                To this end, we propose R2S-Eval, an automated evaluation pipeline that combines real-to-sim calibration with vision-language-model-based preference evaluation. The real-to-sim component efficiently generates rollout videos aligned with the target real-world evaluation setting, thereby reducing the need for repeated physical robot trials. The VLM evaluator assesses the execution quality of rollout videos and produces pairwise preferences, which are subsequently aggregated into policy rankings.
-              </p>
-              <p>
-                We further introduce a validation protocol to assess whether the proposed evaluation pipeline yields trustworthy policy conclusions while mitigating the key challenges of conventional real-world evaluation. Experiments in both simulation and real-world settings demonstrate that R2S-Eval produces reliable and stable policy conclusions, achieves strong agreement with human preferences, substantially reduces evaluation-time manual effort, and reveals behavior-quality differences that are not captured by binary success labels.
-              </p>
-            </div>
-          </div>
-          <div class="column">
-            <aside class="research-note">
-              <p class="research-note-label">Central idea</p>
-              <p class="research-note-quote">Compare complete behaviors, not only binary outcomes.</p>
-              <dl class="research-note-list">
-                <div><dt>Input</dt><dd>Rollout videos</dd></div>
-                <div><dt>Judge</dt><dd>Vision-language model</dd></div>
-                <div><dt>Output</dt><dd>Policy ranking</dd></div>
-              </dl>
-            </aside>
-          </div>
+        <h2 class="section-kicker" id="abstract-title">Abstract</h2>
+        <div class="content abstract-copy">
+          <p>
+            Evaluating robot manipulation policies is becoming increasingly important as generalist models, particularly vision-language-action (VLA) models, are deployed on physical robots. However, conventional real-world evaluation remains labor-intensive, unstable, and insufficiently informative. It requires repeated hardware trials, manual scene resets, and continuous operator monitoring, may produce different policy rankings across repeated evaluations, and primarily relies on success rate metrics that provide limited information about execution quality. In contrast, humans assess robot performance by observing and comparing complete behaviors rather than relying solely on binary success outcomes.
+          </p>
+          <p>
+            To this end, we propose R2S-Eval, an automated evaluation pipeline that combines real-to-sim calibration with vision-language-model-based preference evaluation. The real-to-sim component efficiently generates rollout videos aligned with the target real-world evaluation setting, thereby reducing the need for repeated physical robot trials. The VLM evaluator assesses the execution quality of rollout videos and produces pairwise preferences, which are subsequently aggregated into policy rankings.
+          </p>
+          <p>
+            We further introduce a validation protocol to assess whether the proposed evaluation pipeline yields trustworthy policy conclusions while mitigating the key challenges of conventional real-world evaluation. Experiments in both simulation and real-world settings demonstrate that R2S-Eval produces reliable and stable policy conclusions, achieves strong agreement with human preferences, substantially reduces evaluation-time manual effort, and reveals behavior-quality differences that are not captured by binary success labels.
+          </p>
         </div>
       </div>
     </section>
@@ -185,7 +165,6 @@
           <a href="./static/images/method-overview.png" aria-label="Open the detailed method overview at full size">
             <img src="./static/images/method-overview.png" alt="Detailed R2S-Eval workflow covering real-world evaluation, calibrated real-to-sim deployment, VLM preference judging, Bradley-Terry ranking, and validation." loading="lazy">
           </a>
-          <figcaption><span class="figure-label">Figure 2.</span> Detailed workflow from physical task specification to calibrated simulation, pairwise preference estimation, ranking, and validation.</figcaption>
         </figure>
 
         <div class="method-steps">
@@ -242,7 +221,6 @@
           <a href="./static/images/task-suite.png" aria-label="Open the seven-task real-world evaluation suite at full size">
             <img src="./static/images/task-suite.png" alt="Seven real-world manipulation tasks including covering, placing, stacking, taking an object from a box, and uprighting a cup." loading="lazy">
           </a>
-          <figcaption><span class="figure-label">Figure 4.</span> Seven real-world tasks used to calibrate and evaluate the real-to-sim pipeline.</figcaption>
         </figure>
 
         <div class="columns is-variable is-5 setting-grid">
@@ -274,7 +252,6 @@
           <a href="./static/images/real-sim-alignment.png" aria-label="Open the real and simulated trajectory alignment figure at full size">
             <img src="./static/images/real-sim-alignment.png" alt="Frame-by-frame comparison between a real robot trajectory and its calibrated simulated counterpart for a cup placement task." loading="lazy">
           </a>
-          <figcaption><span class="figure-label">Figure 7.</span> Real and simulated trajectories preserve task-relevant state, viewpoints, and behavioral progression.</figcaption>
         </figure>
       </div>
     </section>
@@ -314,7 +291,6 @@
           <a href="./static/images/preference-results.png" aria-label="Open the success-rate and VLM preference comparison at full size">
             <img src="./static/images/preference-results.png" alt="Charts comparing ground-truth success rates and VLM preference scores for six robot policies on LIBERO and real-to-sim evaluation." loading="lazy">
           </a>
-          <figcaption><span class="figure-label">Figure 5.</span> VLM preference scores recover policy-level trends in both LIBERO and calibrated real-to-sim evaluation.</figcaption>
         </figure>
 
         <div class="columns is-variable is-6 insight-row">
@@ -331,7 +307,6 @@
               <a href="./static/images/manual-effort.png" aria-label="Open the manual evaluation effort chart at full size">
                 <img src="./static/images/manual-effort.png" alt="Manual effort comparison showing conventional real-world evaluation growing with the number of trials and tasks while R2S-Eval requires no routine manual operation during evaluation." loading="lazy">
               </a>
-              <figcaption><span class="figure-label">Figure 6.</span> Manual effort grows with physical evaluation scale; the automated pipeline decouples routine evaluation from operator time.</figcaption>
             </figure>
           </div>
         </div>
@@ -346,7 +321,6 @@
             <a href="./static/images/behavior-quality.png" aria-label="Open the behavior-quality case studies at full size">
               <img src="./static/images/behavior-quality.png" alt="Two case studies where rollout pairs share the same success or failure label but differ in smoothness, recovery, and task progress." loading="lazy">
             </a>
-            <figcaption><span class="figure-label">Figure 8.</span> Pairwise preferences expose execution-quality differences concealed by identical binary outcomes.</figcaption>
           </figure>
         </div>
       </div>
