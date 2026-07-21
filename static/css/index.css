@@ -804,7 +804,7 @@ button:focus-visible {
 
 .r2s-domain-labels span {
   border: 1px solid;
-  border-radius: 999px;
+  border-radius: 0.42rem;
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.13em;
