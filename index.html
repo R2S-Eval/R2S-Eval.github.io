@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/index.css?v=20260721-9">
+  <link rel="stylesheet" href="./static/css/index.css?v=20260721-10">
   <script defer src="./static/js/index.js?v=20260721-9"></script>
 </head>
 <body>
@@ -273,17 +273,13 @@
       <div class="container is-widescreen">
         <div class="section-heading is-centered is-wide">
           <h2 class="module-title" id="vlm-preference-title">VLM Preference</h2>
-          <p class="section-intro">
-            R2S-Eval samples rollout pairs from candidate policies and uses a vision-language model as an automated judge. The judge compares task progress, action continuity, control quality, and final task completion, then returns a pairwise preference for policy ranking.
-          </p>
         </div>
 
-        <div class="vlm-preference-flow" role="group" aria-label="Pairwise VLM preference evaluation example">
-          <div class="preference-video-stack" aria-label="Candidate rollout videos">
+        <div class="vlm-preference-comparison" role="group" aria-label="Pairwise VLM preference example">
+          <div class="preference-video-stack" aria-label="Policy rollout videos">
             <figure class="preference-video-card">
               <figcaption class="preference-video-header">
                 <h3>Policy A</h3>
-                <span>Candidate rollout</span>
               </figcaption>
               <div class="video-frame preference-video-frame">
                 <video controls muted loop playsinline preload="metadata" data-preference-video="policy-a" aria-label="Policy A rollout video">
@@ -296,7 +292,6 @@
             <figure class="preference-video-card">
               <figcaption class="preference-video-header">
                 <h3>Policy B</h3>
-                <span>Candidate rollout</span>
               </figcaption>
               <div class="video-frame preference-video-frame">
                 <video controls muted loop playsinline preload="metadata" data-preference-video="policy-b" aria-label="Policy B rollout video">
@@ -307,47 +302,12 @@
             </figure>
           </div>
 
-          <div class="preference-input-connector" aria-hidden="true">
-            <svg viewBox="0 0 120 240" preserveAspectRatio="none">
-              <path d="M0 60 H36 C72 60 64 120 108 120"></path>
-              <path d="M0 180 H36 C72 180 64 120 108 120"></path>
-              <path class="connector-arrowhead" d="M97 110 L110 120 L97 130"></path>
-            </svg>
-            <span>Pairwise input</span>
-          </div>
-
-          <div class="vlm-judge-card">
-            <div class="vlm-judge-icon" aria-hidden="true">
-              <svg viewBox="0 0 72 72">
-                <rect x="12" y="12" width="48" height="48" rx="9"></rect>
-                <circle cx="27" cy="27" r="4"></circle>
-                <circle cx="45" cy="27" r="4"></circle>
-                <circle cx="36" cy="45" r="4"></circle>
-                <path d="M30.5 29.5 L33.5 41 M41.5 29.5 L38.5 41 M31 27 H41"></path>
-              </svg>
-            </div>
-            <p>VLM Judge</p>
-            <span>Behavior-quality comparison</span>
-          </div>
-
-          <div class="preference-output-connector" aria-hidden="true">
-            <span>Preference</span>
-            <svg viewBox="0 0 96 24" preserveAspectRatio="none">
-              <path d="M0 12 H86"></path>
-              <path d="M76 3 L88 12 L76 21"></path>
-            </svg>
-          </div>
-
-          <div class="preference-output-card" role="img" aria-label="VLM preference result: Policy A is preferred over Policy B">
-            <p class="preference-output-kicker">Pairwise preference</p>
-            <div class="preferred-policy-mark" aria-hidden="true">
-              <span>A</span>
-              <svg viewBox="0 0 24 24"><path d="M5 12.5 L9.5 17 L19 7.5"></path></svg>
-            </div>
-            <strong>Policy A</strong>
-            <span class="preference-output-state">Preferred</span>
-            <p class="preference-formula" aria-hidden="true">π<sub>A</sub> ≻ π<sub>B</sub></p>
-            <p class="preference-rationale">Greater task progress and smoother, more controlled execution.</p>
+          <div class="preference-verdict">
+            <p class="preference-verdict-label">VLM Judgment</p>
+            <p class="preference-verdict-result">
+              <span aria-hidden="true">π<sub>A</sub> ≻ π<sub>B</sub></span>
+              <span class="sr-only">Policy A is preferred over Policy B.</span>
+            </p>
           </div>
         </div>
       </div>
