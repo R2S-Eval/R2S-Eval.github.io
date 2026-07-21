@@ -740,7 +740,7 @@ button:focus-visible {
   background: #fff;
   border: 1px solid var(--line-dark);
   margin: clamp(1.8rem, 4vw, 2.7rem) auto 0;
-  max-width: 52rem;
+  max-width: 58rem;
 }
 
 .r2s-comparison-stage.is-task-changing .r2s-video-pair,
@@ -763,7 +763,7 @@ button:focus-visible {
 }
 
 .r2s-comparison-browser {
-  max-width: 58rem;
+  max-width: 68rem;
 }
 
 .r2s-comparison-stage {
@@ -791,11 +791,11 @@ button:focus-visible {
   border-bottom: 1px solid var(--line-dark);
   color: var(--ink-soft);
   display: flex;
-  font-size: 0.66rem;
+  font-size: 0.9rem;
   font-weight: 600;
   justify-content: center;
-  letter-spacing: 0.15em;
-  min-height: 2.5rem;
+  letter-spacing: 0.14em;
+  min-height: 2.75rem;
   text-transform: uppercase;
 }
 
@@ -824,15 +824,15 @@ button:focus-visible {
   border-top: 0;
   display: flex;
   justify-content: center;
-  min-height: 4.75rem;
-  padding: 0.9rem 4rem;
+  min-height: 3.9rem;
+  padding: 0.75rem 4rem;
   text-align: center;
 }
 
 .r2s-task-caption h3 {
   color: var(--ink);
   font-family: var(--serif);
-  font-size: clamp(1.45rem, 3vw, 2rem);
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
   font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 1.15;
@@ -854,7 +854,7 @@ button:focus-visible {
   line-height: 1;
   padding: 0 0 0.14rem;
   position: absolute;
-  top: calc((100% - 4.75rem) / 2);
+  top: calc((100% - 3.9rem) / 2);
   transform: translateY(-50%);
   transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
   width: 3rem;
@@ -917,6 +917,20 @@ button:focus-visible {
   font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.1;
+}
+
+.task-video-caption.is-task-title-only {
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  min-height: 3.9rem;
+  padding: 0.75rem 4rem;
+  text-align: center;
+}
+
+.task-video-caption.is-task-title-only h3 {
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  letter-spacing: -0.03em;
 }
 
 .task-video-kind {
@@ -1743,24 +1757,24 @@ button:focus-visible {
   }
 
   .r2s-domain-label {
-    font-size: 0.6rem;
+    font-size: 0.78rem;
     letter-spacing: 0.13em;
-    min-height: 2.2rem;
+    min-height: 2.4rem;
   }
 
   .r2s-task-caption {
-    min-height: 4.2rem;
-    padding: 0.8rem 3.3rem;
+    min-height: 3.6rem;
+    padding: 0.7rem 3.3rem;
   }
 
   .r2s-task-caption h3 {
-    font-size: clamp(1.2rem, 5.7vw, 1.55rem);
+    font-size: clamp(1.05rem, 4.6vw, 1.25rem);
   }
 
   .r2s-switch-arrow {
     font-size: 1.8rem;
     height: 2.35rem;
-    top: calc((100% - 4.2rem) / 2);
+    top: calc((100% - 3.6rem) / 2);
     width: 2.35rem;
   }
 
@@ -1770,6 +1784,15 @@ button:focus-visible {
 
   .r2s-switch-arrow.is-next {
     right: 0.38rem;
+  }
+
+  .task-video-caption.is-task-title-only {
+    min-height: 3.6rem;
+    padding: 0.7rem 3.3rem;
+  }
+
+  .task-video-caption.is-task-title-only h3 {
+    font-size: clamp(1.05rem, 4.6vw, 1.25rem);
   }
 
   .benchmark-results-header {

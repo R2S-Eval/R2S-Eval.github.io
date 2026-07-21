@@ -17,8 +17,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/index.css?v=20260721-3">
-  <script defer src="./static/js/index.js?v=20260721-3"></script>
+  <link rel="stylesheet" href="./static/css/index.css?v=20260721-4">
+  <script defer src="./static/js/index.js?v=20260721-4"></script>
 </head>
 <body>
   <nav class="navbar project-nav" role="navigation" aria-label="Main navigation">
@@ -127,10 +127,13 @@
     </section>
 
     <section class="section media-browser-section real-to-sim-section" id="real-to-sim" aria-labelledby="real-to-sim-title">
-      <div class="container is-max-desktop">
+      <div class="container is-widescreen r2s-section-container">
         <div class="section-heading is-centered is-wide">
           <p class="module-index">01</p>
           <h2 class="module-title" id="real-to-sim-title">Real-to-Sim</h2>
+          <p class="section-intro">
+            R2S-Eval calibrates the simulated robot, task objects, camera viewpoints, initial object states, task definitions, and scene context to match the target real-world evaluation setting. Recorded joint-angle actions are replayed in NVIDIA Isaac Sim under matched task and scene configurations, enabling direct comparison between real and simulated trajectories across seven tabletop manipulation tasks.
+          </p>
         </div>
 
         <div class="task-browser r2s-comparison-browser" data-task-browser data-browser-kind="Real-to-Sim" data-browser-mode="stacked">
@@ -166,7 +169,7 @@
             <button class="task-dot" type="button" data-task-option data-task-index="03" data-task-label="Pick Ball Place in Cup" data-real-video-src="./static/videos/hero-black.mp4" data-sim-video-src="./static/videos/hero-black.mp4" data-sim-poster="./static/images/tasks/pick-ball-place-in-cup.png" aria-label="Show Task 03: Pick Ball Place in Cup" aria-pressed="false" tabindex="-1"></button>
             <button class="task-dot" type="button" data-task-option data-task-index="04" data-task-label="Pick Cup Place on Plate" data-real-video-src="./static/videos/hero-black.mp4" data-sim-video-src="./static/videos/hero-black.mp4" data-sim-poster="./static/images/tasks/pick-cup-place-on-plate.png" aria-label="Show Task 04: Pick Cup Place on Plate" aria-pressed="false" tabindex="-1"></button>
             <button class="task-dot" type="button" data-task-option data-task-index="05" data-task-label="Stack Blocks" data-real-video-src="./static/videos/hero-black.mp4" data-sim-video-src="./static/videos/hero-black.mp4" data-sim-poster="./static/images/tasks/stack-blocks.png" aria-label="Show Task 05: Stack Blocks" aria-pressed="false" tabindex="-1"></button>
-            <button class="task-dot" type="button" data-task-option data-task-index="06" data-task-label="Take Block Out of Box" data-real-video-src="./static/videos/hero-black.mp4" data-sim-video-src="./static/videos/hero-black.mp4" data-sim-poster="./static/images/tasks/take-block-out-of-box.png" aria-label="Show Task 06: Take Block Out of Box" aria-pressed="false" tabindex="-1"></button>
+            <button class="task-dot" type="button" data-task-option data-task-index="06" data-task-label="Take Block Out Box" data-real-video-src="./static/videos/hero-black.mp4" data-sim-video-src="./static/videos/hero-black.mp4" data-sim-poster="./static/images/tasks/take-block-out-of-box.png" aria-label="Show Task 06: Take Block Out Box" aria-pressed="false" tabindex="-1"></button>
             <button class="task-dot" type="button" data-task-option data-task-index="07" data-task-label="Upright Fallen Cup" data-real-video-src="./static/videos/hero-black.mp4" data-sim-video-src="./static/videos/hero-black.mp4" data-sim-poster="./static/images/tasks/upright-fallen-cup.png" aria-label="Show Task 07: Upright Fallen Cup" aria-pressed="false" tabindex="-1"></button>
           </div>
         </div>
@@ -217,14 +220,9 @@
               <video controls muted loop playsinline preload="metadata" poster="./static/images/tasks/cover-ball-with-cup.png" data-task-video aria-label="Policy rollout video placeholder for Cover Ball with Cup">
                 <source src="./static/videos/hero-black.mp4" type="video/mp4" data-task-source>
               </video>
-              <span class="video-placeholder" data-task-placeholder aria-hidden="true">Policy rollout video forthcoming</span>
             </div>
-            <figcaption class="task-video-caption" aria-live="polite">
-              <div>
-                <p class="case-index" data-task-position>Task 01 / 07</p>
-                <h3 data-task-label>Cover Ball with Cup</h3>
-              </div>
-              <p class="task-video-kind">Policy rollout</p>
+            <figcaption class="task-video-caption is-task-title-only" aria-live="polite">
+              <h3 data-task-label>Cover Ball with Cup</h3>
             </figcaption>
           </figure>
         </div>
