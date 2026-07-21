@@ -3,7 +3,8 @@
 Preview website for the R2S-Eval research project.
 
 - Project repository: <https://github.com/VVVVME50/R2S-Eval>
-- GitHub Pages preview: <https://vvvvme50.github.io/R2S-Eval/>
+- Project website: <https://r2s-eval.github.io/>
+- Website repository: <https://github.com/R2S-Eval/R2S-Eval.github.io>
 
 The current copy is a layout preview. Replace all placeholder project, author,
 paper, dataset, and citation content before the final release.
