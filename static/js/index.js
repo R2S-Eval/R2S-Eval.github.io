@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const burger = document.querySelector('.navbar-burger');
   const menu = document.getElementById('project-menu');
   const root = document.documentElement;
+  const projectNav = document.querySelector('.project-nav');
   const scrollHero = document.querySelector('[data-scroll-hero]');
   const heroContent = scrollHero ? scrollHero.querySelector('[data-hero-content]') : null;
   const heroVideo = scrollHero ? scrollHero.querySelector('video') : null;
@@ -11,6 +12,13 @@ document.addEventListener('DOMContentLoaded', function () {
     let animationFrame = 0;
     const clamp = function (value, min, max) {
       return Math.min(max, Math.max(min, value));
+    };
+
+    const updateNavTheme = function (heroRect) {
+      if (!projectNav) return;
+      const rect = heroRect || scrollHero.getBoundingClientRect();
+      const navHeight = projectNav.getBoundingClientRect().height;
+      projectNav.classList.toggle('is-on-light', rect.bottom <= navHeight);
     };
 
     const setStaticHero = function () {
@@ -28,6 +36,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const updateHero = function () {
       animationFrame = 0;
+      const rect = scrollHero.getBoundingClientRect();
+      updateNavTheme(rect);
 
       if (reducedMotion.matches) {
         setStaticHero();
@@ -35,12 +45,9 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
-      const nav = document.querySelector('.project-nav');
-      const navHeight = nav ? nav.getBoundingClientRect().height : 0;
-      const rect = scrollHero.getBoundingClientRect();
-      const sceneHeight = Math.max(1, window.innerHeight - navHeight);
+      const sceneHeight = Math.max(1, window.innerHeight);
       const travel = Math.max(1, scrollHero.offsetHeight - sceneHeight);
-      const progress = clamp((navHeight - rect.top) / travel, 0, 1);
+      const progress = clamp(-rect.top / travel, 0, 1);
       const fadeProgress = clamp(progress / 0.68, 0, 1);
       const fade = fadeProgress * fadeProgress * (3 - 2 * fadeProgress);
 
@@ -68,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const handleMotionChange = function () {
       if (reducedMotion.matches) {
         setStaticHero();
+        updateNavTheme();
         if (heroVideo) heroVideo.pause();
       } else {
         if (heroVideo) heroVideo.play().catch(function () {});
@@ -107,31 +115,4 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  const copyButton = document.querySelector('[data-copy-target]');
-  const copyStatus = document.querySelector('.copy-status');
-
-  if (copyButton) {
-    copyButton.addEventListener('click', async function () {
-      const target = document.getElementById(copyButton.dataset.copyTarget);
-      if (!target) return;
-
-      try {
-        await navigator.clipboard.writeText(target.textContent.trim());
-        copyButton.textContent = 'Copied';
-        if (copyStatus) copyStatus.textContent = 'BibTeX copied to clipboard.';
-      } catch (error) {
-        if (copyStatus) copyStatus.textContent = 'Copy unavailable. Select the citation text manually.';
-      }
-
-      window.setTimeout(function () {
-        copyButton.textContent = 'Copy BibTeX';
-        if (copyStatus) copyStatus.textContent = '';
-      }, 2200);
-    });
-  }
-
-  const year = document.getElementById('current-year');
-  if (year) {
-    year.textContent = String(new Date().getFullYear());
-  }
 });
