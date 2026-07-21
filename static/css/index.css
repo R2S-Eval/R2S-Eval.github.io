@@ -989,6 +989,303 @@ button:focus-visible {
   box-shadow: 0 0 0 3px rgba(186, 126, 24, 0.16);
 }
 
+.vlm-preference-section {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.vlm-preference-flow {
+  align-items: center;
+  display: grid;
+  gap: clamp(0.45rem, 1vw, 0.9rem);
+  grid-template-columns: minmax(26rem, 1.75fr) minmax(4.2rem, 0.35fr) minmax(9.5rem, 0.7fr) minmax(3.5rem, 0.3fr) minmax(11.5rem, 0.85fr);
+  margin: 0 auto;
+  max-width: 74rem;
+}
+
+.preference-video-stack {
+  display: grid;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.preference-video-card {
+  background: #fff;
+  border: 1px solid var(--line-dark);
+  margin: 0;
+  min-width: 0;
+}
+
+.preference-video-header {
+  align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+  min-height: 3.15rem;
+  padding: 0.7rem 0.9rem 0.62rem;
+}
+
+.preference-video-header h3 {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+.preference-video-header span {
+  color: var(--muted);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.preference-video-frame {
+  border-top: 1px solid var(--line-dark);
+}
+
+.preference-video-frame video {
+  object-fit: contain;
+}
+
+.preference-video-frame .video-placeholder {
+  top: 44%;
+}
+
+.preference-input-connector {
+  align-self: stretch;
+  min-height: 31rem;
+  position: relative;
+}
+
+.preference-input-connector svg {
+  height: 100%;
+  inset: 0;
+  overflow: visible;
+  position: absolute;
+  width: 100%;
+}
+
+.preference-input-connector path {
+  fill: none;
+  stroke: var(--navy);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.preference-input-connector .connector-arrowhead {
+  stroke-width: 2.2;
+}
+
+.preference-input-connector span,
+.preference-output-connector span {
+  color: var(--muted);
+  font-size: 0.53rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.preference-input-connector > span {
+  background: #fff;
+  left: 50%;
+  padding: 0.25rem 0.35rem;
+  position: absolute;
+  text-align: center;
+  top: calc(50% + 1.25rem);
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.vlm-judge-card {
+  align-items: center;
+  background: var(--soft);
+  border: 1px solid var(--line-dark);
+  border-top: 3px solid var(--navy);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 13rem;
+  padding: 1.2rem 0.8rem;
+  text-align: center;
+}
+
+.vlm-judge-icon {
+  align-items: center;
+  background: var(--navy-deep);
+  border-radius: 50%;
+  display: flex;
+  height: 5.2rem;
+  justify-content: center;
+  margin-bottom: 0.85rem;
+  width: 5.2rem;
+}
+
+.vlm-judge-icon svg {
+  height: 4.25rem;
+  width: 4.25rem;
+}
+
+.vlm-judge-icon rect,
+.vlm-judge-icon path {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.82);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.vlm-judge-icon circle {
+  fill: var(--gold);
+  stroke: #f8edcf;
+  stroke-width: 1;
+}
+
+.vlm-judge-card > p {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+.vlm-judge-card > span {
+  color: var(--muted);
+  font-size: 0.62rem;
+  line-height: 1.45;
+  margin-top: 0.38rem;
+}
+
+.preference-output-connector {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.preference-output-connector svg {
+  height: 1.5rem;
+  overflow: visible;
+  width: 100%;
+}
+
+.preference-output-connector path {
+  fill: none;
+  stroke: var(--gold);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.preference-output-card {
+  align-items: center;
+  background: var(--warm-white);
+  border: 1px solid var(--line-dark);
+  border-top: 3px solid var(--gold);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 17rem;
+  padding: 1.35rem 1rem;
+  text-align: center;
+}
+
+.preference-output-kicker {
+  color: var(--muted);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  margin-bottom: 0.9rem;
+  text-transform: uppercase;
+}
+
+.preferred-policy-mark {
+  align-items: center;
+  background: #fff;
+  border: 2px solid var(--navy);
+  border-radius: 50%;
+  display: flex;
+  height: 4.8rem;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  position: relative;
+  width: 4.8rem;
+}
+
+.preferred-policy-mark > span {
+  color: var(--navy);
+  font-family: var(--serif);
+  font-size: 2.1rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.preferred-policy-mark > svg {
+  background: var(--gold);
+  border: 2px solid var(--warm-white);
+  border-radius: 50%;
+  bottom: -0.15rem;
+  height: 1.75rem;
+  padding: 0.28rem;
+  position: absolute;
+  right: -0.18rem;
+  width: 1.75rem;
+}
+
+.preferred-policy-mark path {
+  fill: none;
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.4;
+}
+
+.preference-output-card > strong {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+.preference-output-state {
+  color: var(--gold);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin-top: 0.2rem;
+  text-transform: uppercase;
+}
+
+.preference-formula {
+  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  color: var(--navy);
+  font-family: var(--serif);
+  font-size: 1rem;
+  margin-top: 0.85rem;
+  padding: 0.42rem 0;
+  width: 100%;
+}
+
+.preference-formula sub {
+  font-size: 0.68em;
+}
+
+.preference-rationale {
+  color: var(--muted);
+  font-size: 0.58rem;
+  line-height: 1.5;
+  margin-top: 0.7rem;
+}
+
 @supports not (aspect-ratio: 16 / 9) {
   .r2s-video-panel .task-video-frame::before {
     content: "";
@@ -1581,6 +1878,98 @@ button:focus-visible {
   text-decoration: underline;
   text-decoration-color: #c1cad2;
   text-underline-offset: 0.17em;
+}
+
+@media screen and (max-width: 980px) {
+  .vlm-preference-flow {
+    gap: 1.15rem;
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 38rem;
+  }
+
+  .preference-video-stack {
+    order: 1;
+  }
+
+  .preference-input-connector,
+  .preference-output-connector {
+    display: block;
+    height: 4.1rem;
+    justify-self: stretch;
+    min-height: 4.1rem;
+    order: 2;
+    position: relative;
+  }
+
+  .preference-input-connector svg,
+  .preference-output-connector svg {
+    display: none;
+  }
+
+  .preference-input-connector::before,
+  .preference-output-connector::before {
+    background: var(--navy);
+    content: "";
+    height: 3.2rem;
+    left: 50%;
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    width: 2px;
+  }
+
+  .preference-input-connector::after,
+  .preference-output-connector::after {
+    border-bottom: 2px solid var(--navy);
+    border-right: 2px solid var(--navy);
+    bottom: 0.55rem;
+    content: "";
+    height: 0.62rem;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%) rotate(45deg);
+    width: 0.62rem;
+  }
+
+  .preference-input-connector > span,
+  .preference-output-connector > span {
+    background: #fff;
+    left: calc(50% + 0.9rem);
+    padding: 0.22rem 0.35rem;
+    position: absolute;
+    top: 1.45rem;
+    transform: none;
+    white-space: nowrap;
+  }
+
+  .vlm-judge-card {
+    justify-self: center;
+    max-width: 16rem;
+    min-height: 12rem;
+    order: 3;
+    width: 100%;
+  }
+
+  .preference-output-connector {
+    order: 4;
+  }
+
+  .preference-output-connector::before {
+    background: var(--gold);
+  }
+
+  .preference-output-connector::after {
+    border-bottom-color: var(--gold);
+    border-right-color: var(--gold);
+  }
+
+  .preference-output-card {
+    justify-self: center;
+    max-width: 24rem;
+    min-height: 16rem;
+    order: 5;
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 1023px) {
