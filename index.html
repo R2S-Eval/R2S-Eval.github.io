@@ -17,8 +17,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/index.css?v=20260721-8">
-  <script defer src="./static/js/index.js?v=20260721-8"></script>
+  <link rel="stylesheet" href="./static/css/index.css?v=20260721-9">
+  <script defer src="./static/js/index.js?v=20260721-9"></script>
 </head>
 <body>
   <nav class="navbar project-nav" role="navigation" aria-label="Main navigation">
@@ -132,46 +132,87 @@
         <div class="section-heading is-centered is-wide">
           <h2 class="module-title" id="real-to-sim-title">Real-to-Sim</h2>
           <p class="section-intro">
-            R2S-Eval calibrates the simulated robot, task objects, camera viewpoints, initial object states, task definitions, and scene context to match the target real-world evaluation setting. Recorded joint-angle actions are replayed in NVIDIA Isaac Sim under matched task and scene configurations, enabling direct comparison between real and simulated trajectories across seven tabletop manipulation tasks.
+            R2S-Eval calibrates the simulated robot, task objects, camera viewpoints, initial object states, task definitions, and scene context to match the target real-world evaluation setting. Each synchronized comparison is presented as one paired video, with the real rollout on the left and the calibrated simulation on the right.
           </p>
         </div>
 
-        <div class="task-browser r2s-comparison-browser" data-task-browser data-browser-kind="Real-to-Sim" data-browser-mode="stacked">
-          <figure class="r2s-comparison-stage" data-task-swipe data-task-transition>
-            <div class="r2s-video-pair">
-              <div class="r2s-video-panel">
-                <p class="r2s-domain-label">Real</p>
-                <div class="task-video-frame video-frame">
-                  <video controls muted loop playsinline preload="metadata" data-task-video="real" aria-label="Real video for Cover Ball with Cup">
-                    <source src="./static/videos/hero-black.mp4" type="video/mp4" data-task-source="real">
-                  </video>
-                </div>
-              </div>
-              <div class="r2s-video-panel">
-                <p class="r2s-domain-label">Sim</p>
-                <div class="task-video-frame video-frame">
-                  <video controls muted loop playsinline preload="metadata" poster="./static/images/tasks/cover-ball-with-cup.png" data-task-video="sim" aria-label="Sim video for Cover Ball with Cup">
-                    <source src="./static/videos/hero-black.mp4" type="video/mp4" data-task-source="sim">
-                  </video>
-                </div>
-              </div>
+        <div class="r2s-showcase-list" role="list" aria-label="Real-to-Sim task comparisons">
+          <figure class="r2s-showcase-item" role="listitem" data-r2s-task="cover-ball-with-cup">
+            <div class="r2s-showcase-frame">
+              <video controls muted loop playsinline preload="metadata" data-r2s-autoplay aria-label="Real on the left and simulation on the right for Cover Ball with Cup">
+                <source src="./static/videos/hero-black.mp4" type="video/mp4">
+              </video>
+              <div class="r2s-domain-labels" aria-hidden="true"><span>Real</span><span>Sim</span></div>
+              <span class="video-placeholder">Comparison video forthcoming</span>
             </div>
-            <button class="r2s-switch-arrow is-previous" type="button" data-browser-previous aria-label="Show previous Real-to-Sim task"><span aria-hidden="true">‹</span></button>
-            <button class="r2s-switch-arrow is-next" type="button" data-browser-next aria-label="Show next Real-to-Sim task"><span aria-hidden="true">›</span></button>
-            <figcaption class="r2s-task-caption" aria-live="polite">
-              <h3 data-task-label>Cover Ball with Cup</h3>
-            </figcaption>
+            <figcaption class="r2s-showcase-caption">Cover Ball with Cup</figcaption>
           </figure>
 
-          <div class="task-dot-pagination" role="group" aria-label="Real-to-Sim task selection">
-            <button class="task-dot" type="button" data-task-option data-task-index="01" data-task-label="Cover Ball with Cup" data-real-video-src="./static/videos/hero-black.mp4" data-sim-video-src="./static/videos/hero-black.mp4" data-sim-poster="./static/images/tasks/cover-ball-with-cup.png" aria-label="Show Task 01: Cover Ball with Cup" aria-pressed="true"></button>
-            <button class="task-dot" type="button" data-task-option data-task-index="02" data-task-label="Pick Ball Place in Box" data-real-video-src="./static/videos/hero-black.mp4" data-sim-video-src="./static/videos/hero-black.mp4" data-sim-poster="./static/images/tasks/pick-ball-place-in-box.png" aria-label="Show Task 02: Pick Ball Place in Box" aria-pressed="false" tabindex="-1"></button>
-            <button class="task-dot" type="button" data-task-option data-task-index="03" data-task-label="Pick Ball Place in Cup" data-real-video-src="./static/videos/hero-black.mp4" data-sim-video-src="./static/videos/hero-black.mp4" data-sim-poster="./static/images/tasks/pick-ball-place-in-cup.png" aria-label="Show Task 03: Pick Ball Place in Cup" aria-pressed="false" tabindex="-1"></button>
-            <button class="task-dot" type="button" data-task-option data-task-index="04" data-task-label="Pick Cup Place on Plate" data-real-video-src="./static/videos/hero-black.mp4" data-sim-video-src="./static/videos/hero-black.mp4" data-sim-poster="./static/images/tasks/pick-cup-place-on-plate.png" aria-label="Show Task 04: Pick Cup Place on Plate" aria-pressed="false" tabindex="-1"></button>
-            <button class="task-dot" type="button" data-task-option data-task-index="05" data-task-label="Stack Blocks" data-real-video-src="./static/videos/hero-black.mp4" data-sim-video-src="./static/videos/hero-black.mp4" data-sim-poster="./static/images/tasks/stack-blocks.png" aria-label="Show Task 05: Stack Blocks" aria-pressed="false" tabindex="-1"></button>
-            <button class="task-dot" type="button" data-task-option data-task-index="06" data-task-label="Take Block Out Box" data-real-video-src="./static/videos/hero-black.mp4" data-sim-video-src="./static/videos/hero-black.mp4" data-sim-poster="./static/images/tasks/take-block-out-of-box.png" aria-label="Show Task 06: Take Block Out Box" aria-pressed="false" tabindex="-1"></button>
-            <button class="task-dot" type="button" data-task-option data-task-index="07" data-task-label="Upright Fallen Cup" data-real-video-src="./static/videos/hero-black.mp4" data-sim-video-src="./static/videos/hero-black.mp4" data-sim-poster="./static/images/tasks/upright-fallen-cup.png" aria-label="Show Task 07: Upright Fallen Cup" aria-pressed="false" tabindex="-1"></button>
-          </div>
+          <figure class="r2s-showcase-item" role="listitem" data-r2s-task="pick-ball-place-in-box">
+            <div class="r2s-showcase-frame">
+              <video controls muted loop playsinline preload="metadata" data-r2s-autoplay aria-label="Real on the left and simulation on the right for Pick Ball Place in Box">
+                <source src="./static/videos/hero-black.mp4" type="video/mp4">
+              </video>
+              <div class="r2s-domain-labels" aria-hidden="true"><span>Real</span><span>Sim</span></div>
+              <span class="video-placeholder">Comparison video forthcoming</span>
+            </div>
+            <figcaption class="r2s-showcase-caption">Pick Ball Place in Box</figcaption>
+          </figure>
+
+          <figure class="r2s-showcase-item" role="listitem" data-r2s-task="pick-ball-place-in-cup">
+            <div class="r2s-showcase-frame">
+              <video controls muted loop playsinline preload="metadata" data-r2s-autoplay aria-label="Real on the left and simulation on the right for Pick Ball Place in Cup">
+                <source src="./static/videos/hero-black.mp4" type="video/mp4">
+              </video>
+              <div class="r2s-domain-labels" aria-hidden="true"><span>Real</span><span>Sim</span></div>
+              <span class="video-placeholder">Comparison video forthcoming</span>
+            </div>
+            <figcaption class="r2s-showcase-caption">Pick Ball Place in Cup</figcaption>
+          </figure>
+
+          <figure class="r2s-showcase-item" role="listitem" data-r2s-task="pick-cup-place-on-plate">
+            <div class="r2s-showcase-frame">
+              <video controls muted loop playsinline preload="metadata" data-r2s-autoplay aria-label="Real on the left and simulation on the right for Pick Cup Place on Plate">
+                <source src="./static/videos/hero-black.mp4" type="video/mp4">
+              </video>
+              <div class="r2s-domain-labels" aria-hidden="true"><span>Real</span><span>Sim</span></div>
+              <span class="video-placeholder">Comparison video forthcoming</span>
+            </div>
+            <figcaption class="r2s-showcase-caption">Pick Cup Place on Plate</figcaption>
+          </figure>
+
+          <figure class="r2s-showcase-item" role="listitem" data-r2s-task="stack-blocks">
+            <div class="r2s-showcase-frame">
+              <video controls muted loop playsinline preload="metadata" data-r2s-autoplay aria-label="Real on the left and simulation on the right for Stack Blocks">
+                <source src="./static/videos/hero-black.mp4" type="video/mp4">
+              </video>
+              <div class="r2s-domain-labels" aria-hidden="true"><span>Real</span><span>Sim</span></div>
+              <span class="video-placeholder">Comparison video forthcoming</span>
+            </div>
+            <figcaption class="r2s-showcase-caption">Stack Blocks</figcaption>
+          </figure>
+
+          <figure class="r2s-showcase-item" role="listitem" data-r2s-task="take-block-out-of-box">
+            <div class="r2s-showcase-frame">
+              <video controls muted loop playsinline preload="metadata" data-r2s-autoplay aria-label="Real on the left and simulation on the right for Take Block Out Box">
+                <source src="./static/videos/hero-black.mp4" type="video/mp4">
+              </video>
+              <div class="r2s-domain-labels" aria-hidden="true"><span>Real</span><span>Sim</span></div>
+              <span class="video-placeholder">Comparison video forthcoming</span>
+            </div>
+            <figcaption class="r2s-showcase-caption">Take Block Out Box</figcaption>
+          </figure>
+
+          <figure class="r2s-showcase-item" role="listitem" data-r2s-task="upright-fallen-cup">
+            <div class="r2s-showcase-frame">
+              <video controls muted loop playsinline preload="metadata" data-r2s-autoplay aria-label="Real on the left and simulation on the right for Upright Fallen Cup">
+                <source src="./static/videos/hero-black.mp4" type="video/mp4">
+              </video>
+              <div class="r2s-domain-labels" aria-hidden="true"><span>Real</span><span>Sim</span></div>
+              <span class="video-placeholder">Comparison video forthcoming</span>
+            </div>
+            <figcaption class="r2s-showcase-caption">Upright Fallen Cup</figcaption>
+          </figure>
         </div>
       </div>
     </section>

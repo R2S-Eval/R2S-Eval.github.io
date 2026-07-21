@@ -117,6 +117,66 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  const r2sShowcaseVideos = Array.from(document.querySelectorAll('[data-r2s-autoplay]'));
+  if (r2sShowcaseVideos.length) {
+    let r2sObserver = null;
+    const visibilityRatios = new Map(r2sShowcaseVideos.map(function (video) {
+      return [video, 0];
+    }));
+
+    const pauseShowcaseVideos = function () {
+      r2sShowcaseVideos.forEach(function (video) {
+        video.pause();
+      });
+    };
+
+    const updateShowcasePlayback = function () {
+      let mostVisibleVideo = null;
+      let highestRatio = 0;
+
+      visibilityRatios.forEach(function (ratio, video) {
+        if (ratio > highestRatio) {
+          highestRatio = ratio;
+          mostVisibleVideo = video;
+        }
+      });
+
+      r2sShowcaseVideos.forEach(function (video) {
+        if (!reducedMotion.matches && video === mostVisibleVideo && highestRatio >= 0.35) {
+          video.play().catch(function () {});
+        } else {
+          video.pause();
+        }
+      });
+    };
+
+    const configureShowcasePlayback = function () {
+      if (r2sObserver) r2sObserver.disconnect();
+      pauseShowcaseVideos();
+
+      if (reducedMotion.matches || !('IntersectionObserver' in window)) return;
+
+      r2sObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          visibilityRatios.set(entry.target, entry.isIntersecting ? entry.intersectionRatio : 0);
+        });
+        updateShowcasePlayback();
+      }, {
+        threshold: [0, 0.2, 0.35, 0.5, 0.75, 1]
+      });
+
+      r2sShowcaseVideos.forEach(function (video) {
+        r2sObserver.observe(video);
+      });
+    };
+
+    if (typeof reducedMotion.addEventListener === 'function') {
+      reducedMotion.addEventListener('change', configureShowcasePlayback);
+    }
+
+    configureShowcasePlayback();
+  }
+
   document.querySelectorAll('[data-task-browser]').forEach(function (browser) {
     const options = Array.from(browser.querySelectorAll('[data-task-option]'));
     const mediaItems = Array.from(browser.querySelectorAll('.task-video-frame')).map(function (frame) {
