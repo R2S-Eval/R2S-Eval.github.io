@@ -117,52 +117,101 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  document.querySelectorAll('[data-task-switcher]').forEach(function (switcher) {
-    const tabs = Array.from(switcher.querySelectorAll('[role="tab"]'));
+  document.querySelectorAll('[data-task-browser]').forEach(function (browser) {
+    const options = Array.from(browser.querySelectorAll('[data-task-option]'));
+    const video = browser.querySelector('[data-task-video]');
+    const source = browser.querySelector('[data-task-source]');
+    const taskLabel = browser.querySelector('[data-task-label]:not([data-task-option])');
+    const taskPosition = browser.querySelector('[data-task-position]');
+    const placeholder = browser.querySelector('[data-task-placeholder]');
+    const previousButton = browser.querySelector('[data-browser-previous]');
+    const nextButton = browser.querySelector('[data-browser-next]');
+    const browserKind = browser.dataset.browserKind || 'Task';
 
-    const activateTab = function (activeTab) {
-      tabs.forEach(function (tab) {
-        const isActive = tab === activeTab;
-        const panelId = tab.getAttribute('aria-controls');
-        const panel = panelId ? document.getElementById(panelId) : null;
+    if (!options.length || !video || !source) return;
 
-        tab.setAttribute('aria-selected', String(isActive));
-        tab.setAttribute('tabindex', isActive ? '0' : '-1');
-        if (panel) {
-          panel.hidden = !isActive;
-          if (!isActive) {
-            panel.querySelectorAll('video').forEach(function (video) {
-              video.pause();
-            });
-          }
-        }
-      });
+    let activeIndex = Math.max(0, options.findIndex(function (option) {
+      return option.getAttribute('aria-pressed') === 'true';
+    }));
+
+    const wrapIndex = function (index) {
+      return (index + options.length) % options.length;
     };
 
-    tabs.forEach(function (tab, index) {
-      tab.addEventListener('click', function () {
-        activateTab(tab);
+    const activateTask = function (index, settings) {
+      const nextIndex = wrapIndex(index);
+      const activeOption = options[nextIndex];
+      const nextSource = activeOption.dataset.videoSrc;
+      const taskImage = activeOption.querySelector('img');
+      const nextPoster = activeOption.dataset.poster || (taskImage ? taskImage.getAttribute('src') : '');
+      const nextLabel = activeOption.dataset.taskLabel;
+      const nextTaskIndex = activeOption.dataset.taskIndex;
+      const shouldFocus = settings && settings.focus;
+      const shouldScroll = !settings || settings.scroll !== false;
+
+      activeIndex = nextIndex;
+      options.forEach(function (option, optionIndex) {
+        const isActive = optionIndex === activeIndex;
+        option.setAttribute('aria-pressed', String(isActive));
+        option.setAttribute('tabindex', isActive ? '0' : '-1');
       });
 
-      tab.addEventListener('keydown', function (event) {
+      video.pause();
+      if (nextSource && source.getAttribute('src') !== nextSource) {
+        source.setAttribute('src', nextSource);
+      }
+
+      if (nextPoster) video.setAttribute('poster', nextPoster);
+      else video.removeAttribute('poster');
+      if (nextSource) video.load();
+
+      video.setAttribute('aria-label', `${browserKind} video for ${nextLabel}`);
+      if (taskLabel) taskLabel.textContent = nextLabel;
+      if (taskPosition) taskPosition.textContent = `Task ${nextTaskIndex} / ${String(options.length).padStart(2, '0')}`;
+      if (placeholder) placeholder.textContent = `${browserKind} video forthcoming`;
+
+      if (shouldScroll) {
+        activeOption.scrollIntoView({
+          behavior: reducedMotion.matches ? 'auto' : 'smooth',
+          block: 'nearest',
+          inline: 'center'
+        });
+      }
+      if (shouldFocus) activeOption.focus();
+    };
+
+    options.forEach(function (option, index) {
+      option.addEventListener('click', function () {
+        activateTask(index);
+      });
+
+      option.addEventListener('keydown', function (event) {
         let nextIndex = index;
 
-        if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
-        else if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
+        if (event.key === 'ArrowRight') nextIndex = index + 1;
+        else if (event.key === 'ArrowLeft') nextIndex = index - 1;
         else if (event.key === 'Home') nextIndex = 0;
-        else if (event.key === 'End') nextIndex = tabs.length - 1;
+        else if (event.key === 'End') nextIndex = options.length - 1;
         else return;
 
         event.preventDefault();
-        activateTab(tabs[nextIndex]);
-        tabs[nextIndex].focus();
+        activateTask(nextIndex, { focus: true });
       });
     });
 
-    const selectedTab = tabs.find(function (tab) {
-      return tab.getAttribute('aria-selected') === 'true';
-    });
-    if (selectedTab) activateTab(selectedTab);
+    if (previousButton) {
+      previousButton.addEventListener('click', function () {
+        activateTask(activeIndex - 1);
+      });
+    }
+
+    if (nextButton) {
+      nextButton.addEventListener('click', function () {
+        activateTask(activeIndex + 1);
+      });
+    }
+
+    activateTask(activeIndex, { scroll: false });
   });
 
   const copyButton = document.querySelector('[data-copy-target]');
