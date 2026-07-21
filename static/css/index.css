@@ -556,7 +556,7 @@ button:focus-visible {
   margin: 0 auto 1.5rem;
 }
 
-.teleoperation-section {
+.real-to-sim-section {
   background: var(--paper);
 }
 
@@ -743,6 +743,48 @@ button:focus-visible {
   max-width: 52rem;
 }
 
+.task-video-stage.stacked-task-stage {
+  isolation: isolate;
+  margin-top: 0;
+  position: relative;
+  touch-action: pan-y;
+}
+
+.stacked-task-stage::before,
+.stacked-task-stage::after {
+  background: #f7f5ef;
+  border: 1px solid var(--line-dark);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+}
+
+.stacked-task-stage::before {
+  transform: translate(0.7rem, 0.7rem);
+}
+
+.stacked-task-stage::after {
+  background: #fbfaf6;
+  transform: translate(0.35rem, 0.35rem);
+}
+
+.stacked-task-stage.is-task-changing .task-video-frame,
+.stacked-task-stage.is-task-changing .task-video-caption {
+  animation: task-content-fade 420ms ease both;
+}
+
+@keyframes task-content-fade {
+  from {
+    opacity: 0.18;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 .task-video-frame {
   border-bottom: 1px solid #151515;
 }
@@ -776,6 +818,50 @@ button:focus-visible {
   padding-bottom: 0.2rem;
   text-align: right;
   text-transform: uppercase;
+}
+
+.task-dot-pagination {
+  align-items: center;
+  display: flex;
+  gap: 0.08rem;
+  justify-content: center;
+  margin-top: 1.55rem;
+}
+
+.task-dot {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  height: 1.65rem;
+  padding: 0;
+  position: relative;
+  width: 1.65rem;
+}
+
+.task-dot::before {
+  background: transparent;
+  border: 1px solid #8f9aa4;
+  border-radius: 50%;
+  content: "";
+  height: 0.58rem;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+  width: 0.58rem;
+}
+
+.task-dot:hover::before {
+  border-color: var(--navy);
+  transform: translate(-50%, -50%) scale(1.18);
+}
+
+.task-dot[aria-pressed="true"]::before {
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(186, 126, 24, 0.16);
 }
 
 .benchmark-results-group + .benchmark-results-group {
@@ -1762,5 +1848,10 @@ button:focus-visible {
 
   .task-thumbnail-strip {
     scroll-behavior: auto;
+  }
+
+  .stacked-task-stage.is-task-changing .task-video-frame,
+  .stacked-task-stage.is-task-changing .task-video-caption {
+    animation: none;
   }
 }

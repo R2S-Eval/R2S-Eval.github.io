@@ -37,7 +37,7 @@
       <div id="project-menu" class="navbar-menu">
         <div class="navbar-end">
           <a class="navbar-item" href="#abstract">Abstract</a>
-          <a class="navbar-item" href="#teleoperation">Teleoperation</a>
+          <a class="navbar-item" href="#real-to-sim">Real-to-Sim</a>
           <a class="navbar-item" href="#policy-rollouts">Policy Rollouts</a>
           <a class="navbar-item" href="#results">Results</a>
           <a class="navbar-item" href="#citation">Citation</a>
@@ -126,60 +126,42 @@
       </div>
     </section>
 
-    <section class="section media-browser-section teleoperation-section" id="teleoperation" aria-labelledby="teleoperation-title">
+    <section class="section media-browser-section real-to-sim-section" id="real-to-sim" aria-labelledby="real-to-sim-title">
       <div class="container is-max-desktop">
         <div class="section-heading is-centered is-wide">
           <p class="module-index">01</p>
-          <h2 class="module-title" id="teleoperation-title">Teleoperation</h2>
+          <h2 class="module-title" id="real-to-sim-title">Real-to-Sim</h2>
           <p class="section-intro">
-            Teleoperation demonstrations provide the task-conditioned trajectories used to reconstruct and calibrate the seven real-world manipulation settings. Select a task frame to inspect its corresponding demonstration video.
+            Seven calibrated manipulation tasks share one focused viewer. Swipe horizontally or use the pagination dots to move between tasks; the scene, video, and task label update together.
           </p>
         </div>
 
-        <div class="task-browser" data-task-browser data-browser-kind="Teleoperation">
-          <div class="task-carousel">
-            <button class="task-carousel-arrow is-previous" type="button" data-browser-previous aria-label="Show previous teleoperation task"><span aria-hidden="true">‹</span></button>
-            <div class="task-thumbnail-strip" data-task-strip role="group" aria-label="Teleoperation tasks">
-              <button class="task-thumbnail" type="button" data-task-option data-task-index="01" data-task-label="Cover Ball with Cup" data-video-src="./static/videos/hero-black.mp4" aria-label="Show Task 01: Cover Ball with Cup" aria-pressed="true">
-                <span class="task-thumbnail-media"><img src="./static/images/tasks/cover-ball-with-cup.png" alt="" loading="lazy"><span class="task-thumbnail-number" aria-hidden="true">01</span></span>
-              </button>
-              <button class="task-thumbnail" type="button" data-task-option data-task-index="02" data-task-label="Pick Ball Place in Box" data-video-src="./static/videos/hero-black.mp4" aria-label="Show Task 02: Pick Ball Place in Box" aria-pressed="false" tabindex="-1">
-                <span class="task-thumbnail-media"><img src="./static/images/tasks/pick-ball-place-in-box.png" alt="" loading="lazy"><span class="task-thumbnail-number" aria-hidden="true">02</span></span>
-              </button>
-              <button class="task-thumbnail" type="button" data-task-option data-task-index="03" data-task-label="Pick Ball Place in Cup" data-video-src="./static/videos/hero-black.mp4" aria-label="Show Task 03: Pick Ball Place in Cup" aria-pressed="false" tabindex="-1">
-                <span class="task-thumbnail-media"><img src="./static/images/tasks/pick-ball-place-in-cup.png" alt="" loading="lazy"><span class="task-thumbnail-number" aria-hidden="true">03</span></span>
-              </button>
-              <button class="task-thumbnail" type="button" data-task-option data-task-index="04" data-task-label="Pick Cup Place on Plate" data-video-src="./static/videos/hero-black.mp4" aria-label="Show Task 04: Pick Cup Place on Plate" aria-pressed="false" tabindex="-1">
-                <span class="task-thumbnail-media"><img src="./static/images/tasks/pick-cup-place-on-plate.png" alt="" loading="lazy"><span class="task-thumbnail-number" aria-hidden="true">04</span></span>
-              </button>
-              <button class="task-thumbnail" type="button" data-task-option data-task-index="05" data-task-label="Stack Blocks" data-video-src="./static/videos/hero-black.mp4" aria-label="Show Task 05: Stack Blocks" aria-pressed="false" tabindex="-1">
-                <span class="task-thumbnail-media"><img src="./static/images/tasks/stack-blocks.png" alt="" loading="lazy"><span class="task-thumbnail-number" aria-hidden="true">05</span></span>
-              </button>
-              <button class="task-thumbnail" type="button" data-task-option data-task-index="06" data-task-label="Take Block Out Box" data-video-src="./static/videos/hero-black.mp4" aria-label="Show Task 06: Take Block Out Box" aria-pressed="false" tabindex="-1">
-                <span class="task-thumbnail-media"><img src="./static/images/tasks/take-block-out-of-box.png" alt="" loading="lazy"><span class="task-thumbnail-number" aria-hidden="true">06</span></span>
-              </button>
-              <button class="task-thumbnail" type="button" data-task-option data-task-index="07" data-task-label="Upright Fallen Cup" data-video-src="./static/videos/hero-black.mp4" aria-label="Show Task 07: Upright Fallen Cup" aria-pressed="false" tabindex="-1">
-                <span class="task-thumbnail-media"><img src="./static/images/tasks/upright-fallen-cup.png" alt="" loading="lazy"><span class="task-thumbnail-number" aria-hidden="true">07</span></span>
-              </button>
-            </div>
-            <button class="task-carousel-arrow is-next" type="button" data-browser-next aria-label="Show next teleoperation task"><span aria-hidden="true">›</span></button>
-          </div>
-
-          <figure class="task-video-stage">
+        <div class="task-browser stacked-task-browser" data-task-browser data-browser-kind="Real-to-Sim" data-browser-mode="stacked">
+          <figure class="task-video-stage stacked-task-stage" data-task-swipe data-task-transition>
             <div class="task-video-frame video-frame">
-              <video controls muted loop playsinline preload="metadata" poster="./static/images/tasks/cover-ball-with-cup.png" data-task-video aria-label="Teleoperation video placeholder for Cover Ball with Cup">
+              <video controls muted loop playsinline preload="metadata" poster="./static/images/tasks/cover-ball-with-cup.png" data-task-video aria-label="Real-to-Sim video placeholder for Cover Ball with Cup">
                 <source src="./static/videos/hero-black.mp4" type="video/mp4" data-task-source>
               </video>
-              <span class="video-placeholder" data-task-placeholder aria-hidden="true">Teleoperation video forthcoming</span>
+              <span class="video-placeholder" data-task-placeholder aria-hidden="true">Real-to-Sim video forthcoming</span>
             </div>
             <figcaption class="task-video-caption" aria-live="polite">
               <div>
                 <p class="case-index" data-task-position>Task 01 / 07</p>
                 <h3 data-task-label>Cover Ball with Cup</h3>
               </div>
-              <p class="task-video-kind">Teleoperation</p>
+              <p class="task-video-kind">Real-to-Sim</p>
             </figcaption>
           </figure>
+
+          <div class="task-dot-pagination" role="group" aria-label="Real-to-Sim task selection">
+            <button class="task-dot" type="button" data-task-option data-task-index="01" data-task-label="Cover Ball with Cup" data-video-src="./static/videos/hero-black.mp4" data-poster="./static/images/tasks/cover-ball-with-cup.png" aria-label="Show Task 01: Cover Ball with Cup" aria-pressed="true"></button>
+            <button class="task-dot" type="button" data-task-option data-task-index="02" data-task-label="Pick Ball Place in Box" data-video-src="./static/videos/hero-black.mp4" data-poster="./static/images/tasks/pick-ball-place-in-box.png" aria-label="Show Task 02: Pick Ball Place in Box" aria-pressed="false" tabindex="-1"></button>
+            <button class="task-dot" type="button" data-task-option data-task-index="03" data-task-label="Pick Ball Place in Cup" data-video-src="./static/videos/hero-black.mp4" data-poster="./static/images/tasks/pick-ball-place-in-cup.png" aria-label="Show Task 03: Pick Ball Place in Cup" aria-pressed="false" tabindex="-1"></button>
+            <button class="task-dot" type="button" data-task-option data-task-index="04" data-task-label="Pick Cup Place on Plate" data-video-src="./static/videos/hero-black.mp4" data-poster="./static/images/tasks/pick-cup-place-on-plate.png" aria-label="Show Task 04: Pick Cup Place on Plate" aria-pressed="false" tabindex="-1"></button>
+            <button class="task-dot" type="button" data-task-option data-task-index="05" data-task-label="Stack Blocks" data-video-src="./static/videos/hero-black.mp4" data-poster="./static/images/tasks/stack-blocks.png" aria-label="Show Task 05: Stack Blocks" aria-pressed="false" tabindex="-1"></button>
+            <button class="task-dot" type="button" data-task-option data-task-index="06" data-task-label="Take Block Out Box" data-video-src="./static/videos/hero-black.mp4" data-poster="./static/images/tasks/take-block-out-of-box.png" aria-label="Show Task 06: Take Block Out Box" aria-pressed="false" tabindex="-1"></button>
+            <button class="task-dot" type="button" data-task-option data-task-index="07" data-task-label="Upright Fallen Cup" data-video-src="./static/videos/hero-black.mp4" data-poster="./static/images/tasks/upright-fallen-cup.png" aria-label="Show Task 07: Upright Fallen Cup" aria-pressed="false" tabindex="-1"></button>
+          </div>
         </div>
       </div>
     </section>

@@ -127,6 +127,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const previousButton = browser.querySelector('[data-browser-previous]');
     const nextButton = browser.querySelector('[data-browser-next]');
     const browserKind = browser.dataset.browserKind || 'Task';
+    const browserMode = browser.dataset.browserMode || 'thumbnail';
+    const transitionTarget = browser.querySelector('[data-task-transition]');
+    const swipeSurface = browser.querySelector('[data-task-swipe]');
 
     if (!options.length || !video || !source) return;
 
@@ -147,7 +150,8 @@ document.addEventListener('DOMContentLoaded', function () {
       const nextLabel = activeOption.dataset.taskLabel;
       const nextTaskIndex = activeOption.dataset.taskIndex;
       const shouldFocus = settings && settings.focus;
-      const shouldScroll = !settings || settings.scroll !== false;
+      const shouldScroll = browserMode !== 'stacked' && (!settings || settings.scroll !== false);
+      const shouldAnimate = browserMode === 'stacked' && (!settings || settings.animate !== false) && !reducedMotion.matches;
 
       activeIndex = nextIndex;
       options.forEach(function (option, optionIndex) {
@@ -169,6 +173,12 @@ document.addEventListener('DOMContentLoaded', function () {
       if (taskLabel) taskLabel.textContent = nextLabel;
       if (taskPosition) taskPosition.textContent = `Task ${nextTaskIndex} / ${String(options.length).padStart(2, '0')}`;
       if (placeholder) placeholder.textContent = `${browserKind} video forthcoming`;
+
+      if (shouldAnimate && transitionTarget) {
+        transitionTarget.classList.remove('is-task-changing');
+        void transitionTarget.offsetWidth;
+        transitionTarget.classList.add('is-task-changing');
+      }
 
       if (shouldScroll) {
         activeOption.scrollIntoView({
@@ -211,7 +221,33 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
 
-    activateTask(activeIndex, { scroll: false });
+    if (swipeSurface && browserMode === 'stacked') {
+      let touchStart = null;
+
+      swipeSurface.addEventListener('touchstart', function (event) {
+        if (event.touches.length !== 1) return;
+        touchStart = {
+          x: event.touches[0].clientX,
+          y: event.touches[0].clientY
+        };
+      }, { passive: true });
+
+      swipeSurface.addEventListener('touchend', function (event) {
+        if (!touchStart || !event.changedTouches.length) return;
+        const deltaX = event.changedTouches[0].clientX - touchStart.x;
+        const deltaY = event.changedTouches[0].clientY - touchStart.y;
+        touchStart = null;
+
+        if (Math.abs(deltaX) < 44 || Math.abs(deltaX) <= Math.abs(deltaY) * 1.2) return;
+        activateTask(activeIndex + (deltaX < 0 ? 1 : -1));
+      }, { passive: true });
+
+      swipeSurface.addEventListener('touchcancel', function () {
+        touchStart = null;
+      }, { passive: true });
+    }
+
+    activateTask(activeIndex, { scroll: false, animate: false });
   });
 
   const copyButton = document.querySelector('[data-copy-target]');
