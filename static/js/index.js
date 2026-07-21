@@ -119,11 +119,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.querySelectorAll('[data-task-browser]').forEach(function (browser) {
     const options = Array.from(browser.querySelectorAll('[data-task-option]'));
-    const video = browser.querySelector('[data-task-video]');
-    const source = browser.querySelector('[data-task-source]');
+    const mediaItems = Array.from(browser.querySelectorAll('.task-video-frame')).map(function (frame) {
+      const video = frame.querySelector('[data-task-video]');
+      const source = frame.querySelector('[data-task-source]');
+      if (!video || !source) return null;
+
+      return {
+        video: video,
+        source: source,
+        placeholder: frame.querySelector('[data-task-placeholder]'),
+        role: video.dataset.taskVideo || 'default'
+      };
+    }).filter(Boolean);
     const taskLabel = browser.querySelector('[data-task-label]:not([data-task-option])');
     const taskPosition = browser.querySelector('[data-task-position]');
-    const placeholder = browser.querySelector('[data-task-placeholder]');
     const previousButton = browser.querySelector('[data-browser-previous]');
     const nextButton = browser.querySelector('[data-browser-next]');
     const browserKind = browser.dataset.browserKind || 'Task';
@@ -131,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const transitionTarget = browser.querySelector('[data-task-transition]');
     const swipeSurface = browser.querySelector('[data-task-swipe]');
 
-    if (!options.length || !video || !source) return;
+    if (!options.length || !mediaItems.length) return;
 
     let activeIndex = Math.max(0, options.findIndex(function (option) {
       return option.getAttribute('aria-pressed') === 'true';
@@ -144,9 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const activateTask = function (index, settings) {
       const nextIndex = wrapIndex(index);
       const activeOption = options[nextIndex];
-      const nextSource = activeOption.dataset.videoSrc;
       const taskImage = activeOption.querySelector('img');
-      const nextPoster = activeOption.dataset.poster || (taskImage ? taskImage.getAttribute('src') : '');
       const nextLabel = activeOption.dataset.taskLabel;
       const nextTaskIndex = activeOption.dataset.taskIndex;
       const shouldFocus = settings && settings.focus;
@@ -160,19 +167,29 @@ document.addEventListener('DOMContentLoaded', function () {
         option.setAttribute('tabindex', isActive ? '0' : '-1');
       });
 
-      video.pause();
-      if (nextSource && source.getAttribute('src') !== nextSource) {
-        source.setAttribute('src', nextSource);
-      }
+      mediaItems.forEach(function (mediaItem) {
+        const rolePrefix = mediaItem.role === 'default' ? '' : mediaItem.role;
+        const sourceKey = rolePrefix ? `${rolePrefix}VideoSrc` : 'videoSrc';
+        const posterKey = rolePrefix ? `${rolePrefix}Poster` : 'poster';
+        const nextSource = activeOption.dataset[sourceKey] || activeOption.dataset.videoSrc;
+        const nextPoster = activeOption.dataset[posterKey] || activeOption.dataset.poster || (taskImage ? taskImage.getAttribute('src') : '');
+        const mediaName = rolePrefix ? rolePrefix.charAt(0).toUpperCase() + rolePrefix.slice(1) : browserKind;
 
-      if (nextPoster) video.setAttribute('poster', nextPoster);
-      else video.removeAttribute('poster');
-      if (nextSource) video.load();
+        mediaItem.video.pause();
+        if (nextSource && mediaItem.source.getAttribute('src') !== nextSource) {
+          mediaItem.source.setAttribute('src', nextSource);
+        }
 
-      video.setAttribute('aria-label', `${browserKind} video for ${nextLabel}`);
+        if (nextPoster) mediaItem.video.setAttribute('poster', nextPoster);
+        else mediaItem.video.removeAttribute('poster');
+        if (nextSource) mediaItem.video.load();
+
+        mediaItem.video.setAttribute('aria-label', `${mediaName} video for ${nextLabel}`);
+        if (mediaItem.placeholder) mediaItem.placeholder.textContent = `${mediaName} video forthcoming`;
+      });
+
       if (taskLabel) taskLabel.textContent = nextLabel;
       if (taskPosition) taskPosition.textContent = `Task ${nextTaskIndex} / ${String(options.length).padStart(2, '0')}`;
-      if (placeholder) placeholder.textContent = `${browserKind} video forthcoming`;
 
       if (shouldAnimate && transitionTarget) {
         transitionTarget.classList.remove('is-task-changing');
