@@ -780,7 +780,7 @@ button:focus-visible {
   left: 50%;
   pointer-events: none;
   position: absolute;
-  top: 2.55rem;
+  top: 0;
   width: 1px;
   z-index: 2;
 }
@@ -794,31 +794,39 @@ button:focus-visible {
 }
 
 .r2s-domain-labels {
-  background: rgba(8, 15, 22, 0.72);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  align-items: center;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  left: 0;
+  margin-top: 0.85rem;
+  padding: 0 clamp(0.35rem, 1.5vw, 1.25rem);
   pointer-events: none;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 3;
 }
 
 .r2s-domain-labels span {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 0.66rem;
+  border: 1px solid;
+  border-radius: 999px;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.13em;
   line-height: 1;
-  padding: 0.92rem 1rem 0.82rem;
+  min-width: 5.35rem;
+  padding: 0.5rem 1rem 0.46rem;
   text-align: center;
   text-transform: uppercase;
 }
 
-.r2s-domain-labels span + span {
-  border-left: 1px solid rgba(255, 255, 255, 0.25);
+.r2s-domain-labels span:first-child {
+  background: #fbf0f2;
+  border-color: #e7afb5;
+  color: #b63f48;
+  justify-self: start;
+}
+
+.r2s-domain-labels span:last-child {
+  background: #eff3fb;
+  border-color: #b7c4e3;
+  color: #4963a8;
+  justify-self: end;
 }
 
 .r2s-showcase-frame .video-placeholder {
@@ -833,7 +841,7 @@ button:focus-visible {
   font-weight: 500;
   letter-spacing: -0.025em;
   line-height: 1.3;
-  margin-top: 0.95rem;
+  margin-top: 0.58rem;
   text-align: center;
 }
 
@@ -1779,19 +1787,22 @@ button:focus-visible {
     border-radius: 0.35rem;
   }
 
-  .r2s-showcase-frame::after {
-    top: 2.05rem;
+  .r2s-domain-labels {
+    margin-top: 0.65rem;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
   }
 
   .r2s-domain-labels span {
-    font-size: 0.56rem;
-    letter-spacing: 0.13em;
-    padding: 0.72rem 0.65rem 0.66rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    min-width: 4.45rem;
+    padding: 0.42rem 0.72rem 0.38rem;
   }
 
   .r2s-showcase-caption {
     font-size: clamp(1.08rem, 5vw, 1.25rem);
-    margin-top: 0.72rem;
+    margin-top: 0.5rem;
   }
 
   .task-video-caption.is-task-title-only {
