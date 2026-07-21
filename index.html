@@ -274,7 +274,7 @@
         <div class="section-heading is-centered is-wide">
           <h2 class="module-title" id="vlm-preference-title">VLM Preference</h2>
           <p class="section-intro">
-            A VLM compares paired policy rollouts and returns a binary preference based on execution quality.
+            R2S-Eval uses a VLM as an automated video-based preference judge. It first generates structured descriptions of task progress, action continuity, control quality, and final task completion, then compares paired descriptions to produce preference labels. A Bradley–Terry model aggregates these labels into policy rankings.
           </p>
         </div>
 
