@@ -454,40 +454,88 @@
     <section class="section results-section" id="results" aria-labelledby="results-title">
       <div class="container is-max-desktop">
         <div class="section-heading is-centered is-wide">
-          <p class="section-kicker">03 · Evaluation results</p>
-          <h2 class="title section-title" id="results-title">Hardware outcomes and VLM preferences</h2>
+          <p class="module-index">03</p>
+          <h2 class="module-title" id="results-title">Evaluation Results</h2>
           <p class="section-intro">
-            The Real-to-Sim experiment evaluates six VLA policies on the seven calibrated tasks. The two views below separate hardware success from behavior-level preference while preserving a common policy order.
+            We compare six VLA policies in both the LIBERO simulation benchmark and our calibrated Real-to-Sim setting. Ground-truth task success and VLM preference scores provide complementary views of policy capability and behavioral quality.
           </p>
         </div>
 
-        <div class="result-evidence">
-          <p><strong>Reliable conclusions.</strong> Across eight VLM judges, the Real-to-Sim setting reaches an average Spearman rank correlation of 0.957, Pearson correlation of 0.978, and 91.9% agreement with human preferences.</p>
-        </div>
+        <section class="benchmark-results-group" aria-labelledby="libero-results-title">
+          <header class="benchmark-results-header">
+            <div>
+              <p class="case-index">Simulation benchmark</p>
+              <h3 id="libero-results-title">LIBERO</h3>
+            </div>
+            <p>Forty language-conditioned manipulation tasks across four suites test spatial reasoning, object interaction, goal completion, and long-horizon execution.</p>
+          </header>
 
-        <div class="result-comparison-grid">
-          <figure class="result-panel">
-            <header class="result-panel-header">
-              <p class="case-index">Hardware reference</p>
-              <h3>Task success</h3>
-            </header>
-            <a class="result-chart-link" href="./static/images/r2s-success-rate.png" aria-label="Open the Real-to-Sim ground-truth success-rate chart at full size">
-              <img src="./static/images/r2s-success-rate.png" alt="Real-to-Sim hardware success rates for six policies: X-VLA 65.7, pi 0.5 63.6, pi 0 53.6, NORA-Long 4.3, SmolVLA 2.1, and OpenVLA 7.1 percent." loading="lazy">
-            </a>
-            <figcaption>Average hardware success rate across all seven real-world tasks.</figcaption>
-          </figure>
+          <div class="result-evidence">
+            <p><strong>Simulation alignment.</strong> Averaged across eight VLM judges, preference scores achieve a Spearman rank correlation of 0.823, Pearson correlation of 0.924, and 82.9% agreement with human preferences.</p>
+          </div>
 
-          <figure class="result-panel">
-            <header class="result-panel-header">
-              <p class="case-index">Behavior preference</p>
-              <h3>VLM preference score</h3>
-            </header>
-            <a class="result-chart-link" href="./static/images/r2s-preference-score.png" aria-label="Open the Real-to-Sim VLM preference-score chart at full size">
-              <img src="./static/images/r2s-preference-score.png" alt="Real-to-Sim VLM preference scores for six policies: X-VLA 30.1, pi 0.5 31.2, pi 0 24.5, NORA-Long 5.4, SmolVLA 0.1, and OpenVLA 8.8 percent." loading="lazy">
-            </a>
-            <figcaption>Bradley-Terry preference strength averaged over all eight VLM judges.</figcaption>
-          </figure>
-        </div>
+          <div class="result-comparison-grid">
+            <figure class="result-panel">
+              <header class="result-panel-header">
+                <p class="case-index">Simulator reference</p>
+                <h4>Task success</h4>
+              </header>
+              <a class="result-chart-link" href="./static/images/libero-success-rate.png" aria-label="Open the LIBERO ground-truth success-rate chart at full size">
+                <img src="./static/images/libero-success-rate.png" alt="LIBERO success rates for six policies: X-VLA 97.5, pi 0.5 96.8, pi 0 92.8, NORA-Long 82.2, SmolVLA 76.2, and OpenVLA 70.7 percent." loading="lazy">
+              </a>
+              <figcaption>Average ground-truth success rate across the four LIBERO task suites.</figcaption>
+            </figure>
+
+            <figure class="result-panel">
+              <header class="result-panel-header">
+                <p class="case-index">Behavior preference</p>
+                <h4>VLM preference score</h4>
+              </header>
+              <a class="result-chart-link" href="./static/images/libero-preference-score.png" aria-label="Open the LIBERO VLM preference-score chart at full size">
+                <img src="./static/images/libero-preference-score.png" alt="LIBERO VLM preference scores for six policies: X-VLA 18.0, pi 0.5 20.7, pi 0 20.5, NORA-Long 14.9, SmolVLA 14.4, and OpenVLA 11.5 percent." loading="lazy">
+              </a>
+              <figcaption>Bradley–Terry preference strength averaged over all eight VLM judges.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="benchmark-results-group" aria-labelledby="r2s-results-title">
+          <header class="benchmark-results-header">
+            <div>
+              <p class="case-index">Calibrated evaluation</p>
+              <h3 id="r2s-results-title">Real-to-Sim</h3>
+            </div>
+            <p>Seven reconstructed real-world tasks compare physical robot outcomes with behavior observed in calibrated simulation rollouts.</p>
+          </header>
+
+          <div class="result-evidence">
+            <p><strong>Real-world alignment.</strong> Averaged across eight VLM judges, preference scores achieve a Spearman rank correlation of 0.957, Pearson correlation of 0.978, and 91.9% agreement with human preferences.</p>
+          </div>
+
+          <div class="result-comparison-grid">
+            <figure class="result-panel">
+              <header class="result-panel-header">
+                <p class="case-index">Hardware reference</p>
+                <h4>Task success</h4>
+              </header>
+              <a class="result-chart-link" href="./static/images/r2s-success-rate.png" aria-label="Open the Real-to-Sim ground-truth success-rate chart at full size">
+                <img src="./static/images/r2s-success-rate.png" alt="Real-to-Sim hardware success rates for six policies: X-VLA 65.7, pi 0.5 63.6, pi 0 53.6, NORA-Long 4.3, SmolVLA 2.1, and OpenVLA 7.1 percent." loading="lazy">
+              </a>
+              <figcaption>Average hardware success rate across all seven real-world tasks.</figcaption>
+            </figure>
+
+            <figure class="result-panel">
+              <header class="result-panel-header">
+                <p class="case-index">Behavior preference</p>
+                <h4>VLM preference score</h4>
+              </header>
+              <a class="result-chart-link" href="./static/images/r2s-preference-score.png" aria-label="Open the Real-to-Sim VLM preference-score chart at full size">
+                <img src="./static/images/r2s-preference-score.png" alt="Real-to-Sim VLM preference scores for six policies: X-VLA 30.1, pi 0.5 31.2, pi 0 24.5, NORA-Long 5.4, SmolVLA 0.1, and OpenVLA 8.8 percent." loading="lazy">
+              </a>
+              <figcaption>Bradley–Terry preference strength averaged over all eight VLM judges.</figcaption>
+            </figure>
+          </div>
+        </section>
 
         <div class="policy-legend" aria-label="Policy color legend">
           <span class="legend-item"><span class="legend-swatch x-vla" aria-hidden="true"></span>X-VLA</span>
@@ -498,7 +546,7 @@
           <span class="legend-item"><span class="legend-swatch openvla" aria-hidden="true"></span>OpenVLA</span>
         </div>
 
-        <p class="results-method-note">Human alignment is measured from 200 sampled video pairs per setting, annotated by three people and aggregated by majority vote.</p>
+        <p class="results-method-note">VLM preference scores use the Bradley–Terry model. Human alignment is measured from 200 sampled video pairs per setting, annotated by three people and aggregated by majority vote.</p>
       </div>
     </section>
 

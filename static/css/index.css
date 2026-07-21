@@ -781,9 +781,43 @@ button:focus-visible {
   border: 1px solid #0a0a0a;
 }
 
+.benchmark-results-group + .benchmark-results-group {
+  border-top: 1px solid var(--line-dark);
+  margin-top: clamp(3.5rem, 7vw, 5.5rem);
+  padding-top: clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.benchmark-results-header {
+  align-items: end;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(12rem, 0.7fr) minmax(18rem, 1fr);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+}
+
+.benchmark-results-header h3 {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(2.3rem, 4.5vw, 3.4rem);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.benchmark-results-header > p {
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.7;
+  margin-left: auto;
+  max-width: 31rem;
+  text-align: right;
+}
+
 .result-evidence {
   border-left: 2px solid var(--gold);
-  margin: 0 auto 2.5rem;
+  margin: 0 0 2rem;
   max-width: 58rem;
   padding: 0.15rem 0 0.15rem 1.15rem;
 }
@@ -817,8 +851,12 @@ button:focus-visible {
   margin-bottom: 1rem;
 }
 
-.result-panel h3 {
+.result-panel h4 {
+  color: var(--ink);
+  font-family: var(--serif);
   font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
 }
 
 .result-chart-link {
@@ -1493,6 +1531,18 @@ button:focus-visible {
 
   .simulation-panel-header > p {
     margin-top: 0.55rem;
+    max-width: none;
+    text-align: left;
+  }
+
+  .benchmark-results-header {
+    align-items: start;
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .benchmark-results-header > p {
+    margin-left: 0;
     max-width: none;
     text-align: left;
   }
