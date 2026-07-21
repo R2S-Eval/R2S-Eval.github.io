@@ -290,45 +290,6 @@ button:focus-visible {
   cursor: default;
 }
 
-.study-summary {
-  border-top: 1px solid var(--line);
-  display: grid;
-  gap: 0;
-  grid-template-columns: repeat(4, 1fr);
-  margin: 3.8rem auto 0;
-  max-width: 56rem;
-  padding-top: 1.65rem;
-}
-
-.summary-item {
-  border-right: 1px solid var(--line);
-  display: flex;
-  flex-direction: column;
-  line-height: 1.25;
-  padding: 0.1rem 1.2rem;
-}
-
-.summary-item:last-child {
-  border-right: 0;
-}
-
-.summary-item strong {
-  color: var(--navy);
-  font-family: var(--serif);
-  font-size: 1.85rem;
-  font-weight: 600;
-  letter-spacing: -0.035em;
-}
-
-.summary-item span {
-  color: var(--muted);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  margin-top: 0.4rem;
-  text-transform: uppercase;
-}
-
 .scroll-hero .publication-links {
   margin-top: 1.35rem;
 }
@@ -365,26 +326,6 @@ button:focus-visible {
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.15);
   color: rgba(255, 255, 255, 0.42);
-}
-
-.scroll-hero .study-summary {
-  border-color: rgba(255, 255, 255, 0.22);
-  margin-top: 2.1rem;
-  max-width: 54rem;
-  padding-top: 1.2rem;
-}
-
-.scroll-hero .summary-item {
-  border-color: rgba(255, 255, 255, 0.18);
-}
-
-.scroll-hero .summary-item strong {
-  color: #fff;
-  text-shadow: 0 6px 20px rgba(0, 0, 0, 0.42);
-}
-
-.scroll-hero .summary-item span {
-  color: rgba(255, 255, 255, 0.58);
 }
 
 .hero-video-label,
@@ -1065,42 +1006,6 @@ button:focus-visible {
     width: 100%;
   }
 
-  .study-summary {
-    grid-template-columns: repeat(2, 1fr);
-    margin-top: 2.8rem;
-  }
-
-  .scroll-hero .study-summary {
-    margin-top: 1.55rem;
-    padding-top: 0.45rem;
-  }
-
-  .summary-item {
-    border-bottom: 1px solid var(--line);
-    padding: 0.9rem 0.6rem;
-  }
-
-  .scroll-hero .summary-item {
-    padding: 0.55rem 0.35rem;
-  }
-
-  .scroll-hero .summary-item strong {
-    font-size: 1.45rem;
-  }
-
-  .scroll-hero .summary-item span {
-    font-size: 0.58rem;
-  }
-
-  .summary-item:nth-child(2) {
-    border-right: 0;
-  }
-
-  .summary-item:nth-child(3),
-  .summary-item:nth-child(4) {
-    border-bottom: 0;
-  }
-
   .hero-video-label,
   .hero-scroll-cue {
     bottom: 0.9rem;
@@ -1285,21 +1190,6 @@ button:focus-visible {
     grid-column: 1 / -1;
   }
 
-  .scroll-hero .study-summary {
-    margin-top: 0.75rem;
-  }
-
-  .scroll-hero .summary-item {
-    padding: 0.28rem 0.25rem;
-  }
-
-  .scroll-hero .summary-item strong {
-    font-size: 1.2rem;
-  }
-
-  .scroll-hero .summary-item span {
-    font-size: 0.5rem;
-  }
 }
 
 @media screen and (min-width: 769px) and (max-height: 600px) {
@@ -1307,8 +1197,7 @@ button:focus-visible {
     padding: 0.65rem 1.5rem 2.2rem;
   }
 
-  .manuscript-label,
-  .scroll-hero .study-summary {
+  .manuscript-label {
     display: none;
   }
 
