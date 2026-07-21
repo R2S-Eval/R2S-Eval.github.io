@@ -20,6 +20,12 @@ python3 -m http.server 8000
 
 Then open <http://localhost:8000/>.
 
+## Hero video
+
+The cinematic landing section currently uses a short black placeholder at
+`static/videos/hero-black.mp4`. Replace that file with the final muted H.264
+teaser while keeping the same path to publish the real footage.
+
 ## Website template attribution
 
 The website structure and visual language are adapted from the
