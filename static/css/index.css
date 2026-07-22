@@ -811,6 +811,7 @@ button:focus-visible {
   line-height: 1;
   min-width: 5.35rem;
   padding: 0.5rem 1rem 0.46rem;
+  justify-self: center;
   text-align: center;
   text-transform: uppercase;
 }
@@ -819,14 +820,12 @@ button:focus-visible {
   background: #fbf0f2;
   border-color: #e7afb5;
   color: #b63f48;
-  justify-self: start;
 }
 
 .r2s-domain-labels span:last-child {
   background: #eff3fb;
   border-color: #b7c4e3;
   color: #4963a8;
-  justify-self: end;
 }
 
 .r2s-showcase-frame .video-placeholder {
