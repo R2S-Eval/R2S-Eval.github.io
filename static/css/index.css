@@ -1036,9 +1036,9 @@ button:focus-visible {
 
 .preference-video-header {
   align-items: center;
-  display: flex;
-  gap: 1rem;
-  justify-content: space-between;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: auto 1fr auto;
   min-height: 2.85rem;
   padding: 0.58rem 0.9rem 0.52rem;
 }
@@ -1050,6 +1050,15 @@ button:focus-visible {
   font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.15;
+}
+
+.preference-failure-mark {
+  color: #b4232d;
+  font-family: var(--sans);
+  font-size: 1.45rem;
+  font-weight: 700;
+  justify-self: center;
+  line-height: 1;
 }
 
 .preference-policy-name {
