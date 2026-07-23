@@ -764,7 +764,7 @@ button:focus-visible {
 }
 
 .r2s-showcase-frame {
-  aspect-ratio: 32 / 9;
+  aspect-ratio: 5 / 2;
   background: #000;
   border: 1px solid #20262c;
   border-radius: 0.55rem;
@@ -1054,7 +1054,7 @@ button:focus-visible {
   .r2s-showcase-frame::before {
     content: "";
     display: block;
-    padding-top: 28.125%;
+    padding-top: 40%;
   }
 
   .r2s-showcase-frame video {
