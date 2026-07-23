@@ -117,6 +117,19 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  document.querySelectorAll('[data-playback-rate]').forEach(function (video) {
+    const playbackRate = Number.parseFloat(video.dataset.playbackRate);
+    if (!Number.isFinite(playbackRate) || playbackRate <= 0) return;
+
+    const applyPlaybackRate = function () {
+      video.defaultPlaybackRate = playbackRate;
+      video.playbackRate = playbackRate;
+    };
+
+    video.addEventListener('loadedmetadata', applyPlaybackRate);
+    applyPlaybackRate();
+  });
+
   const r2sShowcaseVideos = Array.from(document.querySelectorAll('[data-r2s-autoplay]'));
   if (r2sShowcaseVideos.length) {
     let r2sObserver = null;
@@ -244,7 +257,9 @@ document.addEventListener('DOMContentLoaded', function () {
         else mediaItem.video.removeAttribute('poster');
         if (nextSource) mediaItem.video.load();
 
-        mediaItem.video.setAttribute('aria-label', `${mediaName} video for ${nextLabel}`);
+        const playbackRate = Number.parseFloat(mediaItem.video.dataset.playbackRate);
+        const playbackRateLabel = Number.isFinite(playbackRate) ? ` at ${playbackRate}× speed` : '';
+        mediaItem.video.setAttribute('aria-label', `${mediaName} video for ${nextLabel}${playbackRateLabel}`);
         if (mediaItem.placeholder) mediaItem.placeholder.textContent = `${mediaName} video forthcoming`;
       });
 
