@@ -911,6 +911,36 @@ button:focus-visible {
   max-width: 40rem;
 }
 
+.preference-example-meta {
+  margin: 0 auto 0.9rem;
+  max-width: 70rem;
+}
+
+.preference-task-tag {
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--line-dark);
+  border-radius: 0.35rem;
+  color: var(--ink-soft);
+  display: inline-flex;
+  font-size: 0.72rem;
+  font-weight: 600;
+  gap: 0.7rem;
+  line-height: 1;
+  margin: 0;
+  padding: 0.55rem 0.75rem;
+}
+
+.preference-task-tag span {
+  border-right: 1px solid var(--line-dark);
+  color: var(--gold);
+  font-size: 0.59rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding-right: 0.7rem;
+  text-transform: uppercase;
+}
+
 .preference-analysis {
   align-self: start;
   display: grid;
@@ -990,6 +1020,8 @@ button:focus-visible {
 .preference-video-header {
   align-items: center;
   display: flex;
+  gap: 1rem;
+  justify-content: space-between;
   min-height: 2.85rem;
   padding: 0.58rem 0.9rem 0.52rem;
 }
@@ -1003,7 +1035,20 @@ button:focus-visible {
   line-height: 1.15;
 }
 
+.preference-policy-name {
+  background: var(--soft);
+  border: 1px solid var(--line-dark);
+  border-radius: 0.3rem;
+  color: var(--ink-soft);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.035em;
+  line-height: 1;
+  padding: 0.38rem 0.58rem 0.34rem;
+}
+
 .preference-video-frame {
+  aspect-ratio: 5 / 4;
   border-top: 1px solid var(--line-dark);
 }
 
