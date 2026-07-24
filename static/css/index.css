@@ -925,7 +925,15 @@ button:focus-visible {
   font-size: 0.96rem;
   line-height: 1.65;
   margin-top: 0;
-  max-width: 40rem;
+  max-width: 60rem;
+}
+
+.real-to-sim-section .section-heading.is-wide,
+.policy-rollout-section .section-heading.is-wide,
+.vlm-preference-section .section-heading.is-wide,
+.real-to-sim-section .section-intro,
+.policy-rollout-section .section-intro {
+  max-width: 60rem;
 }
 
 .container.is-widescreen.vlm-preference-container {
