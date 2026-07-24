@@ -244,8 +244,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const rolePrefix = mediaItem.role === 'default' ? '' : mediaItem.role;
         const sourceKey = rolePrefix ? `${rolePrefix}VideoSrc` : 'videoSrc';
         const posterKey = rolePrefix ? `${rolePrefix}Poster` : 'poster';
+        const posterAttribute = rolePrefix ? `data-${rolePrefix}-poster` : 'data-poster';
+        const hasExplicitPoster = activeOption.hasAttribute(posterAttribute);
         const nextSource = activeOption.dataset[sourceKey] || activeOption.dataset.videoSrc;
-        const nextPoster = activeOption.dataset[posterKey] || activeOption.dataset.poster || (taskImage ? taskImage.getAttribute('src') : '');
+        const nextPoster = hasExplicitPoster
+          ? activeOption.dataset[posterKey]
+          : activeOption.dataset.poster || (taskImage ? taskImage.getAttribute('src') : '');
         const mediaName = rolePrefix ? rolePrefix.charAt(0).toUpperCase() + rolePrefix.slice(1) : browserKind;
 
         mediaItem.video.pause();
@@ -260,7 +264,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const playbackRate = Number.parseFloat(mediaItem.video.dataset.playbackRate);
         const playbackRateLabel = Number.isFinite(playbackRate) ? ` at ${playbackRate}× speed` : '';
         mediaItem.video.setAttribute('aria-label', `${mediaName} video for ${nextLabel}${playbackRateLabel}`);
-        if (mediaItem.placeholder) mediaItem.placeholder.textContent = `${mediaName} video forthcoming`;
+        if (mediaItem.placeholder) {
+          mediaItem.placeholder.hidden = !/hero-black\.mp4(?:[?#]|$)/.test(nextSource || '');
+          mediaItem.placeholder.textContent = `${mediaName} video forthcoming`;
+        }
       });
 
       if (taskLabel) taskLabel.textContent = nextLabel;

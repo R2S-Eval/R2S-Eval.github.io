@@ -747,9 +747,65 @@ button:focus-visible {
   max-width: 46rem;
 }
 
+.task-video-stage.task-video-pair-stage {
+  background: transparent;
+  border: 0;
+  max-width: 58rem;
+}
+
+.task-video-pair {
+  align-items: stretch;
+  display: grid;
+  gap: clamp(0.35rem, 0.8vw, 0.65rem);
+  grid-template-columns: clamp(2.35rem, 4vw, 3rem) repeat(2, minmax(0, 1fr)) clamp(2.35rem, 4vw, 3rem);
+}
+
 .task-video-frame {
   aspect-ratio: 5 / 4;
   border-bottom: 1px solid #151515;
+}
+
+.task-video-pair .task-video-frame {
+  border: 1px solid #20262c;
+  border-radius: 0.5rem;
+}
+
+.task-domain-rail {
+  align-items: center;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+}
+
+.task-domain-rail span {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.task-domain-rail.is-real {
+  background: #fbf0f2;
+  border-color: #e7afb5;
+  color: #b63f48;
+}
+
+.task-domain-rail.is-real span {
+  transform: rotate(-90deg);
+}
+
+.task-domain-rail.is-sim {
+  background: #eff3fb;
+  border-color: #b7c4e3;
+  color: #4963a8;
+}
+
+.task-domain-rail.is-sim span {
+  transform: rotate(90deg);
 }
 
 .task-video-frame::after,
@@ -902,6 +958,11 @@ button:focus-visible {
 .task-video-caption.is-task-title-only h3 {
   font-size: clamp(1.15rem, 1.8vw, 1.45rem);
   letter-spacing: -0.03em;
+}
+
+.task-video-pair-stage .task-video-caption.is-task-title-only {
+  min-height: 0;
+  padding: 0.9rem 0 0;
 }
 
 .task-video-kind {
@@ -2081,6 +2142,31 @@ button:focus-visible {
 
   .task-video-caption.is-task-title-only h3 {
     font-size: clamp(1.05rem, 4.6vw, 1.25rem);
+  }
+
+  .task-video-pair {
+    gap: 0.28rem;
+    grid-template-columns: 1.75rem repeat(2, minmax(0, 1fr)) 1.75rem;
+  }
+
+  .task-domain-rail,
+  .task-video-pair .task-video-frame {
+    border-radius: 0.35rem;
+  }
+
+  .task-domain-rail span {
+    font-size: 0.5rem;
+    letter-spacing: 0.08em;
+  }
+
+  .task-video-pair .task-video-frame::after {
+    bottom: 0.55rem;
+    font-size: 0.85rem;
+    right: 0.45rem;
+  }
+
+  .task-video-pair-stage .task-video-caption.is-task-title-only {
+    padding: 0.75rem 0 0;
   }
 
   .preference-verdict {
