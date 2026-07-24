@@ -770,15 +770,22 @@ button:focus-visible {
 }
 
 .r2s-showcase-list {
+  column-gap: clamp(1.5rem, 2.6vw, 2.5rem);
   display: grid;
-  gap: clamp(3rem, 6vw, 4.8rem);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   margin: 0 auto;
-  max-width: 82rem;
+  max-width: 76rem;
+  row-gap: clamp(2.8rem, 4.5vw, 4rem);
 }
 
 .r2s-showcase-item {
+  grid-column: span 2;
   margin: 0;
   min-width: 0;
+}
+
+.r2s-showcase-item:last-child:nth-child(odd) {
+  grid-column: 2 / span 2;
 }
 
 .r2s-showcase-frame {
@@ -1886,6 +1893,16 @@ button:focus-visible {
 @media screen and (max-width: 900px) {
   .result-comparison-grid {
     grid-template-columns: 1fr;
+  }
+
+  .r2s-showcase-list {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 42rem;
+  }
+
+  .r2s-showcase-item,
+  .r2s-showcase-item:last-child:nth-child(odd) {
+    grid-column: auto;
   }
 }
 
