@@ -1173,7 +1173,7 @@ button:focus-visible {
 
 .preference-verdict-result {
   color: var(--navy);
-  font-family: var(--sans);
+  font-family: var(--serif);
   font-size: clamp(1.45rem, 1.8vw, 1.75rem);
   font-weight: 600;
   letter-spacing: -0.025em;
@@ -1182,12 +1182,9 @@ button:focus-visible {
   white-space: nowrap;
 }
 
-.preference-verdict.is-pending {
-  border-top-color: var(--line-dark);
-}
-
-.preference-verdict.is-pending .preference-verdict-result {
-  color: var(--muted);
+.preference-verdict-result sub {
+  font-size: 0.55em;
+  vertical-align: -0.18em;
 }
 
 @supports not (aspect-ratio: 16 / 9) {
