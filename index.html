@@ -132,7 +132,7 @@
         <div class="section-heading is-centered is-wide">
           <h2 class="module-title" id="real-to-sim-title">Real-to-Sim</h2>
           <p class="section-intro">
-            R2S-Eval calibrates the simulated robot, task objects, camera viewpoints, initial object states, task definitions, and scene context to match the target real-world evaluation setting. Each synchronized comparison is presented as one paired video, with the real rollout on the left and the calibrated simulation on the right.
+            R2S-Eval aligns the factors that determine policy behavior rather than pursuing a perfectly photorealistic twin: robot geometry and control, task objects, camera views, initial states, task definitions, and scene context. Across seven tabletop tasks, the paired videos show teleoperated real trajectories on the left and recorded joint-angle action replays in calibrated NVIDIA Isaac Sim on the right, illustrating the calibrated task alignment used to acquire simulated data before closed-loop evaluation.
           </p>
         </div>
 
@@ -215,7 +215,7 @@
         <div class="section-heading is-centered is-wide">
           <h2 class="module-title" id="policy-rollouts-title">Policy Rollouts</h2>
           <p class="section-intro">
-            Policy rollouts expose complete execution behavior in the calibrated evaluation environments. Select a task to compare the corresponding real-world and simulated rollouts; both videos and the task label update together.
+            Candidate policies are adapted with simulated trajectories and then deployed in closed loop in the calibrated environment. For each of the seven tasks, the viewer places a hardware rollout beside a rollout from the calibrated simulator under consistent task definitions, initialization ranges, and success conditions; selecting a task updates both videos and the shared label. The paired executions make differences in task progress, recovery, and control behavior directly observable.
           </p>
         </div>
 
@@ -279,7 +279,7 @@
         <div class="section-heading is-centered is-wide">
           <h2 class="module-title" id="vlm-preference-title">VLM Preference</h2>
           <p class="section-intro">
-            R2S-Eval uses a VLM as an automated video-based preference judge. It first generates structured descriptions of task progress, action continuity, control quality, and final task completion, then compares paired descriptions to produce preference labels. A Bradley–Terry model aggregates these labels into policy rankings.
+            R2S-Eval repeatedly samples rollout pairs from candidate-policy video sets and uses a VLM as an automated preference judge. For each video, the model first describes task progress, action continuity, control quality, and final task completion, then compares the paired descriptions to produce a preference; balanced pairwise observations are aggregated with a Bradley–Terry model into policy scores and rankings. The shown both-failure and both-success cases illustrate execution-quality differences that binary labels cannot reveal.
           </p>
         </div>
 
@@ -341,7 +341,7 @@
           <section class="preference-example is-success" aria-labelledby="success-example-title">
             <header class="preference-example-meta">
               <h3 class="preference-case-title" id="success-example-title">Both Succeeded</h3>
-              <p class="preference-task-tag"><span>Task</span>Take Block Out Box</p>
+              <p class="preference-task-tag"><span>Task</span>Cover Ball with Cup</p>
             </header>
 
             <div class="vlm-preference-comparison" role="group" aria-label="Preference comparison between two successful rollouts">
@@ -353,7 +353,7 @@
                     <span class="preference-policy-name is-success">Success</span>
                   </figcaption>
                   <div class="video-frame preference-video-frame">
-                    <video controls muted loop playsinline preload="metadata" data-preference-video="policy-c" data-playback-rate="2" aria-label="Policy C successful rollout for Take Block Out Box, shown at 2× speed">
+                    <video controls muted loop playsinline preload="metadata" data-preference-video="policy-c" data-playback-rate="2" aria-label="Policy C successful rollout for Cover Ball with Cup, shown at 2× speed">
                       <source src="./static/videos/vlm-preference/policy-c-success.mp4" type="video/mp4">
                     </video>
                   </div>
@@ -366,7 +366,7 @@
                     <span class="preference-policy-name is-success">Success</span>
                   </figcaption>
                   <div class="video-frame preference-video-frame">
-                    <video controls muted loop playsinline preload="metadata" data-preference-video="policy-d" data-playback-rate="2" aria-label="Policy D successful rollout for Take Block Out Box, shown at 2× speed">
+                    <video controls muted loop playsinline preload="metadata" data-preference-video="policy-d" data-playback-rate="2" aria-label="Policy D successful rollout for Cover Ball with Cup, shown at 2× speed">
                       <source src="./static/videos/vlm-preference/policy-d-vla-eval.mp4" type="video/mp4">
                     </video>
                   </div>
@@ -401,7 +401,7 @@
           <p class="module-index">03</p>
           <h2 class="module-title" id="results-title">Evaluation Results</h2>
           <p class="section-intro">
-            We compare six VLA policies in both the LIBERO simulation benchmark and our calibrated Real-to-Sim setting. Ground-truth task success and VLM preference scores provide complementary views of policy capability and behavioral quality.
+            Across 40 LIBERO tasks and seven calibrated tasks derived from the real-world setup, we evaluate six candidate VLA policies with eight VLM judges. Reference success performance, Bradley–Terry preference scores, bootstrap confidence intervals, and human annotations jointly assess ranking reliability, stability, and human alignment, while same-label case studies reveal behavior differences beyond task completion.
           </p>
         </div>
 
@@ -415,7 +415,7 @@
           </header>
 
           <div class="result-evidence">
-            <p><strong>Simulation alignment.</strong> Averaged across eight VLM judges, preference scores achieve a Spearman rank correlation of 0.823, Pearson correlation of 0.924, and 82.9% agreement with human preferences.</p>
+            <p><strong>Evaluator reliability.</strong> Across eight VLM judges, the preference ranking averages a Spearman correlation of 0.823 with the reference success ordering, while preference scores average a Pearson correlation of 0.924 with success rates; pairwise judgments reach 82.9% agreement with human annotations.</p>
           </div>
 
           <div class="result-comparison-grid">
@@ -449,11 +449,11 @@
               <p class="case-index">Calibrated evaluation</p>
               <h3 id="r2s-results-title">Real-to-Sim</h3>
             </div>
-            <p>Seven reconstructed real-world tasks compare physical robot outcomes with behavior observed in calibrated simulation rollouts.</p>
+            <p>Seven calibrated simulation counterparts of real-world tabletop tasks support comparison between preference-based policy conclusions and hardware reference performance.</p>
           </header>
 
           <div class="result-evidence">
-            <p><strong>Real-world alignment.</strong> Averaged across eight VLM judges, preference scores achieve a Spearman rank correlation of 0.957, Pearson correlation of 0.978, and 91.9% agreement with human preferences.</p>
+            <p><strong>Evaluator reliability.</strong> Across eight VLM judges, the preference ranking averages a Spearman correlation of 0.957 with the hardware success ordering, while preference scores average a Pearson correlation of 0.978 with hardware success rates; pairwise judgments reach 91.9% agreement with human annotations.</p>
           </div>
 
           <div class="result-comparison-grid">
