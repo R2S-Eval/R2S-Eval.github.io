@@ -929,13 +929,13 @@ button:focus-visible {
 }
 
 .container.is-widescreen.vlm-preference-container {
-  max-width: 94rem;
+  max-width: 76rem;
 }
 
 .preference-examples {
   align-items: start;
   display: grid;
-  gap: clamp(1.75rem, 2.5vw, 2.75rem);
+  gap: clamp(1.25rem, 2vw, 2rem);
   grid-template-columns: repeat(2, minmax(0, 1fr));
   margin: 0 auto;
 }
@@ -959,7 +959,7 @@ button:focus-visible {
   display: flex;
   gap: 1rem;
   justify-content: space-between;
-  margin: 0 0 0.9rem;
+  margin: 0 0 0.65rem;
   max-width: none;
 }
 
@@ -980,12 +980,12 @@ button:focus-visible {
   border-radius: 0.35rem;
   color: var(--ink-soft);
   display: inline-flex;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 600;
   gap: 0.7rem;
   line-height: 1;
   margin: 0;
-  padding: 0.55rem 0.75rem;
+  padding: 0.48rem 0.65rem;
   white-space: nowrap;
 }
 
@@ -1000,9 +1000,9 @@ button:focus-visible {
 }
 
 .preference-analysis {
-  align-self: start;
+  align-self: center;
   display: grid;
-  gap: 1.55rem;
+  gap: 1.15rem;
   min-width: 0;
 }
 
@@ -1021,14 +1021,14 @@ button:focus-visible {
   align-items: center;
   color: var(--ink-soft);
   display: flex;
-  font-size: 0.72rem;
+  font-size: 0.67rem;
   font-weight: 600;
-  gap: 0.62rem;
+  gap: 0.48rem;
   justify-content: flex-start;
   letter-spacing: 0.015em;
   line-height: 1.2;
   min-width: 0;
-  padding: 0.68rem 0.15rem;
+  padding: 0.52rem 0.1rem;
   white-space: nowrap;
 }
 
@@ -1041,21 +1041,21 @@ button:focus-visible {
   align-items: center;
   color: #111;
   display: inline-flex;
-  flex: 0 0 1.25rem;
+  flex: 0 0 1rem;
   font-family: "Segoe UI Symbol", "Apple Symbols", "Noto Sans Symbols 2", sans-serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  height: 1.25rem;
+  height: 1rem;
   justify-content: center;
   line-height: 1;
-  width: 1.25rem;
+  width: 1rem;
 }
 
 .vlm-preference-comparison {
   align-items: start;
   display: grid;
-  gap: clamp(1rem, 1.5vw, 1.4rem);
-  grid-template-columns: minmax(0, 1fr) minmax(10.5rem, 11.5rem);
+  gap: clamp(0.8rem, 1.2vw, 1rem);
+  grid-template-columns: minmax(0, 1fr) minmax(9.25rem, 10.25rem);
   margin: 0;
   max-width: none;
   width: 100%;
@@ -1063,7 +1063,7 @@ button:focus-visible {
 
 .preference-video-stack {
   display: grid;
-  gap: 1.25rem;
+  gap: 0.85rem;
   min-width: 0;
 }
 
@@ -1079,16 +1079,16 @@ button:focus-visible {
 .preference-video-header {
   align-items: center;
   display: grid;
-  gap: 0.8rem;
+  gap: 0.65rem;
   grid-template-columns: auto 1fr auto;
-  min-height: 2.85rem;
-  padding: 0.58rem 0.9rem 0.52rem;
+  min-height: 2.5rem;
+  padding: 0.46rem 0.7rem 0.42rem;
 }
 
 .preference-video-header h4 {
   color: var(--ink);
   font-family: var(--serif);
-  font-size: 1.08rem;
+  font-size: 1rem;
   font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.15;
@@ -1098,7 +1098,7 @@ button:focus-visible {
 .preference-failure-mark {
   color: #b4232d;
   font-family: var(--sans);
-  font-size: 1.45rem;
+  font-size: 1.25rem;
   font-weight: 700;
   justify-self: center;
   line-height: 1;
@@ -1107,7 +1107,7 @@ button:focus-visible {
 .preference-success-mark {
   color: #2f7d50;
   font-family: var(--sans);
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   font-weight: 700;
   justify-self: center;
   line-height: 1;
@@ -1118,11 +1118,11 @@ button:focus-visible {
   border: 1px solid var(--line-dark);
   border-radius: 0.3rem;
   color: var(--ink-soft);
-  font-size: 0.62rem;
+  font-size: 0.58rem;
   font-weight: 700;
   letter-spacing: 0.035em;
   line-height: 1;
-  padding: 0.38rem 0.58rem 0.34rem;
+  padding: 0.34rem 0.5rem 0.31rem;
   white-space: nowrap;
 }
 
@@ -1130,6 +1130,12 @@ button:focus-visible {
   background: #eef7f1;
   border-color: #b9d8c4;
   color: #2f6f49;
+}
+
+.preference-policy-name.is-failure {
+  background: #fbf0f1;
+  border-color: #e5b8bc;
+  color: #982a34;
 }
 
 .preference-video-frame {
@@ -1152,14 +1158,14 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 7.25rem;
-  padding: 1.3rem 0.2rem 1.45rem;
+  min-height: 5.8rem;
+  padding: 1rem 0.15rem 1.1rem;
   text-align: left;
 }
 
 .preference-verdict-label {
   color: var(--muted);
-  font-size: 0.62rem;
+  font-size: 0.56rem;
   font-weight: 700;
   letter-spacing: 0.13em;
   text-transform: uppercase;
@@ -1167,12 +1173,12 @@ button:focus-visible {
 
 .preference-verdict-result {
   color: var(--navy);
-  font-family: var(--serif);
-  font-size: clamp(1.75rem, 2.2vw, 2.15rem);
+  font-family: var(--sans);
+  font-size: clamp(1.45rem, 1.8vw, 1.75rem);
   font-weight: 600;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.025em;
   line-height: 1;
-  margin-top: 0.85rem;
+  margin-top: 0.6rem;
   white-space: nowrap;
 }
 
@@ -1182,11 +1188,6 @@ button:focus-visible {
 
 .preference-verdict.is-pending .preference-verdict-result {
   color: var(--muted);
-}
-
-.preference-verdict-result sub {
-  font-size: 0.55em;
-  vertical-align: -0.18em;
 }
 
 @supports not (aspect-ratio: 16 / 9) {
@@ -1785,24 +1786,24 @@ button:focus-visible {
 
 @media screen and (max-width: 1199px) {
   .container.is-widescreen.vlm-preference-container {
-    max-width: 60rem;
+    max-width: 52rem;
   }
 
   .preference-examples {
-    gap: 4rem;
+    gap: 3rem;
     grid-template-columns: minmax(0, 1fr);
     margin-left: auto;
     margin-right: auto;
-    max-width: 56rem;
+    max-width: 48rem;
   }
 
   .vlm-preference-comparison {
-    gap: clamp(1.8rem, 3vw, 3rem);
-    grid-template-columns: minmax(0, 1fr) minmax(14rem, 15rem);
+    gap: clamp(1.2rem, 2.4vw, 1.8rem);
+    grid-template-columns: minmax(0, 1fr) minmax(11rem, 12rem);
   }
 
   .preference-analysis {
-    gap: 2.1rem;
+    gap: 1.35rem;
   }
 }
 
@@ -1812,13 +1813,14 @@ button:focus-visible {
   }
 
   .vlm-preference-comparison {
-    gap: 2rem;
+    gap: 1.25rem;
     grid-template-columns: minmax(0, 1fr);
-    max-width: 42rem;
+    max-width: 36rem;
   }
 
   .preference-analysis {
-    gap: 1.4rem;
+    align-self: stretch;
+    gap: 1.1rem;
   }
 
   .preference-criteria {
@@ -1827,7 +1829,7 @@ button:focus-visible {
 
   .preference-criteria li {
     justify-content: center;
-    padding: 0.45rem 0.35rem;
+    padding: 0.38rem 0.3rem;
   }
 
   .preference-criteria li + li {
@@ -1840,12 +1842,12 @@ button:focus-visible {
     display: grid;
     grid-template-columns: auto 1fr;
     min-height: 0;
-    padding: 1.3rem 1.5rem 1.4rem;
+    padding: 0.95rem 1rem 1rem;
     text-align: left;
   }
 
   .preference-verdict-result {
-    font-size: 2.15rem;
+    font-size: 1.6rem;
     justify-self: end;
     margin-top: 0;
   }
@@ -2065,7 +2067,7 @@ button:focus-visible {
   }
 
   .preference-verdict-result {
-    font-size: clamp(1.75rem, 8.5vw, 2.1rem);
+    font-size: clamp(1.4rem, 6vw, 1.65rem);
   }
 
   .benchmark-results-header {

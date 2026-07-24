@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/index.css?v=20260724-23">
+  <link rel="stylesheet" href="./static/css/index.css?v=20260724-24">
   <script defer src="./static/js/index.js?v=20260723-10"></script>
 </head>
 <body>
@@ -284,10 +284,10 @@
                   <figcaption class="preference-video-header">
                     <h4>Policy A</h4>
                     <span class="preference-failure-mark" role="img" aria-label="Failure">×</span>
-                    <span class="preference-policy-name">OpenVLA</span>
+                    <span class="preference-policy-name is-failure">Failure</span>
                   </figcaption>
                   <div class="video-frame preference-video-frame">
-                    <video controls muted loop playsinline preload="metadata" data-preference-video="policy-a" data-playback-rate="2" aria-label="Policy A, OpenVLA failed rollout for Take Block Out Box, shown at 2× speed">
+                    <video controls muted loop playsinline preload="metadata" data-preference-video="policy-a" data-playback-rate="2" aria-label="Policy A failed rollout for Take Block Out Box, shown at 2× speed">
                       <source src="./static/videos/vlm-preference/policy-a-openvla.mp4" type="video/mp4">
                     </video>
                   </div>
@@ -297,10 +297,10 @@
                   <figcaption class="preference-video-header">
                     <h4>Policy B</h4>
                     <span class="preference-failure-mark" role="img" aria-label="Failure">×</span>
-                    <span class="preference-policy-name">SmolVLA</span>
+                    <span class="preference-policy-name is-failure">Failure</span>
                   </figcaption>
                   <div class="video-frame preference-video-frame">
-                    <video controls muted loop playsinline preload="metadata" data-preference-video="policy-b" data-playback-rate="2" aria-label="Policy B, SmolVLA failed rollout for Take Block Out Box, shown at 2× speed">
+                    <video controls muted loop playsinline preload="metadata" data-preference-video="policy-b" data-playback-rate="2" aria-label="Policy B failed rollout for Take Block Out Box, shown at 2× speed">
                       <source src="./static/videos/vlm-preference/policy-b-smolvla.mp4" type="video/mp4">
                     </video>
                   </div>
@@ -318,8 +318,8 @@
                 <div class="preference-verdict">
                   <p class="preference-verdict-label">VLM Judgment</p>
                   <p class="preference-verdict-result">
-                    <span aria-hidden="true">π<sub>A</sub> ≻ π<sub>B</sub></span>
-                    <span class="sr-only">Policy A, OpenVLA, is preferred over Policy B, SmolVLA.</span>
+                    <span aria-hidden="true">A &gt; B</span>
+                    <span class="sr-only">Policy A is preferred over Policy B.</span>
                   </p>
                 </div>
               </div>
@@ -374,7 +374,7 @@
                 <div class="preference-verdict is-pending">
                   <p class="preference-verdict-label">VLM Judgment</p>
                   <p class="preference-verdict-result">
-                    <span aria-hidden="true">π<sub>C</sub> ? π<sub>D</sub></span>
+                    <span aria-hidden="true">Pending</span>
                     <span class="sr-only">The preference between Policy C and Policy D is pending.</span>
                   </p>
                 </div>
