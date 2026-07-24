@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/index.css?v=20260723-22">
+  <link rel="stylesheet" href="./static/css/index.css?v=20260724-23">
   <script defer src="./static/js/index.js?v=20260723-10"></script>
 </head>
 <body>
@@ -263,7 +263,7 @@
     </section>
 
     <section class="section vlm-preference-section" id="vlm-preference" aria-labelledby="vlm-preference-title">
-      <div class="container is-widescreen">
+      <div class="container is-widescreen vlm-preference-container">
         <div class="section-heading is-centered is-wide">
           <h2 class="module-title" id="vlm-preference-title">VLM Preference</h2>
           <p class="section-intro">
@@ -271,55 +271,116 @@
           </p>
         </div>
 
-        <div class="preference-example-meta">
-          <p class="preference-task-tag"><span>Task</span>Take Block Out Box</p>
-        </div>
+        <div class="preference-examples">
+          <section class="preference-example is-failure" aria-labelledby="failure-example-title">
+            <header class="preference-example-meta">
+              <h3 class="preference-case-title" id="failure-example-title">Both Failed</h3>
+              <p class="preference-task-tag"><span>Task</span>Take Block Out Box</p>
+            </header>
 
-        <div class="vlm-preference-comparison" role="group" aria-label="Pairwise VLM preference example">
-          <div class="preference-video-stack" aria-label="Policy rollout videos">
-            <figure class="preference-video-card">
-              <figcaption class="preference-video-header">
-                <h3>Policy A</h3>
-                <span class="preference-failure-mark" role="img" aria-label="Failure">×</span>
-                <span class="preference-policy-name">OpenVLA</span>
-              </figcaption>
-              <div class="video-frame preference-video-frame">
-                <video controls muted loop playsinline preload="metadata" data-preference-video="policy-a" data-playback-rate="2" aria-label="Policy A, OpenVLA rollout for Take Block Out Box, shown at 2× speed">
-                  <source src="./static/videos/vlm-preference/policy-a-openvla.mp4" type="video/mp4">
-                </video>
+            <div class="vlm-preference-comparison" role="group" aria-label="Preference comparison between two failed rollouts">
+              <div class="preference-video-stack" aria-label="Failed policy rollout videos">
+                <figure class="preference-video-card">
+                  <figcaption class="preference-video-header">
+                    <h4>Policy A</h4>
+                    <span class="preference-failure-mark" role="img" aria-label="Failure">×</span>
+                    <span class="preference-policy-name">OpenVLA</span>
+                  </figcaption>
+                  <div class="video-frame preference-video-frame">
+                    <video controls muted loop playsinline preload="metadata" data-preference-video="policy-a" data-playback-rate="2" aria-label="Policy A, OpenVLA failed rollout for Take Block Out Box, shown at 2× speed">
+                      <source src="./static/videos/vlm-preference/policy-a-openvla.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </figure>
+
+                <figure class="preference-video-card">
+                  <figcaption class="preference-video-header">
+                    <h4>Policy B</h4>
+                    <span class="preference-failure-mark" role="img" aria-label="Failure">×</span>
+                    <span class="preference-policy-name">SmolVLA</span>
+                  </figcaption>
+                  <div class="video-frame preference-video-frame">
+                    <video controls muted loop playsinline preload="metadata" data-preference-video="policy-b" data-playback-rate="2" aria-label="Policy B, SmolVLA failed rollout for Take Block Out Box, shown at 2× speed">
+                      <source src="./static/videos/vlm-preference/policy-b-smolvla.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </figure>
               </div>
-            </figure>
 
-            <figure class="preference-video-card">
-              <figcaption class="preference-video-header">
-                <h3>Policy B</h3>
-                <span class="preference-failure-mark" role="img" aria-label="Failure">×</span>
-                <span class="preference-policy-name">SmolVLA</span>
-              </figcaption>
-              <div class="video-frame preference-video-frame">
-                <video controls muted loop playsinline preload="metadata" data-preference-video="policy-b" data-playback-rate="2" aria-label="Policy B, SmolVLA rollout for Take Block Out Box, shown at 2× speed">
-                  <source src="./static/videos/vlm-preference/policy-b-smolvla.mp4" type="video/mp4">
-                </video>
+              <div class="preference-analysis">
+                <ul class="preference-criteria" aria-label="VLM evaluation criteria for Policies A and B">
+                  <li><span class="preference-criterion-icon" aria-hidden="true">∿</span><span>Smoothness</span></li>
+                  <li><span class="preference-criterion-icon" aria-hidden="true">✓</span><span>Success</span></li>
+                  <li><span class="preference-criterion-icon" aria-hidden="true">↗</span><span>Progress</span></li>
+                  <li><span class="preference-criterion-icon" aria-hidden="true">∞</span><span>Continuity</span></li>
+                </ul>
+
+                <div class="preference-verdict">
+                  <p class="preference-verdict-label">VLM Judgment</p>
+                  <p class="preference-verdict-result">
+                    <span aria-hidden="true">π<sub>A</sub> ≻ π<sub>B</sub></span>
+                    <span class="sr-only">Policy A, OpenVLA, is preferred over Policy B, SmolVLA.</span>
+                  </p>
+                </div>
               </div>
-            </figure>
-          </div>
-
-          <div class="preference-analysis">
-            <ul class="preference-criteria" aria-label="VLM evaluation criteria">
-              <li><span class="preference-criterion-icon" aria-hidden="true">∿</span><span>Smoothness</span></li>
-              <li><span class="preference-criterion-icon" aria-hidden="true">✓</span><span>Success</span></li>
-              <li><span class="preference-criterion-icon" aria-hidden="true">↗</span><span>Progress</span></li>
-              <li><span class="preference-criterion-icon" aria-hidden="true">∞</span><span>Continuity</span></li>
-            </ul>
-
-            <div class="preference-verdict">
-              <p class="preference-verdict-label">VLM Judgment</p>
-              <p class="preference-verdict-result">
-                <span aria-hidden="true">π<sub>A</sub> ≻ π<sub>B</sub></span>
-                <span class="sr-only">Policy A, OpenVLA, is preferred over Policy B, SmolVLA.</span>
-              </p>
             </div>
-          </div>
+          </section>
+
+          <section class="preference-example is-success" aria-labelledby="success-example-title">
+            <header class="preference-example-meta">
+              <h3 class="preference-case-title" id="success-example-title">Both Succeeded</h3>
+              <p class="preference-task-tag"><span>Task</span>Take Block Out Box</p>
+            </header>
+
+            <div class="vlm-preference-comparison" role="group" aria-label="Preference comparison between two successful rollouts">
+              <div class="preference-video-stack" aria-label="Successful policy rollout videos">
+                <figure class="preference-video-card">
+                  <figcaption class="preference-video-header">
+                    <h4>Policy C</h4>
+                    <span class="preference-success-mark" role="img" aria-label="Success">✓</span>
+                    <span class="preference-policy-name is-success">Success</span>
+                  </figcaption>
+                  <div class="video-frame preference-video-frame">
+                    <video controls muted loop playsinline preload="metadata" data-preference-video="policy-c" data-playback-rate="2" aria-label="Policy C successful rollout for Take Block Out Box, video forthcoming, shown at 2× speed">
+                      <source src="./static/videos/hero-black.mp4" type="video/mp4">
+                    </video>
+                    <span class="video-placeholder">Policy C video forthcoming</span>
+                  </div>
+                </figure>
+
+                <figure class="preference-video-card">
+                  <figcaption class="preference-video-header">
+                    <h4>Policy D</h4>
+                    <span class="preference-success-mark" role="img" aria-label="Success">✓</span>
+                    <span class="preference-policy-name is-success">Success</span>
+                  </figcaption>
+                  <div class="video-frame preference-video-frame">
+                    <video controls muted loop playsinline preload="metadata" data-preference-video="policy-d" data-playback-rate="2" aria-label="Policy D successful rollout for Take Block Out Box, video forthcoming, shown at 2× speed">
+                      <source src="./static/videos/hero-black.mp4" type="video/mp4">
+                    </video>
+                    <span class="video-placeholder">Policy D video forthcoming</span>
+                  </div>
+                </figure>
+              </div>
+
+              <div class="preference-analysis">
+                <ul class="preference-criteria" aria-label="VLM evaluation criteria for Policies C and D">
+                  <li><span class="preference-criterion-icon" aria-hidden="true">∿</span><span>Smoothness</span></li>
+                  <li><span class="preference-criterion-icon" aria-hidden="true">✓</span><span>Success</span></li>
+                  <li><span class="preference-criterion-icon" aria-hidden="true">↗</span><span>Progress</span></li>
+                  <li><span class="preference-criterion-icon" aria-hidden="true">∞</span><span>Continuity</span></li>
+                </ul>
+
+                <div class="preference-verdict is-pending">
+                  <p class="preference-verdict-label">VLM Judgment</p>
+                  <p class="preference-verdict-result">
+                    <span aria-hidden="true">π<sub>C</sub> ? π<sub>D</sub></span>
+                    <span class="sr-only">The preference between Policy C and Policy D is pending.</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </section>
