@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="description" content="R2S-Eval is an automated robot-policy evaluation pipeline combining real-to-sim calibration with vision-language-model preference judgments.">
-  <meta name="keywords" content="R2S-Eval, robot evaluation, real-to-sim, vision-language models, VLA, robot manipulation">
+  <meta name="keywords" content="R2S-Eval, robot evaluation, real-to-sim calibration, vision-language models, VLA, robot manipulation">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#000000">
   <meta property="og:title" content="R2S-Eval: Robot Evaluation with Real-to-Sim Calibration via Vision-Language Models">
@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/index.css?v=20260724-29">
+  <link rel="stylesheet" href="./static/css/index.css?v=20260730-30">
   <script defer src="./static/js/index.js?v=20260724-12"></script>
 </head>
 <body>
@@ -37,8 +37,8 @@
       <div id="project-menu" class="navbar-menu">
         <div class="navbar-end">
           <a class="navbar-item" href="#abstract">Abstract</a>
-          <a class="navbar-item" href="#real-to-sim">Real-to-Sim</a>
-          <a class="navbar-item" href="#policy-rollouts">Policy Rollouts</a>
+          <a class="navbar-item" href="#real-to-sim">Real-to-Sim Calibration</a>
+          <a class="navbar-item" href="#policy-rollouts">Policy Evaluation Rollouts</a>
           <a class="navbar-item" href="#vlm-preference">VLM Preference</a>
           <a class="navbar-item" href="#results">Results</a>
           <a class="navbar-item" href="#citation">Citation</a>
@@ -59,7 +59,6 @@
 
         <div class="hero-fade-content" data-hero-content>
           <div class="container has-text-centered">
-            <p class="manuscript-label">Anonymized manuscript</p>
             <h1 class="hero-wordmark">
               <span aria-hidden="true">R2S<span class="wordmark-accent">-Eval</span></span>
               <span class="sr-only">R2S-Eval: Robot Evaluation with Real-to-Sim Calibration via Vision-Language Models</span>
@@ -67,10 +66,11 @@
             <p class="hero-paper-title">Robot Evaluation with Real-to-Sim Calibration via Vision-Language Models</p>
 
             <div class="publication-authors">
-              <span>Anonymous authors</span>
+              <span>Yidi Wang, Feixiang Ruan, Jie Yin, Juan Du</span>
               <span class="author-divider" aria-hidden="true">·</span>
-              <span>Information withheld for review</span>
+              <span>Yang Yu, Mengdi Xu, Kaifeng Zhang</span>
             </div>
+            <p class="publication-affiliations">Sharpa · Nanjing University · Tongji University · NVIDIA · Tsinghua University</p>
 
             <div class="publication-links" aria-label="Project resources">
               <a class="button is-rounded resource-button resource-button-primary" href="https://github.com/VVVVME50/R2S-Eval">
@@ -98,7 +98,7 @@
       <div class="container is-max-desktop">
         <figure class="paper-figure hero-figure">
           <a href="./static/images/pipeline.png" aria-label="Open the R2S-Eval pipeline figure at full size">
-            <img src="./static/images/pipeline.png" alt="R2S-Eval pipeline: policy rollouts are generated in calibrated simulation, compared by a vision-language model, aggregated into rankings, and validated." fetchpriority="high">
+            <img src="./static/images/pipeline.png" alt="R2S-Eval pipeline: policy evaluation rollouts are generated in calibrated simulation, compared by a vision-language model, aggregated into rankings, and validated." fetchpriority="high">
           </a>
           <figcaption class="teaser-caption">
             Overview of the R2S-Eval pipeline for ranking robot policies using real-to-sim calibration and VLM-based preference evaluation.
@@ -115,13 +115,7 @@
         </div>
         <div class="content abstract-copy">
           <p>
-            Evaluating robot manipulation policies is becoming increasingly important as generalist models, particularly vision-language-action (VLA) models, are deployed on physical robots. However, conventional real-world evaluation remains labor-intensive, unstable, and insufficiently informative. It requires repeated hardware trials, manual scene resets, and continuous operator monitoring, may produce different policy rankings across repeated evaluations, and primarily relies on success rate metrics that provide limited information about execution quality. In contrast, humans assess robot performance by observing and comparing complete behaviors rather than relying solely on binary success outcomes.
-          </p>
-          <p>
-            To this end, we propose R2S-Eval, an automated evaluation pipeline that combines real-to-sim calibration with vision-language-model-based preference evaluation. The real-to-sim component efficiently generates rollout videos aligned with the target real-world evaluation setting, thereby reducing the need for repeated physical robot trials. The VLM evaluator assesses the execution quality of rollout videos and produces pairwise preferences, which are subsequently aggregated into policy rankings.
-          </p>
-          <p>
-            We further introduce a validation protocol to assess whether the proposed evaluation pipeline yields trustworthy policy conclusions while mitigating the key challenges of conventional real-world evaluation. Experiments in both simulation and real-world settings demonstrate that R2S-Eval produces reliable and stable policy conclusions, achieves strong agreement with human preferences, substantially reduces evaluation-time manual effort, and reveals behavior-quality differences that are not captured by binary success labels. In general, R2S-Eval advances robot evaluation from manual success counting toward automated, statistically stable, and quality-aware evaluation of robot behavior.
+            Evaluating robot manipulation policies is becoming increasingly important as generalist models, particularly vision-language-action (VLA) models, are deployed on physical robots. However, conventional real-world evaluation remains labor-intensive, unstable, and insufficiently informative. It requires repeated hardware trials, manual scene resets, and continuous operator monitoring, may produce different policy rankings across repeated evaluations, and primarily relies on success rate metrics that provide limited information about execution quality. In contrast, humans assess robot performance by observing and comparing complete behaviors rather than relying solely on binary success outcomes. To this end, we propose R2S-Eval, an automated evaluation pipeline that combines real-to-sim calibration with vision-language model (VLM) preference evaluation. The real-to-sim calibration component efficiently generates rollout videos in a simulator calibrated to the real-world evaluation setting, thereby reducing the need for repeated hardware robot trials. The VLM evaluator assesses the execution quality of rollout videos and produces pairwise preferences, which are subsequently aggregated into policy rankings. We further introduce a validation protocol to assess whether the proposed evaluation pipeline yields validated policy conclusions while mitigating the key challenges of conventional real-world evaluation. Experiments in both simulation and real-world settings demonstrate that R2S-Eval produces reliable and stable policy conclusions, achieves agreement with human preferences, substantially reduces hardware manual effort, and reveals behavior-quality differences that are not captured by binary success labels. In general, R2S-Eval advances robot evaluation from manual success counting toward automated, statistically stable, and quality-aware evaluation of robot behavior.
           </p>
         </div>
       </div>
@@ -130,13 +124,13 @@
     <section class="section media-browser-section real-to-sim-section" id="real-to-sim" aria-labelledby="real-to-sim-title">
       <div class="container is-widescreen r2s-section-container">
         <div class="section-heading is-centered is-wide">
-          <h2 class="module-title" id="real-to-sim-title">Real-to-Sim</h2>
+          <h2 class="module-title" id="real-to-sim-title">Real-to-Sim Calibration</h2>
           <p class="section-intro">
-            R2S-Eval aligns the factors that determine policy behavior rather than pursuing a perfectly photorealistic twin: robot geometry and control, task objects, camera views, initial states, task definitions, and scene context. Across seven tabletop tasks, the paired videos show teleoperated real trajectories on the left and recorded joint-angle action replays in calibrated NVIDIA Isaac Sim on the right, illustrating the calibrated task alignment used to acquire simulated data before closed-loop evaluation.
+            R2S-Eval uses real-to-sim calibration as an efficient source of behavior videos. The simulator calibrates the factors that determine policy behavior—robot geometry, kinematics, joint limits, control interface, task objects, camera viewpoints, and initializations—without requiring a perfectly photorealistic digital twin. Across seven tabletop tasks, the videos compare teleoperated real trajectories with recorded joint-angle action replays in the calibrated NVIDIA Isaac Sim environment.
           </p>
         </div>
 
-        <div class="r2s-showcase-list" role="list" aria-label="Real-to-Sim task comparisons">
+        <div class="r2s-showcase-list" role="list" aria-label="Real-to-Sim Calibration task comparisons">
           <figure class="r2s-showcase-item" role="listitem" data-r2s-task="cover-ball-with-cup">
             <div class="r2s-showcase-frame">
               <video controls muted loop playsinline preload="metadata" data-r2s-autoplay aria-label="Real on the left and simulation on the right for Cover Ball with Cup">
@@ -213,43 +207,43 @@
     <section class="section media-browser-section policy-rollout-section" id="policy-rollouts" aria-labelledby="policy-rollouts-title">
       <div class="container is-max-desktop">
         <div class="section-heading is-centered is-wide">
-          <h2 class="module-title" id="policy-rollouts-title">Policy Rollouts</h2>
+          <h2 class="module-title" id="policy-rollouts-title">Policy Evaluation Rollouts</h2>
           <p class="section-intro">
-            Candidate policies are adapted with simulated trajectories and then deployed in closed loop in the calibrated environment. For each of the seven tasks, the viewer places a hardware rollout beside a rollout from the calibrated simulator under consistent task definitions, initialization ranges, and success conditions; selecting a task updates both videos and the shared label. The paired executions make differences in task progress, recovery, and control behavior directly observable.
+            Candidate policies are evaluated through independently executed closed-loop rollouts in both the physical setup and the calibrated simulator. For each of the seven tasks, the two videos follow the same task definition, initialization range, observation and action interfaces, and success criterion, allowing simulation-side policy outcomes to be compared with hardware performance. Selecting a task updates both videos and their shared label.
           </p>
         </div>
 
-        <div class="task-browser" data-task-browser data-browser-kind="Policy rollout">
+        <div class="task-browser" data-task-browser data-browser-kind="Policy evaluation rollout">
           <div class="task-carousel">
-            <button class="task-carousel-arrow is-previous" type="button" data-browser-previous aria-label="Show previous policy rollout task"><span aria-hidden="true">‹</span></button>
-            <div class="task-thumbnail-strip" data-task-strip role="group" aria-label="Policy rollout tasks">
-              <button class="task-thumbnail" type="button" data-task-option data-task-index="01" data-task-label="Cover Ball with Cup" data-real-video-src="./static/videos/policy-rollouts/real/cover-ball-with-cup.mp4" data-sim-video-src="./static/videos/policy-rollouts/sim/cover-ball-with-cup.mp4" aria-label="Show Task 01: Cover Ball with Cup" aria-pressed="true">
+            <button class="task-carousel-arrow is-previous" type="button" data-browser-previous aria-label="Show previous policy evaluation rollout task"><span aria-hidden="true">‹</span></button>
+            <div class="task-thumbnail-strip" data-task-strip role="group" aria-label="Policy evaluation rollout tasks">
+              <button class="task-thumbnail" type="button" data-task-option data-task-index="01" data-task-label="Cover Ball with Cup" data-real-video-src="./static/videos/policy-rollouts/real/cover-ball-with-cup.mp4?v=20260730-1" data-sim-video-src="./static/videos/policy-rollouts/sim/cover-ball-with-cup.mp4?v=20260730-1" aria-label="Show Task 01: Cover Ball with Cup" aria-pressed="true">
                 <span class="task-thumbnail-media"><img src="./static/images/tasks/cover-ball-with-cup.png" alt="" loading="lazy"><span class="task-thumbnail-number" aria-hidden="true">01</span></span>
               </button>
-              <button class="task-thumbnail" type="button" data-task-option data-task-index="02" data-task-label="Pick Ball Place in Box" data-real-video-src="./static/videos/policy-rollouts/real/pick-ball-place-in-box.mp4" data-sim-video-src="./static/videos/policy-rollouts/sim/pick-ball-place-in-box.mp4" aria-label="Show Task 02: Pick Ball Place in Box" aria-pressed="false" tabindex="-1">
+              <button class="task-thumbnail" type="button" data-task-option data-task-index="02" data-task-label="Pick Ball Place in Box" data-real-video-src="./static/videos/policy-rollouts/real/pick-ball-place-in-box.mp4?v=20260730-1" data-sim-video-src="./static/videos/policy-rollouts/sim/pick-ball-place-in-box.mp4?v=20260730-1" aria-label="Show Task 02: Pick Ball Place in Box" aria-pressed="false" tabindex="-1">
                 <span class="task-thumbnail-media"><img src="./static/images/tasks/pick-ball-place-in-box.png" alt="" loading="lazy"><span class="task-thumbnail-number" aria-hidden="true">02</span></span>
               </button>
-              <button class="task-thumbnail" type="button" data-task-option data-task-index="03" data-task-label="Pick Ball Place in Cup" data-real-video-src="./static/videos/policy-rollouts/real/pick-ball-place-in-cup.mp4" data-sim-video-src="./static/videos/policy-rollouts/sim/pick-ball-place-in-cup.mp4" aria-label="Show Task 03: Pick Ball Place in Cup" aria-pressed="false" tabindex="-1">
+              <button class="task-thumbnail" type="button" data-task-option data-task-index="03" data-task-label="Pick Ball Place in Cup" data-real-video-src="./static/videos/policy-rollouts/real/pick-ball-place-in-cup.mp4?v=20260730-1" data-sim-video-src="./static/videos/policy-rollouts/sim/pick-ball-place-in-cup.mp4?v=20260730-1" aria-label="Show Task 03: Pick Ball Place in Cup" aria-pressed="false" tabindex="-1">
                 <span class="task-thumbnail-media"><img src="./static/images/tasks/pick-ball-place-in-cup.png" alt="" loading="lazy"><span class="task-thumbnail-number" aria-hidden="true">03</span></span>
               </button>
-              <button class="task-thumbnail" type="button" data-task-option data-task-index="04" data-task-label="Pick Cup Place on Plate" data-real-video-src="./static/videos/policy-rollouts/real/pick-cup-place-on-plate.mp4" data-sim-video-src="./static/videos/policy-rollouts/sim/pick-cup-place-on-plate.mp4" aria-label="Show Task 04: Pick Cup Place on Plate" aria-pressed="false" tabindex="-1">
+              <button class="task-thumbnail" type="button" data-task-option data-task-index="04" data-task-label="Pick Cup Place on Plate" data-real-video-src="./static/videos/policy-rollouts/real/pick-cup-place-on-plate.mp4?v=20260730-1" data-sim-video-src="./static/videos/policy-rollouts/sim/pick-cup-place-on-plate.mp4?v=20260730-1" aria-label="Show Task 04: Pick Cup Place on Plate" aria-pressed="false" tabindex="-1">
                 <span class="task-thumbnail-media"><img src="./static/images/tasks/pick-cup-place-on-plate.png" alt="" loading="lazy"><span class="task-thumbnail-number" aria-hidden="true">04</span></span>
               </button>
-              <button class="task-thumbnail" type="button" data-task-option data-task-index="05" data-task-label="Stack Blocks" data-real-video-src="./static/videos/policy-rollouts/real/stack-blocks.mp4" data-sim-video-src="./static/videos/policy-rollouts/sim/stack-blocks.mp4" aria-label="Show Task 05: Stack Blocks" aria-pressed="false" tabindex="-1">
+              <button class="task-thumbnail" type="button" data-task-option data-task-index="05" data-task-label="Stack Blocks" data-real-video-src="./static/videos/policy-rollouts/real/stack-blocks.mp4?v=20260730-1" data-sim-video-src="./static/videos/policy-rollouts/sim/stack-blocks.mp4?v=20260730-1" aria-label="Show Task 05: Stack Blocks" aria-pressed="false" tabindex="-1">
                 <span class="task-thumbnail-media"><img src="./static/images/tasks/stack-blocks.png" alt="" loading="lazy"><span class="task-thumbnail-number" aria-hidden="true">05</span></span>
               </button>
-              <button class="task-thumbnail" type="button" data-task-option data-task-index="06" data-task-label="Take Block Out Box" data-real-video-src="./static/videos/policy-rollouts/real/take-block-out-of-box.mp4" data-sim-video-src="./static/videos/policy-rollouts/sim/take-block-out-of-box.mp4" aria-label="Show Task 06: Take Block Out Box" aria-pressed="false" tabindex="-1">
+              <button class="task-thumbnail" type="button" data-task-option data-task-index="06" data-task-label="Take Block Out Box" data-real-video-src="./static/videos/policy-rollouts/real/take-block-out-of-box.mp4?v=20260730-1" data-sim-video-src="./static/videos/policy-rollouts/sim/take-block-out-of-box.mp4?v=20260730-1" aria-label="Show Task 06: Take Block Out Box" aria-pressed="false" tabindex="-1">
                 <span class="task-thumbnail-media"><img src="./static/images/tasks/take-block-out-of-box.png" alt="" loading="lazy"><span class="task-thumbnail-number" aria-hidden="true">06</span></span>
               </button>
-              <button class="task-thumbnail" type="button" data-task-option data-task-index="07" data-task-label="Upright Fallen Cup" data-real-video-src="./static/videos/policy-rollouts/real/upright-fallen-cup.mp4" data-sim-video-src="./static/videos/policy-rollouts/sim/upright-fallen-cup.mp4" aria-label="Show Task 07: Upright Fallen Cup" aria-pressed="false" tabindex="-1">
+              <button class="task-thumbnail" type="button" data-task-option data-task-index="07" data-task-label="Upright Fallen Cup" data-real-video-src="./static/videos/policy-rollouts/real/upright-fallen-cup.mp4?v=20260730-1" data-sim-video-src="./static/videos/policy-rollouts/sim/upright-fallen-cup.mp4?v=20260730-1" aria-label="Show Task 07: Upright Fallen Cup" aria-pressed="false" tabindex="-1">
                 <span class="task-thumbnail-media"><img src="./static/images/tasks/upright-fallen-cup.png" alt="" loading="lazy"><span class="task-thumbnail-number" aria-hidden="true">07</span></span>
               </button>
             </div>
-            <button class="task-carousel-arrow is-next" type="button" data-browser-next aria-label="Show next policy rollout task"><span aria-hidden="true">›</span></button>
+            <button class="task-carousel-arrow is-next" type="button" data-browser-next aria-label="Show next policy evaluation rollout task"><span aria-hidden="true">›</span></button>
           </div>
 
           <figure class="task-video-stage task-video-pair-stage">
-            <div class="task-video-pair" role="group" aria-label="Paired real and simulated policy rollouts">
+            <div class="task-video-pair" role="group" aria-label="Paired real-world and simulated policy evaluation rollouts">
               <div class="task-rollout-card is-real">
                 <div class="task-domain-label">
                   <span class="task-domain-label-name">Real</span>
@@ -257,7 +251,7 @@
                 </div>
                 <div class="task-video-frame video-frame">
                   <video controls muted loop playsinline preload="metadata" poster="./static/images/tasks/cover-ball-with-cup.png" data-task-video="real" data-playback-rate="2" aria-label="Real video for Cover Ball with Cup, shown at 2× speed">
-                    <source src="./static/videos/policy-rollouts/real/cover-ball-with-cup.mp4" type="video/mp4" data-task-source>
+                    <source src="./static/videos/policy-rollouts/real/cover-ball-with-cup.mp4?v=20260730-1" type="video/mp4" data-task-source>
                   </video>
                 </div>
               </div>
@@ -269,7 +263,7 @@
                 </div>
                 <div class="task-video-frame video-frame">
                   <video controls muted loop playsinline preload="metadata" poster="./static/images/tasks/cover-ball-with-cup.png" data-task-video="sim" data-playback-rate="2" aria-label="Sim video for Cover Ball with Cup, shown at 2× speed">
-                    <source src="./static/videos/policy-rollouts/sim/cover-ball-with-cup.mp4" type="video/mp4" data-task-source>
+                    <source src="./static/videos/policy-rollouts/sim/cover-ball-with-cup.mp4?v=20260730-1" type="video/mp4" data-task-source>
                   </video>
                 </div>
               </div>
@@ -409,7 +403,7 @@
           <p class="module-index">03</p>
           <h2 class="module-title" id="results-title">Evaluation Results</h2>
           <p class="section-intro">
-            Across 40 LIBERO tasks and seven calibrated tasks derived from the real-world setup, we evaluate six candidate VLA policies with eight VLM judges. Reference success performance, Bradley–Terry preference scores, bootstrap confidence intervals, and human annotations jointly assess ranking reliability, stability, and human alignment, while same-label case studies reveal behavior differences beyond task completion.
+            Across 40 LIBERO tasks and seven calibrated tasks derived from the real-world setup, we evaluate six candidate VLA policies with eight VLM judges. Reference success performance, Bradley–Terry preference scores, bootstrap confidence intervals, and human annotations jointly assess ranking reliability, stability, and human agreement.
           </p>
         </div>
 
@@ -449,13 +443,20 @@
               <figcaption>Bradley–Terry preference strength averaged over all eight VLM judges.</figcaption>
             </figure>
           </div>
+
+          <figure class="result-table-panel">
+            <a class="result-table-link" href="./static/images/results/table-iii-libero-vlm-results.png" aria-label="Open Table III, LIBERO VLM preference evaluation results, at full size">
+              <img src="./static/images/results/table-iii-libero-vlm-results.png" alt="Table III reports per-VLM Spearman correlation, Pearson correlation, mean maximum rank violation, score confidence interval width, and human agreement rate for LIBERO." loading="lazy">
+            </a>
+            <figcaption>Per-judge ranking reliability, score correlation, uncertainty, and human agreement on LIBERO.</figcaption>
+          </figure>
         </section>
 
         <section class="benchmark-results-group" aria-labelledby="r2s-results-title">
           <header class="benchmark-results-header">
             <div>
               <p class="case-index">Calibrated evaluation</p>
-              <h3 id="r2s-results-title">Real-to-Sim</h3>
+              <h3 id="r2s-results-title">Real-to-Sim Calibration</h3>
             </div>
             <p>Seven calibrated simulation counterparts of real-world tabletop tasks support comparison between preference-based policy conclusions and hardware reference performance.</p>
           </header>
@@ -470,8 +471,8 @@
                 <p class="case-index">Hardware reference</p>
                 <h4>Task success</h4>
               </header>
-              <a class="result-chart-link" href="./static/images/r2s-success-rate.png" aria-label="Open the Real-to-Sim ground-truth success-rate chart at full size">
-                <img src="./static/images/r2s-success-rate.png" alt="Real-to-Sim hardware success rates for six policies: X-VLA 65.7, pi 0.5 63.6, pi 0 53.6, NORA-Long 4.3, SmolVLA 2.1, and OpenVLA 7.1 percent." loading="lazy">
+              <a class="result-chart-link" href="./static/images/r2s-success-rate.png" aria-label="Open the Real-to-Sim Calibration ground-truth success-rate chart at full size">
+                <img src="./static/images/r2s-success-rate.png" alt="Real-to-Sim Calibration hardware success rates for six policies: X-VLA 65.7, pi 0.5 63.6, pi 0 53.6, NORA-Long 4.3, SmolVLA 2.1, and OpenVLA 7.1 percent." loading="lazy">
               </a>
               <figcaption>Average hardware success rate across all seven real-world tasks.</figcaption>
             </figure>
@@ -481,10 +482,26 @@
                 <p class="case-index">Behavior preference</p>
                 <h4>VLM preference score</h4>
               </header>
-              <a class="result-chart-link" href="./static/images/r2s-preference-score.png" aria-label="Open the Real-to-Sim VLM preference-score chart at full size">
-                <img src="./static/images/r2s-preference-score.png" alt="Real-to-Sim VLM preference scores for six policies: X-VLA 30.1, pi 0.5 31.2, pi 0 24.5, NORA-Long 5.4, SmolVLA 0.1, and OpenVLA 8.8 percent." loading="lazy">
+              <a class="result-chart-link" href="./static/images/r2s-preference-score.png" aria-label="Open the Real-to-Sim Calibration VLM preference-score chart at full size">
+                <img src="./static/images/r2s-preference-score.png" alt="Real-to-Sim Calibration VLM preference scores for six policies: X-VLA 30.1, pi 0.5 31.2, pi 0 24.5, NORA-Long 5.4, SmolVLA 0.1, and OpenVLA 8.8 percent." loading="lazy">
               </a>
               <figcaption>Bradley–Terry preference strength averaged over all eight VLM judges.</figcaption>
+            </figure>
+          </div>
+
+          <div class="result-table-stack">
+            <figure class="result-table-panel">
+              <a class="result-table-link" href="./static/images/results/table-ii-real-sim-success-rates.png" aria-label="Open Table II, real and simulation success rates, at full size">
+                <img src="./static/images/results/table-ii-real-sim-success-rates.png" alt="Table II reports real and simulation success rates for six VLA policies on seven calibrated manipulation tasks." loading="lazy">
+              </a>
+              <figcaption>Task-level real/simulation success rates and aggregate policy performance.</figcaption>
+            </figure>
+
+            <figure class="result-table-panel">
+              <a class="result-table-link" href="./static/images/results/table-iv-r2s-vlm-results.png" aria-label="Open Table IV, Real-to-Sim Calibration VLM preference evaluation results, at full size">
+                <img src="./static/images/results/table-iv-r2s-vlm-results.png" alt="Table IV reports per-VLM Spearman correlation, Pearson correlation, mean maximum rank violation, score confidence interval width, and human agreement rate for the Real-to-Sim Calibration evaluation." loading="lazy">
+              </a>
+              <figcaption>Per-judge reliability, uncertainty, and human agreement in the Real-to-Sim Calibration setting.</figcaption>
             </figure>
           </div>
         </section>
@@ -498,7 +515,7 @@
           <span class="legend-item"><span class="legend-swatch openvla" aria-hidden="true"></span>OpenVLA</span>
         </div>
 
-        <p class="results-method-note">VLM preference scores use the Bradley–Terry model. Human alignment is measured from 200 sampled video pairs per setting, annotated by three people and aggregated by majority vote.</p>
+        <p class="results-method-note">VLM preference scores use the Bradley–Terry model. Human agreement is measured from 200 sampled video pairs per setting, annotated by three people and aggregated by majority vote.</p>
       </div>
     </section>
 
@@ -508,15 +525,16 @@
           <div class="column is-two-fifths">
             <p class="section-kicker">04 · Citation</p>
             <h2 class="title section-title" id="citation-title">Cite R2S-Eval</h2>
-            <p class="citation-note" id="citation-note">This is a temporary citation for the anonymized manuscript. Authors and venue will be added after public release.</p>
+            <p class="citation-note" id="citation-note">Please use the following BibTeX entry when citing R2S-Eval.</p>
           </div>
           <div class="column">
             <div class="citation-box">
               <button class="copy-button" type="button" data-copy-target="bibtex-entry" aria-describedby="citation-note copy-status">Copy BibTeX</button>
-              <pre class="citation-code"><code id="bibtex-entry">@misc{r2seval,
+              <pre class="citation-code"><code id="bibtex-entry">@article{wang2026r2seval,
   title  = {{R2S-Eval}: Robot Evaluation with Real-to-Sim Calibration via Vision-Language Models},
-  author = {{Anonymous}},
-  note   = {Anonymous manuscript}
+  author = {Wang, Yidi and Ruan, Feixiang and Yin, Jie and Du, Juan and Yu, Yang and Xu, Mengdi and Zhang, Kaifeng},
+  year   = {2026},
+  url    = {https://r2s-eval.github.io/}
 }</code></pre>
               <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
             </div>

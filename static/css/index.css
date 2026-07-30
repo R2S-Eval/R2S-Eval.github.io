@@ -291,6 +291,14 @@ button:focus-visible {
   font-weight: 500;
 }
 
+.publication-affiliations {
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 0.7rem;
+  letter-spacing: 0.025em;
+  margin: 0.4rem auto 0;
+  max-width: 54rem;
+}
+
 .author-divider {
   color: rgba(255, 255, 255, 0.34);
   margin: 0 0.45rem;
@@ -1389,6 +1397,42 @@ button:focus-visible {
   font-size: 0.75rem;
   line-height: 1.65;
   margin-top: 0.9rem;
+}
+
+.result-table-stack {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.result-table-stack .result-table-panel {
+  margin-top: 0;
+}
+
+.result-table-panel {
+  background: #fff;
+  border: 1px solid var(--line-dark);
+  margin: 1.5rem 0 0;
+  padding: clamp(0.8rem, 2vw, 1.25rem);
+}
+
+.result-table-link {
+  display: block;
+  line-height: 0;
+  overflow: hidden;
+}
+
+.result-table-link img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.result-table-panel figcaption {
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.65;
+  margin-top: 0.8rem;
 }
 
 .policy-legend {
