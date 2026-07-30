@@ -228,29 +228,12 @@ button:focus-visible {
   pointer-events: none;
 }
 
-.manuscript-label,
 .section-kicker {
   color: var(--gold);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-}
-
-.manuscript-label {
-  align-items: center;
-  display: inline-flex;
-  gap: 0.6rem;
-  margin-bottom: 1rem;
-}
-
-.manuscript-label::before,
-.manuscript-label::after {
-  background: var(--gold);
-  content: "";
-  height: 1px;
-  opacity: 0.7;
-  width: 1.65rem;
 }
 
 .hero-wordmark {
@@ -283,25 +266,6 @@ button:focus-visible {
   margin: 0 auto 1.15rem;
   max-width: 58rem;
   text-shadow: 0 8px 30px rgba(0, 0, 0, 0.62);
-}
-
-.publication-authors {
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-.publication-affiliations {
-  color: rgba(255, 255, 255, 0.52);
-  font-size: 0.7rem;
-  letter-spacing: 0.025em;
-  margin: 0.4rem auto 0;
-  max-width: 54rem;
-}
-
-.author-divider {
-  color: rgba(255, 255, 255, 0.34);
-  margin: 0 0.45rem;
 }
 
 .publication-links {
@@ -2063,16 +2027,6 @@ button:focus-visible {
     max-width: 24rem;
   }
 
-  .publication-authors {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.6;
-  }
-
-  .author-divider {
-    display: none;
-  }
-
   .publication-links {
     align-items: stretch;
     flex-direction: column;
@@ -2424,11 +2378,6 @@ button:focus-visible {
     padding: 0.75rem 0.9rem 2.15rem;
   }
 
-  .manuscript-label {
-    font-size: 0.62rem;
-    margin-bottom: 0.55rem;
-  }
-
   .hero-wordmark {
     font-size: clamp(3.45rem, 18vw, 4.6rem);
     margin-bottom: 0.7rem;
@@ -2438,11 +2387,6 @@ button:focus-visible {
     font-size: clamp(1rem, 5vw, 1.25rem);
     line-height: 1.16;
     margin-bottom: 0.5rem;
-  }
-
-  .publication-authors {
-    font-size: 0.72rem;
-    line-height: 1.42;
   }
 
   .scroll-hero .publication-links {
@@ -2471,10 +2415,6 @@ button:focus-visible {
     padding: 0.65rem 1.5rem 2.2rem;
   }
 
-  .manuscript-label {
-    display: none;
-  }
-
   .hero-wordmark {
     font-size: clamp(3.4rem, 9vw, 5.2rem);
     margin-bottom: 0.65rem;
@@ -2483,10 +2423,6 @@ button:focus-visible {
   .hero-paper-title {
     font-size: clamp(1rem, 2.2vw, 1.4rem);
     margin-bottom: 0.5rem;
-  }
-
-  .publication-authors {
-    font-size: 0.72rem;
   }
 
   .scroll-hero .publication-links {
