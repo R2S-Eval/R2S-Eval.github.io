@@ -352,44 +352,6 @@ button:focus-visible {
   color: rgba(255, 255, 255, 0.42);
 }
 
-.hero-video-label,
-.hero-scroll-cue {
-  bottom: 1.6rem;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.66rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  position: absolute;
-  text-transform: uppercase;
-  z-index: 3;
-}
-
-.hero-video-label {
-  display: flex;
-  gap: 0.7rem;
-  left: 1.6rem;
-  opacity: var(--hero-video-label-opacity, 0.28);
-}
-
-.hero-video-label span + span {
-  color: #d8b66d;
-}
-
-.hero-scroll-cue {
-  align-items: center;
-  display: flex;
-  gap: 0.65rem;
-  opacity: var(--hero-cue-opacity, 0.72);
-  right: 1.6rem;
-}
-
-.hero-scroll-cue > span {
-  background: currentColor;
-  display: block;
-  height: 1px;
-  width: 2.2rem;
-}
-
 .section {
   padding: 6.4rem 1.5rem;
 }
@@ -508,14 +470,6 @@ button:focus-visible {
 
 .section-heading.is-wide {
   max-width: 58rem;
-}
-
-.module-index {
-  color: var(--gold);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  margin-bottom: 0.55rem;
 }
 
 .module-title {
@@ -695,21 +649,6 @@ button:focus-visible {
   height: 100%;
   object-fit: cover;
   width: 100%;
-}
-
-.video-placeholder {
-  color: rgba(255, 255, 255, 0.55);
-  font-size: 0.59rem;
-  font-weight: 700;
-  left: 50%;
-  letter-spacing: 0.1em;
-  pointer-events: none;
-  position: absolute;
-  text-align: center;
-  text-transform: uppercase;
-  top: 45%;
-  transform: translate(-50%, -50%);
-  width: 90%;
 }
 
 .task-video-stage {
@@ -897,11 +836,6 @@ button:focus-visible {
   color: #4963a8;
 }
 
-.r2s-showcase-frame .video-placeholder {
-  top: 48%;
-  z-index: 2;
-}
-
 .r2s-showcase-caption {
   color: var(--ink-soft);
   font-family: var(--serif);
@@ -987,8 +921,10 @@ button:focus-visible {
 .real-to-sim-section .section-heading.is-wide,
 .policy-rollout-section .section-heading.is-wide,
 .vlm-preference-section .section-heading.is-wide,
+.results-section .section-heading.is-wide,
 .real-to-sim-section .section-intro,
-.policy-rollout-section .section-intro {
+.policy-rollout-section .section-intro,
+.results-section .section-intro {
   max-width: 60rem;
 }
 
@@ -1209,10 +1145,6 @@ button:focus-visible {
 
 .preference-video-frame video {
   object-fit: contain;
-}
-
-.preference-video-frame .video-placeholder {
-  top: 44%;
 }
 
 .preference-verdict {
@@ -2041,25 +1973,6 @@ button:focus-visible {
     width: 100%;
   }
 
-  .hero-video-label,
-  .hero-scroll-cue {
-    bottom: 0.9rem;
-    font-size: 0.56rem;
-  }
-
-  .hero-video-label {
-    gap: 0.45rem;
-    left: 1rem;
-  }
-
-  .hero-scroll-cue {
-    right: 1rem;
-  }
-
-  .hero-scroll-cue > span {
-    width: 1.35rem;
-  }
-
   .section {
     padding: 4.5rem 1.25rem;
   }
@@ -2453,10 +2366,6 @@ button:focus-visible {
   .hero-fade-content {
     opacity: 1 !important;
     transform: none !important;
-  }
-
-  .hero-scroll-cue {
-    display: none;
   }
 
   .task-thumbnail-strip {

@@ -3,12 +3,10 @@
 Academic project website for **R2S-Eval: Robot Evaluation with Real-to-Sim
 Calibration via Vision-Language Models**.
 
-- Project repository: <https://github.com/VVVVME50/R2S-Eval>
 - Project website: <https://r2s-eval.github.io/>
-- Website repository: <https://github.com/R2S-Eval/R2S-Eval.github.io>
 
-The website currently reflects the anonymized manuscript. Author, venue, paper,
-dataset, and final citation links will be added after public release.
+This repository contains the static project website. Research code and datasets
+are not included.
 
 ## Local preview
 
@@ -22,9 +20,8 @@ Then open <http://localhost:8000/>.
 
 ## Hero video
 
-The cinematic landing section currently uses a short black placeholder at
-`static/videos/hero-black.mp4`. Replace that file with the final muted H.264
-teaser while keeping the same path to publish the real footage.
+The cinematic landing section uses a restrained black motion background stored
+at `static/videos/hero-black.mp4`.
 
 ## Website template attribution
 

@@ -26,8 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
       root.style.setProperty('--hero-title-y', '0px');
       root.style.setProperty('--hero-title-scale', '1');
       root.style.setProperty('--hero-shade-opacity', '0.9');
-      root.style.setProperty('--hero-cue-opacity', '0');
-      root.style.setProperty('--hero-video-label-opacity', '0.58');
       if (heroContent) {
         heroContent.classList.remove('is-interaction-hidden');
         heroContent.inert = false;
@@ -55,8 +53,6 @@ document.addEventListener('DOMContentLoaded', function () {
       root.style.setProperty('--hero-title-y', `${-fade * 180}px`);
       root.style.setProperty('--hero-title-scale', String(1 - fade * 0.025));
       root.style.setProperty('--hero-shade-opacity', String(0.9 - progress * 0.72));
-      root.style.setProperty('--hero-cue-opacity', String(clamp(1 - progress * 3.2, 0, 1) * 0.72));
-      root.style.setProperty('--hero-video-label-opacity', String(0.28 + progress * 0.58));
       if (heroContent) {
         const interactionHidden = fade > 0.98;
         heroContent.classList.toggle('is-interaction-hidden', interactionHidden);
@@ -200,7 +196,6 @@ document.addEventListener('DOMContentLoaded', function () {
       return {
         video: video,
         source: source,
-        placeholder: frame.querySelector('[data-task-placeholder]'),
         role: video.dataset.taskVideo || 'default'
       };
     }).filter(Boolean);
@@ -260,7 +255,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const playbackRate = Number.parseFloat(mediaItem.video.dataset.playbackRate);
         const playbackRateLabel = Number.isFinite(playbackRate) ? ` at ${playbackRate}× speed` : '';
         mediaItem.video.setAttribute('aria-label', `${mediaName} video for ${nextLabel}${playbackRateLabel}`);
-        if (mediaItem.placeholder) mediaItem.placeholder.textContent = `${mediaName} video forthcoming`;
       });
 
       if (taskLabel) taskLabel.textContent = nextLabel;
