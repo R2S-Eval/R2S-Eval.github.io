@@ -3,8 +3,6 @@
 Academic project website for **R2S-Eval: Robot Evaluation with Real-to-Sim
 Calibration via Vision-Language Models**.
 
-- Project website: <https://r2s-eval.github.io/>
-
 This repository contains the static project website. Research code and datasets
 are not included.
 
