@@ -1707,83 +1707,6 @@ button:focus-visible {
   text-align: center;
 }
 
-.citation-section {
-  background: var(--navy-deep);
-  color: #fff;
-}
-
-.citation-section .section-kicker {
-  color: #d7b66c;
-}
-
-.citation-section .section-title {
-  color: #fff;
-}
-
-.citation-section .column {
-  min-width: 0;
-}
-
-.citation-note {
-  color: #b9c5ce;
-  font-size: 0.9rem;
-  line-height: 1.7;
-  max-width: 27rem;
-}
-
-.citation-box {
-  background: #0b2234;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  min-width: 0;
-  min-height: 15rem;
-  padding: 1.2rem 1.3rem 1rem;
-  position: relative;
-}
-
-.citation-code {
-  background: transparent;
-  color: #dce7ef;
-  font-size: 0.78rem;
-  line-height: 1.7;
-  max-width: 100%;
-  overflow-x: auto;
-  padding: 2.2rem 0 0;
-  white-space: pre;
-}
-
-.citation-code code {
-  color: inherit;
-}
-
-.copy-button {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  color: #dce7ef;
-  cursor: pointer;
-  font-family: var(--sans);
-  font-size: 0.69rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  min-height: 2.2rem;
-  padding: 0.35rem 0.75rem;
-  position: absolute;
-  right: 1rem;
-  text-transform: uppercase;
-  top: 1rem;
-}
-
-.copy-button:hover {
-  border-color: #d7b66c;
-  color: #fff;
-}
-
-.copy-status {
-  color: #d7b66c;
-  font-size: 0.72rem;
-  margin-top: 0.4rem;
-  min-height: 1.2rem;
-}
-
 .project-footer {
   background: #fff;
   border-top: 1px solid var(--line);
@@ -2220,20 +2143,6 @@ button:focus-visible {
   .insight-row,
   .quality-study {
     padding-top: 3rem;
-  }
-
-  .citation-box {
-    margin-top: 1.5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .citation-section .column {
-    min-width: 0;
-  }
-
-  .citation-code {
-    font-size: 0.68rem;
   }
 
   .project-footer .has-text-right-desktop {
